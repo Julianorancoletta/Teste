@@ -1,0 +1,15 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Descrição</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of Escolaridades">
+      <tr>
+        <th>{{item.id}}</th>
+        <td>{{item.descricao}}</td>
+      </tr>
+    </tbody>
+  </table>
+
