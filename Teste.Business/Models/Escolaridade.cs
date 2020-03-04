@@ -12,6 +12,6 @@ namespace Teste.Business.Models
 
         public string descricao { get; set; }
 
-        public List<Usuario> Usuarios { get; set; }
+        public List<Usuario> usuario { get; set; }
     }
 }
