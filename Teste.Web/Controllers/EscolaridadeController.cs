@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Teste.Business.Intefaces;
 using Teste.Business.Models;
+using Teste.Data.Context;
 
 namespace Teste.Web.Controllers
 {
@@ -21,36 +22,27 @@ namespace Teste.Web.Controllers
             _IEscolaridade = escolaridade;
         }
 
-        // GET: api/Escolaridade
         [HttpGet]
         public async Task<IList<Escolaridade>> Get()
         {
                 return await _IEscolaridade.GetEscolaridadeList();
         }
 
-        //// GET: api/Escolaridade/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
         [HttpPost]
-        public void Post([FromQuery] Escolaridade escolaridade)
+        [Route("")]
+        public async Task<ActionResult<Escolaridade>> Post ([FromQuery] Escolaridade escolaridade)
         {
-            _IEscolaridade.AddEscolaridade(escolaridade);
+            
+            if (ModelState.IsValid)
+            {
+               await _IEscolaridade.AddEscolaridade(escolaridade);
+                
+                return escolaridade;
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
-
-        //// PUT: api/Escolaridade/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

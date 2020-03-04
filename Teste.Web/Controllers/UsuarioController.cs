@@ -4,6 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Teste.Business.Intefaces;
+using Teste.Business.Models;
+using Teste.Business.ViewModels;
+using Teste.Data.Context;
 
 namespace Teste.Web.Controllers
 {
@@ -11,13 +15,18 @@ namespace Teste.Web.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
+        private readonly IUsuario _IUsuario;
 
+        public UsuarioController(IUsuario usuario)
+        {
+            _IUsuario = usuario;
+        }
 
         // GET: api/Usuario
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<UsuarioView>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _IUsuario.GetUsuario();
         }
 
         // GET: api/Usuario/5
@@ -29,8 +38,16 @@ namespace Teste.Web.Controllers
 
         // POST: api/Usuario
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<Usuario>> Post([FromQuery] Usuario usuario)
         {
+            if (ModelState.IsValid)
+            {
+                return await _IUsuario.AdicionarUsuario(usuario);
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         // PUT: api/Usuario/5

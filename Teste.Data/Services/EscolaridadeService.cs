@@ -27,6 +27,7 @@ namespace Teste.Data.Services
         {
             _context.Escolaridades.Add(escolaridade);
             await _context.SaveChangesAsync();
+
         }
     }
 }
