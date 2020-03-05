@@ -35,8 +35,8 @@ export class UsuarioService {
       .set('email', usuario.email)
       .set('dataNascimento', usuario.dataNascimento.toString())
       .set('idEscolaridade', usuario.idEscolaridade.toString())
-
-     this.Http.put(`${this.urlService}/${usuario.id}?${params}`, "")
+    
+     return this.Http.put<Usuario>(`${this.urlService}/${usuario.id}?${params}`, "")
    
   }
 

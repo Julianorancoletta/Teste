@@ -35,13 +35,14 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   editrUsuario(){
-    this.service.atualizaUsuario(this.FromUsuario.value)
-    this.createForm(new Usuario());
-    //this.router.navigate(['']);
+    this.service.atualizaUsuario(this.FromUsuario.value).subscribe(
+      resp => {
+        console.log(resp)
+      }
+    );
+    
+    this.router.navigate(['']);
 }
-
-
-
   createForm(usuario: Usuario) {
     this.FromUsuario = this.formBuilder.group({
       id: [usuario.id],
@@ -52,13 +53,12 @@ export class EditarUsuarioComponent implements OnInit {
       idEscolaridade: [usuario.idEscolaridade]
     })
   }
-
-  
   changeEscoridade(value) {
     this.FromUsuario.get("idEscolaridade").setValue(value);
+    console.log(this.FromUsuario.value)
   }
   dropDown(usuario: Usuario){
     this.FromUsuario.setValue(usuario); 
-    this.selected = usuario.id  
+    this.selected = usuario.id;
   }
 }

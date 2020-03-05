@@ -23,6 +23,7 @@ namespace Teste.Data.Services
         public async Task<IEnumerable<UsuarioView>> GetUsuario()
         {
             return await _context.Usuarios
+                 .Include(x => x.)
                  .Select(e => new UsuarioView
                  {
                      id = e.id,

@@ -52,12 +52,16 @@ namespace Teste.Web.Controllers
 
         
         [HttpPut("{id}")]
-        public void Put([FromQuery] Usuario usuario)
+        public  ActionResult<Usuario> Put([FromQuery] Usuario usuario)
         {
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            
+             _IUsuario.UpdateUsuario(usuario);
 
-            _IUsuario.UpdateUsuario(usuario);
-
-                      
+            return  usuario;
         }
 
 
