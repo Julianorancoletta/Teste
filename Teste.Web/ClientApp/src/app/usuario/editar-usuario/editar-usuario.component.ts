@@ -24,19 +24,24 @@ export class EditarUsuarioComponent implements OnInit {
   selected :Number
 
   ngOnInit(): void {
+    this.BuscaUsuario();  
     this.createForm(new Usuario());
-    this.BuscaUsuario()
   }
 
   BuscaUsuario() {
-    
-    this.createForm(new Usuario())
     this.service.buscaUsuario(this.id).subscribe(resp => {
-      this.dropDown(resp.id); 
-      this.FromUsuario.setValue(resp);
-      this.usuario = resp  
-    })    
+      this.dropDown(resp);      
+    })      
   }
+
+  editrUsuario(){
+    this.service.atualizaUsuario(this.FromUsuario.value)
+    this.createForm(new Usuario());
+    //this.router.navigate(['']);
+}
+
+
+
   createForm(usuario: Usuario) {
     this.FromUsuario = this.formBuilder.group({
       id: [usuario.id],
@@ -48,19 +53,12 @@ export class EditarUsuarioComponent implements OnInit {
     })
   }
 
-  editrUsuario(){
-    debugger;
-      this.service.atualizaUsuario(this.FromUsuario.value)
-      this.createForm(new Usuario());
-      //this.router.navigate(['']);
-  }
-
+  
   changeEscoridade(value) {
     this.FromUsuario.get("idEscolaridade").setValue(value);
   }
-
-  dropDown(int: Number){
-    this.selected = int 
+  dropDown(usuario: Usuario){
+    this.FromUsuario.setValue(usuario); 
+    this.selected = usuario.id  
   }
-
 }

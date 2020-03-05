@@ -29,14 +29,15 @@ export class UsuarioService {
 
   atualizaUsuario(usuario: Usuario) {
     const params = new HttpParams()
+      .set('id',usuario.id.toString())
       .set('nome', usuario.nome)
       .set('sobrenome', usuario.sobrenome)
       .set('email', usuario.email)
       .set('dataNascimento', usuario.dataNascimento.toString())
       .set('idEscolaridade', usuario.idEscolaridade.toString())
 
-    this.Http.put<Usuario>(`${this.urlService}/${usuario.id}?${params}`, "")
-    console.log(`${this.urlService}/${usuario.id}?${params}`)
+     this.Http.put(`${this.urlService}/${usuario.id}?${params}`, "")
+   
   }
 
 

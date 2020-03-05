@@ -56,8 +56,8 @@ namespace Teste.Data.Services
 
         public void UpdateUsuario(Usuario usuario)
         {
-            _context.Usuarios.Update(usuario);
-            _context.SaveChanges();
+            _context.Entry(usuario).State = EntityState.Modified;
+                _context.SaveChanges();
 
             
         }
