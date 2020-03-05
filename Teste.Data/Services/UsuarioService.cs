@@ -22,7 +22,7 @@ namespace Teste.Data.Services
 
         public async Task<IEnumerable<UsuarioView>> GetUsuario()
         {
-            return await _context.Usuarios.Include(x => x.Escolaridade)
+            return await _context.Usuarios
                  .Select(e => new UsuarioView
                  {
                      id = e.id,
@@ -31,8 +31,7 @@ namespace Teste.Data.Services
                      DataNascimento = e.DataNascimento,
                      Email = e.Email,
                      idEscolaridade = e.IdEscolaridade,
-                     DescricaoEscolaridades = e.Escolaridade.descricao
-                     
+
                  }).ToListAsync();
         }
 
@@ -44,6 +43,24 @@ namespace Teste.Data.Services
             return usuario;
         }
 
+        public void Delete(Usuario usuario)
+        {
+            _context.Usuarios.Remove(usuario);
+            _context.SaveChangesAsync();
+        }
+
+        public async Task<Usuario> BuscaUsuario(int id)
+        {
+            return await _context.Usuarios.FindAsync(id);
+        }
+
+        public void UpdateUsuario(Usuario usuario)
+        {
+            _context.Usuarios.Update(usuario);
+            _context.SaveChanges();
+
+            
+        }
 
     }
 }

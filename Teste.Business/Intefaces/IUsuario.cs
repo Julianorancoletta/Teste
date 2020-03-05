@@ -11,5 +11,10 @@ namespace Teste.Business.Intefaces
     {
         Task<IEnumerable<UsuarioView>> GetUsuario();
         Task<Usuario> AdicionarUsuario(Usuario usuario);
+
+        Task<Usuario> BuscaUsuario(int id);
+
+        void UpdateUsuario(Usuario usuario);
+        void Delete(Usuario usuario);
     }
 }

@@ -9,9 +9,7 @@ namespace Teste.Business.Models
     {
         [Key]
         public int id { get; set; }
-
         public string descricao { get; set; }
-
         public List<Usuario> usuario { get; set; }
     }
 }

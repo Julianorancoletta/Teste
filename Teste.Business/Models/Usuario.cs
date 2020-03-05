@@ -18,6 +18,5 @@ namespace Teste.Business.Models
         public DateTime DataNascimento { get; set; }
 
         public int IdEscolaridade { get; set; }
-        public Escolaridade Escolaridade { get; set; }
     }
 }

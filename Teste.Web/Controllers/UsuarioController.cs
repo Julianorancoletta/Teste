@@ -31,9 +31,9 @@ namespace Teste.Web.Controllers
 
         // GET: api/Usuario/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public Task<Usuario> Get(int id)
         {
-            return "value";
+             return  _IUsuario.BuscaUsuario(id);
         }
 
         // POST: api/Usuario
@@ -42,7 +42,7 @@ namespace Teste.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                return await _IUsuario.AdicionarUsuario(usuario);
+                    return await _IUsuario.AdicionarUsuario(usuario);
             }
             else
             {
@@ -50,16 +50,31 @@ namespace Teste.Web.Controllers
             }
         }
 
-        // PUT: api/Usuario/5
+        
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put([FromQuery] Usuario usuario)
         {
+
+            _IUsuario.UpdateUsuario(usuario);
+
+                      
         }
 
-        // DELETE: api/ApiWithActions/5
+
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<Usuario>> Delete(int id)
         {
+            var usuario =  await _IUsuario.BuscaUsuario(id);
+            if (usuario == null)
+            {
+                return NotFound();  
+            }
+
+            _IUsuario.Delete(usuario);
+            
+
+            return usuario;
         }
+
     }
 }

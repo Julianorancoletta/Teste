@@ -3,18 +3,23 @@ import { CommonModule } from '@angular/common';
 import { EscolaridadeComponent } from './escolaridade.component';
 import { ListaEscolaridadeComponent } from './lista-escolaridade/lista-escolaridade.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DropdownEscolaridadeComponent } from './dropdown-escolaridade/dropdown-escolaridade.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     EscolaridadeComponent,
-    ListaEscolaridadeComponent
+    ListaEscolaridadeComponent,
+    DropdownEscolaridadeComponent
   ],
   exports:[
-    EscolaridadeComponent
+    EscolaridadeComponent,
+    DropdownEscolaridadeComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     HttpClientModule
   ]

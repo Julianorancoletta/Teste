@@ -18,7 +18,7 @@ export class ListaEscolaridadeComponent implements OnInit {
   }
 
   listaEscolaridade() {
-    this.service.getUsuario()
+    this.service.getEscolaridade()
       .subscribe(resp =>{
         this.Escolaridades = resp
         console.log(resp);

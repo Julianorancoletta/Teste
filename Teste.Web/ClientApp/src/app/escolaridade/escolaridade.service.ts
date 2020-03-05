@@ -12,7 +12,7 @@ export class EscolaridadeService {
 
   protected UrlService: string = 'api/Escolaridade'
 
-  getUsuario(): Observable<Escolaridade[]> {
+  getEscolaridade(): Observable<Escolaridade[]> {
     return this.http.
       get<Escolaridade[]>(this.UrlService)
   }

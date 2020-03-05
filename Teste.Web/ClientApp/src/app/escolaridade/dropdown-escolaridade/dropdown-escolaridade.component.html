@@ -1,0 +1,7 @@
+<label>Escolaridade</label> 
+<select class="form-control" [(ngModel)]='selected'>
+  <option value="0">--Selecione--</option>
+  <option *ngFor="let item of escolaridade" [value]=item.id> {{item.descricao}}</option>
+</select>
+
+
