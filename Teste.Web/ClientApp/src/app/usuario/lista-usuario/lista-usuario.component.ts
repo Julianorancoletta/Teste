@@ -19,6 +19,7 @@ export class ListaUsuarioComponent implements OnInit {
   }
 
   ListaUsuario() {
+    debugger
     this.service.getUsuario()
       .subscribe(resp => {
         this.usuarios = resp
@@ -32,7 +33,6 @@ export class ListaUsuarioComponent implements OnInit {
     })
   }
   addUsuario(){
-    debugger;
     this.router.navigate(['Adicionar']);
   };  
   onEditar(usuario: Usuario){

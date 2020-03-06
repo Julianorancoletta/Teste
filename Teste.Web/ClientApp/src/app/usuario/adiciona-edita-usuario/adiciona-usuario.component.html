@@ -46,6 +46,10 @@
     </div>
     <div class="form-group">
         <app-dropdown-escolaridade (change)="changeEscoridade($event.target.value)"></app-dropdown-escolaridade>     
+        <ap-vmessage 
+        *ngIf="FromUsuario.get('escolaridadeId').errors?.required"
+        text="Escolaridade Obrigatorio">
+    </ap-vmessage>
     </div>
     <button 
         [disabled]="FromUsuario.invalid" type="submit" class="btn btn-primary btn-block">

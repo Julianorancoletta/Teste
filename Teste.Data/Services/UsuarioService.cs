@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Teste.Business.Intefaces;
 using Teste.Business.Models;
-using Teste.Business.ViewModels;
+using Teste.Business.ModelView;
 using Teste.Data.Context;
 
 namespace Teste.Data.Services
@@ -20,20 +20,24 @@ namespace Teste.Data.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<UsuarioView>> GetUsuario()
+        public async Task<List<Usuario>> GetUsuario()
         {
-            return await _context.Usuarios
-                 .Include(x => x.)
-                 .Select(e => new UsuarioView
-                 {
-                     id = e.id,
-                     nome = e.nome,
-                     sobrenome = e.sobrenome,
-                     DataNascimento = e.DataNascimento,
-                     Email = e.Email,
-                     idEscolaridade = e.IdEscolaridade,
+            var list =
+                 (from usuario in _context.Set<Usuario>()
+                  join escolaridade in _context.Set<Escolaridade>()
+                  on usuario.escolaridadeId equals escolaridade.id
+                  select new Usuario
+                  {
+                      id = usuario.id,
+                      nome = usuario.nome,
+                      sobrenome = usuario.sobrenome,
+                      Email = usuario.Email,
+                      DataNascimento = usuario.DataNascimento,
+                      escolaridadeId = usuario.escolaridadeId,
+                      escolaridade = usuario.escolaridade
+                  }).ToListAsync();
 
-                 }).ToListAsync();
+            return await list;
         }
 
         public async Task<Usuario> AdicionarUsuario(Usuario usuario)
@@ -50,18 +54,38 @@ namespace Teste.Data.Services
             _context.SaveChangesAsync();
         }
 
-        public async Task<Usuario> BuscaUsuario(int id)
+        public async Task<List<UsuarioView>> BuscaUsuario(int id)
         {
-            return await _context.Usuarios.FindAsync(id);
+
+            var list =
+                 (from usuario in _context.Usuarios
+                  where usuario.id == id
+                  let convertedDate = usuario.DataNascimento.ToString("yyyy-MM-dd")
+                  select new UsuarioView
+                  {
+                      id = usuario.id,
+                      nome = usuario.nome,
+                      sobrenome = usuario.sobrenome,
+                      Email = usuario.Email,
+                      DataNascimento = convertedDate,
+                      escolaridadeId = usuario.escolaridadeId
+                  }).ToListAsync();
+
+            return await list;
         }
 
         public void UpdateUsuario(Usuario usuario)
         {
             _context.Entry(usuario).State = EntityState.Modified;
-                _context.SaveChanges();
+            _context.SaveChanges();
 
-            
+
         }
 
+
+        public async Task<Usuario> BuscaUsuarioInId(int id)
+        {
+            return await _context.Usuarios.FindAsync(id);
+        }
     }
 }

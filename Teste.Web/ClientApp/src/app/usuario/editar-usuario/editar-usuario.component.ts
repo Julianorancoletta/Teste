@@ -30,18 +30,18 @@ export class EditarUsuarioComponent implements OnInit {
 
   BuscaUsuario() {
     this.service.buscaUsuario(this.id).subscribe(resp => {
-      this.dropDown(resp);      
+      this.dropDown(resp[0]);      
     })      
   }
 
   editrUsuario(){
     this.service.atualizaUsuario(this.FromUsuario.value).subscribe(
       resp => {
-        console.log(resp)
+        console.log(resp);
+        this.router.navigate(['']);
       }
     );
     
-    this.router.navigate(['']);
 }
   createForm(usuario: Usuario) {
     this.FromUsuario = this.formBuilder.group({
@@ -50,7 +50,7 @@ export class EditarUsuarioComponent implements OnInit {
       sobrenome: [usuario.sobrenome, Validators.required],
       email: [usuario.email, Validators.email],
       dataNascimento: [usuario.dataNascimento, Validacoes.DataMaior],
-      idEscolaridade: [usuario.idEscolaridade]
+      escolaridadeId: [usuario.escolaridadeId]
     })
   }
   changeEscoridade(value) {

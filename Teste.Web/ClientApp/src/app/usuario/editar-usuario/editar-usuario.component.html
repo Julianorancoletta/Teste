@@ -36,7 +36,8 @@
         <input 
             formControlName="dataNascimento" 
             class="form-control" 
-            placeholder="Data Nascimento">
+            placeholder="Data Nascimento"
+            type="date">
         <ap-vmessage 
             *ngIf="FromUsuario.get('dataNascimento').errors?.dataMaior"
             text="Data deve ser menor que atual">

@@ -41,18 +41,22 @@ export class AdicionaUsuarioComponent implements OnInit {
       sobrenome: [usuario.sobrenome, Validators.required],
       email: [usuario.email, Validators.email],
       dataNascimento: [usuario.dataNascimento, Validacoes.DataMaior],
-      idEscolaridade: [usuario.idEscolaridade]
+      escolaridadeId: [usuario.escolaridadeId,Validators.required]
     })
   }
 
 
   adicionarUsuario() {
-    this.service.AdicionaUsuario(this.FromUsuario.value)
+    this.service.AdicionaUsuario(this.FromUsuario.value).subscribe(
+      resp => {
+        console.log(resp);
+        this.router.navigate(['']);
+      })
     this.createForm(new Usuario());
     this.router.navigate(['']);
   }
   changeEscoridade(value) {
-    this.FromUsuario.get("idEscolaridade").setValue(value);
+    this.FromUsuario.get("escolaridadeId").setValue(value);
   }
 
 

@@ -4,5 +4,5 @@ export class Usuario {
     sobrenome: string ="" 
     email: string = ""
     dataNascimento: Date = null
-    idEscolaridade: number = 0 
+    escolaridadeId: number = 0 
 }

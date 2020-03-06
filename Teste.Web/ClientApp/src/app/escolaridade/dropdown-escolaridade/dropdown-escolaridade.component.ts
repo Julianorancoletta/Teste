@@ -10,7 +10,7 @@ import { EscolaridadeService } from '../escolaridade.service';
 export class DropdownEscolaridadeComponent implements OnChanges, OnInit {
 
 
-  @Input() selected = 0;
+  @Input() selected = 1;
 
   constructor(private Service: EscolaridadeService) { }
   escolaridade: Escolaridade[];

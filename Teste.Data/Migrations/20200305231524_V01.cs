@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Teste.Data.Migrations
 {
-    public partial class V1 : Migration
+    public partial class V01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,24 +30,23 @@ namespace Teste.Data.Migrations
                     sobrenome = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     DataNascimento = table.Column<DateTime>(nullable: false),
-                    IdEscolaridade = table.Column<int>(nullable: false),
-                    Escolaridadeid = table.Column<int>(nullable: true)
+                    escolaridadeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Usuarios_Escolaridades_Escolaridadeid",
-                        column: x => x.Escolaridadeid,
+                        name: "FK_Usuarios_Escolaridades_escolaridadeId",
+                        column: x => x.escolaridadeId,
                         principalTable: "Escolaridades",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuarios_Escolaridadeid",
+                name: "IX_Usuarios_escolaridadeId",
                 table: "Usuarios",
-                column: "Escolaridadeid");
+                column: "escolaridadeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Teste.Business.Intefaces;
 using Teste.Business.Models;
-using Teste.Business.ViewModels;
+using Teste.Business.ModelView;
 using Teste.Data.Context;
 
 namespace Teste.Web.Controllers
@@ -24,14 +24,14 @@ namespace Teste.Web.Controllers
 
         // GET: api/Usuario
         [HttpGet]
-        public async Task<IEnumerable<UsuarioView>> Get()
+        public async Task<List<Usuario>> Get()
         {
             return await _IUsuario.GetUsuario();
         }
 
         // GET: api/Usuario/5
         [HttpGet("{id}", Name = "Get")]
-        public Task<Usuario> Get(int id)
+        public Task<List<UsuarioView>> Get(int id)
         {
              return  _IUsuario.BuscaUsuario(id);
         }
@@ -68,7 +68,7 @@ namespace Teste.Web.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Usuario>> Delete(int id)
         {
-            var usuario =  await _IUsuario.BuscaUsuario(id);
+            var usuario =  await _IUsuario.BuscaUsuarioInId(id);
             if (usuario == null)
             {
                 return NotFound();  

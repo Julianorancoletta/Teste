@@ -10,8 +10,8 @@ using Teste.Data.Context;
 namespace Teste.Data.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20200302232645_V1")]
-    partial class V1
+    [Migration("20200305231524_V01")]
+    partial class V01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,10 +49,7 @@ namespace Teste.Data.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Escolaridadeid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdEscolaridade")
+                    b.Property<int>("escolaridadeId")
                         .HasColumnType("int");
 
                     b.Property<string>("nome")
@@ -63,16 +60,18 @@ namespace Teste.Data.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Escolaridadeid");
+                    b.HasIndex("escolaridadeId");
 
                     b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("Teste.Business.Models.Usuario", b =>
                 {
-                    b.HasOne("Teste.Business.Models.Escolaridade", "Escolaridade")
+                    b.HasOne("Teste.Business.Models.Escolaridade", "escolaridade")
                         .WithMany("usuario")
-                        .HasForeignKey("Escolaridadeid");
+                        .HasForeignKey("escolaridadeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

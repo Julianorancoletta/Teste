@@ -19,7 +19,7 @@
       <td>{{item.sobrenome}}</td>
       <td>{{item.email}}</td>
       <td>{{item.dataNascimento | date:'dd/MM/yyyy'}}</td>
-      <td>{{item.idEscolaridade}}</td>
+      <td>{{item.escolaridade.descricao}}</td>
       <td>
         <button type="button" class="btn btn-danger"
         [swal]="{Title: 'Enter your email',

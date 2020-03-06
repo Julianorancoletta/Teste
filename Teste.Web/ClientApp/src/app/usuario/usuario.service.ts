@@ -34,7 +34,7 @@ export class UsuarioService {
       .set('sobrenome', usuario.sobrenome)
       .set('email', usuario.email)
       .set('dataNascimento', usuario.dataNascimento.toString())
-      .set('idEscolaridade', usuario.idEscolaridade.toString())
+      .set('escolaridadeId', usuario.escolaridadeId.toString())
     
      return this.Http.put<Usuario>(`${this.urlService}/${usuario.id}?${params}`, "")
    
@@ -48,15 +48,13 @@ export class UsuarioService {
       .set('sobrenome', usuario.sobrenome)
       .set('email', usuario.email)
       .set('dataNascimento', usuario.dataNascimento.toString())
-      .set('idEscolaridade', usuario.idEscolaridade.toString())
+      .set('escolaridadeId', usuario.escolaridadeId.toString())
 
-    this.Http.post<Usuario>(`${this.urlService}?${params}`, "")
+    return this.Http.post<Usuario>(`${this.urlService}?${params}`, "")
   }
 
 
   buscaUsuario(id: number): Observable<Usuario> {
     return this.Http.get<Usuario>(`${this.urlService}/${id}`)
-  }
-
- 
+  } 
 }

@@ -47,10 +47,7 @@ namespace Teste.Data.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Escolaridadeid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdEscolaridade")
+                    b.Property<int>("escolaridadeId")
                         .HasColumnType("int");
 
                     b.Property<string>("nome")
@@ -61,16 +58,18 @@ namespace Teste.Data.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("Escolaridadeid");
+                    b.HasIndex("escolaridadeId");
 
                     b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("Teste.Business.Models.Usuario", b =>
                 {
-                    b.HasOne("Teste.Business.Models.Escolaridade", "Escolaridade")
-                        .WithMany()
-                        .HasForeignKey("Escolaridadeid");
+                    b.HasOne("Teste.Business.Models.Escolaridade", "escolaridade")
+                        .WithMany("usuario")
+                        .HasForeignKey("escolaridadeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
