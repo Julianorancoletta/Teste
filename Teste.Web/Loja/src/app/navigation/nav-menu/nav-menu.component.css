@@ -1,3 +1,15 @@
+nav {
+  background-color: darkslateblue !important;
+}
+
+nav a{
+  color: white !important;
+}
+
+nav a:hover {
+  color: rgb(193, 184, 252) !important;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
