@@ -10,8 +10,8 @@ namespace Teste.Data.Context
     {
         public BancoContext(DbContextOptions<BancoContext> options) : base(options) { }
 
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Product> Product { get; set; }
 
-        public DbSet<Escolaridade> Escolaridades { get; set; }
+        public DbSet<Category> Category { get; set; }
     }
 }

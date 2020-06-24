@@ -25,8 +25,8 @@ namespace Teste.Web
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddScoped<IUsuario, UsuarioService>();
-            services.AddScoped<IEscolaridade, EscolaridadeService>();
+            services.AddScoped<IProduct, ProductService>();
+            services.AddScoped<ICategory, CategoryService>();
 
             services.AddDbContext<BancoContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -74,7 +74,7 @@ namespace Teste.Web
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                spa.Options.SourcePath = "ClientApp";
+                spa.Options.SourcePath = "Loja";
 
                 if (env.IsDevelopment())
                 {

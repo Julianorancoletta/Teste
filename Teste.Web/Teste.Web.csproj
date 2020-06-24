@@ -34,6 +34,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Loja\angular.json" />
+    <None Include="Loja\e2e\tsconfig.e2e.json" />
+    <None Include="Loja\package-lock.json" />
+    <None Include="Loja\package.json" />
+    <None Include="Loja\proxy.conf.json" />
+    <None Include="Loja\src\tsconfig.app.json" />
+    <None Include="Loja\src\tsconfig.server.json" />
+    <None Include="Loja\src\tsconfig.spec.json" />
+    <None Include="Loja\src\tslint.json" />
+    <None Include="Loja\tsconfig.json" />
+    <None Include="Loja\tslint.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Teste.Business\Teste.Business.csproj" />
     <ProjectReference Include="..\Teste.Data\Teste.Data.csproj" />
   </ItemGroup>

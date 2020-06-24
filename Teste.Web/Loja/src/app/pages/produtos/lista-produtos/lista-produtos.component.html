@@ -1,0 +1,17 @@
+<div class="card mb-3" style="width: 15rem;">
+    <div class="card-header">
+            <a [routerLink]="['/Detalhes',produto.id]">
+                <img class="card-img-top" src="{{produto.image}}" 
+                    alt="">
+            </a>
+        </div>
+    <div class="card-body">
+        <h2 class="card-title">{{produto.title}} </h2>
+        <h5 class="card-title pricing-card-title">{{ produto.price | currency:'BRL':true:'1.2-2':'pt'}}
+        </h5>
+        <ul class="list-unstyled mt-3 mb-4">
+            <!-- {{item.shortDescription}} -->
+        </ul>
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Comprar</button>
+    </div>
+</div>
