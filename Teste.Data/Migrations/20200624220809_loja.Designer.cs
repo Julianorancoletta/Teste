@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Teste.Data.Context;
 
 namespace Teste.Data.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    partial class BancoContextModelSnapshot : ModelSnapshot
+    [Migration("20200624220809_loja")]
+    partial class loja
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,9 +51,6 @@ namespace Teste.Data.Migrations
 
                     b.Property<int?>("categoryid")
                         .HasColumnType("int");
-
-                    b.Property<byte[]>("img")
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");

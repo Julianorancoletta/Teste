@@ -10,8 +10,8 @@ using Teste.Data.Context;
 namespace Teste.Data.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20200305231524_V01")]
-    partial class V01
+    [Migration("20200625235831_img")]
+    partial class img
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,57 +21,64 @@ namespace Teste.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Teste.Business.Models.Escolaridade", b =>
+            modelBuilder.Entity("Teste.Business.Models.Category", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("descricao")
+                    b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
-                    b.ToTable("Escolaridades");
+                    b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.Usuario", b =>
+            modelBuilder.Entity("Teste.Business.Models.Product", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DataNascimento")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
+                    b.Property<string>("brand")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("escolaridadeId")
+                    b.Property<int>("category_Id")
                         .HasColumnType("int");
 
-                    b.Property<string>("nome")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("categoryid")
+                        .HasColumnType("int");
 
-                    b.Property<string>("sobrenome")
+                    b.Property<byte>("img")
+                        .HasColumnType("tinyint");
+
+                    b.Property<decimal>("price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("sale")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("sale_price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
-                    b.HasIndex("escolaridadeId");
+                    b.HasIndex("categoryid");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.Usuario", b =>
+            modelBuilder.Entity("Teste.Business.Models.Product", b =>
                 {
-                    b.HasOne("Teste.Business.Models.Escolaridade", "escolaridade")
-                        .WithMany("usuario")
-                        .HasForeignKey("escolaridadeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Teste.Business.Models.Category", "category")
+                        .WithMany("products")
+                        .HasForeignKey("categoryid");
                 });
 #pragma warning restore 612, 618
         }

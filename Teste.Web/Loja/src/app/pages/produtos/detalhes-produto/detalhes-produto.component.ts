@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProdutosService } from '../produtos.service';
+import { ProductModel } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-detalhes-produto',
@@ -18,7 +19,7 @@ export class DetalhesProdutoComponent implements OnInit {
   }
 
   id: string;
-  produto: any;
+  produto: ProductModel;
 
   ngOnInit(): void {
     this.buscarProduto()
@@ -27,7 +28,8 @@ export class DetalhesProdutoComponent implements OnInit {
   buscarProduto() {
     this.produtoService.getProduct(this.id).subscribe(
       result => {
-      this.produto = result;
+      this.produto = result[0];
+      debugger
     },
     error => alert('Produto não encontrado erro: ' + error.message))
   }

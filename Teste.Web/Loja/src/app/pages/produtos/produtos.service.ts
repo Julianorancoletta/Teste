@@ -7,7 +7,7 @@ import {environment} from 'src/environments/environment'
   providedIn: 'root'
 })
 export class ProdutosService {
-  protected readonly url = `${environment.api}/products`;
+  protected readonly url = `${environment.api}/product`;
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +16,6 @@ export class ProdutosService {
   }
 
   getProduct(id) {
-    return this.http.get<ProductModel[]>(`${this.url}/${id}` );
+    return this.http.get<ProductModel>(`${this.url}?${id}`,{});
   }
 }

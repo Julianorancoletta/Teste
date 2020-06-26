@@ -12,7 +12,6 @@ namespace Teste.Business.Models
         [Key]
         public int id { get; set; }
         public string description { get; set; }
-
-        public ICollection<Usuario> usuario { get; set; }
+        public ICollection<Product> products { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Teste.Business.Intefaces;
 using Teste.Business.Models;
-using Teste.Business.ModelView;
+using Teste.Business.viewModel;
 using Teste.Data.Context;
 
 namespace Teste.Data.Services
@@ -20,27 +20,30 @@ namespace Teste.Data.Services
             _context = context;
         }
 
-        public async Task<List<Product>> GetUsuario()
+        public async Task<List<productView>> GetProduct()
         {
+
             var list =
                  (from product in _context.Set<Product>()
                   join category in _context.Set<Category>()
                   on product.category_Id equals category.id
-                  select new Product
+                  select new productView
                   {
-                      id = usuario.id,
-                      nome = usuario.nome,
-                      sobrenome = usuario.sobrenome,
-                      Email = usuario.Email,
-                      DataNascimento = usuario.DataNascimento,
-                      escolaridadeId = usuario.escolaridadeId,
-                      escolaridade = usuario.escolaridade
+                      id = product.id,
+                      title = product.title,
+                      brand = product.brand,
+                      price = product.price,
+                      sale = product.sale,
+                      sale_price = product.sale_price,
+                      category_Id = category.id,
+                      category = category.description,
+                      img = System.Text.Encoding.UTF8.GetString(product.img)
                   }).ToListAsync();
 
             return await list;
         }
 
-        public async Task<Product> AdicionarProduct(Product product)
+        public async Task<Product> addProduct(Product product)
         {
             _context.Product.Add(product);
             await _context.SaveChangesAsync();
@@ -54,25 +57,30 @@ namespace Teste.Data.Services
             _context.SaveChangesAsync();
         }
 
-        //public async Task<List<UsuarioView>> BuscaUsuario(int id)
-        //{
+        public async Task<productView> BuscaProduct(int id)
+        {
 
-        //    var list =
-        //         (from usuario in _context.Usuarios
-        //          where usuario.id == id
-        //          let convertedDate = usuario.DataNascimento.ToString("yyyy-MM-dd")
-        //          select new UsuarioView
-        //          {
-        //              id = usuario.id,
-        //              nome = usuario.nome,
-        //              sobrenome = usuario.sobrenome,
-        //              Email = usuario.Email,
-        //              DataNascimento = convertedDate,
-        //              escolaridadeId = usuario.escolaridadeId
-        //          }).ToListAsync();
+            var list =
+                 (from product in _context.Set<Product>()
+                  join category in _context.Set<Category>()
+                  on product.category_Id equals category.id
+                  where product.id == id
+                  select new productView
+                  {
+                      id = product.id,
+                      title = product.title,
+                      brand = product.brand,
+                      price = product.price,
+                      sale = product.sale,
+                      sale_price = product.sale_price,
+                      category_Id = category.id,
+                      category = category.description,
+                      img = Convert.ToBase64String(product.img)
+                  });
 
-        //    return await list;
-        //}
+            return await list.FirstAsync();
+
+        }
 
         public void UpdateProduct(Product product)
         {
