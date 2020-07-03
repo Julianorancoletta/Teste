@@ -10,6 +10,4 @@ export class CarComponent{
   cars: any = new car();
   constructor() {
   }
-  
-
 }

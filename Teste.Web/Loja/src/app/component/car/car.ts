@@ -4,8 +4,6 @@ import { CarComponent } from './car.component';
 @Injectable()
 export class car {
 
-    
- 
     selectedItems = [];
      
     setCar(item: any) {

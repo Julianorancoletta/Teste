@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './navigation/nav-menu/nav-menu.component';
 import { AppRoutingModule } from './app.routing.module';
 import { PagesModule } from './pages/pages.module';
+import { ComponentsModule } from './component/components.module';
 
 
 
@@ -18,6 +19,7 @@ import { PagesModule } from './pages/pages.module';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     AppRoutingModule,
+    ComponentsModule,
     PagesModule
   ],
   providers: [],
