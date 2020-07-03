@@ -1,0 +1,20 @@
+<div class="card mb-3" style="width: 15rem;">
+    <div class="card-header">
+        <a [routerLink]="['/produto-detalhes',produto.id]">
+            <img class="card-img-top" src="data:image/jpeg;base64,{{ produto.img }}" alt="">
+        </a>
+    </div>
+    <div class="card-body">
+        <h2 class="card-title">{{produto.title}} </h2>
+        <ul class="list-unstyled mt-3 mb-4" [ngSwitch]="produto.sale">
+            <ng-container *ngSwitchCase="true">
+                <strike>{{ produto.price | currency:'BRL':true:'1.2-2':'pt' }}</strike>
+                {{ produto.sale_price | currency:'BRL':true:'1.2-2':'pt' }}
+            </ng-container>
+            <ng-container *ngSwitchCase="false">
+               {{ produto.price | currency:'BRL':true:'1.2-2':'pt' }}
+            </ng-container>
+        </ul>
+        <button type="button" class="btn btn-lg btn-block btn-outline-primary"  (click)="cars.setCar(product)">Comprar</button>
+    </div>
+</div>

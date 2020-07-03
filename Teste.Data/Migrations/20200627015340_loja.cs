@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Teste.Data.Migrations
 {
@@ -30,8 +31,9 @@ namespace Teste.Data.Migrations
                     price = table.Column<decimal>(nullable: false),
                     sale = table.Column<bool>(nullable: false),
                     sale_price = table.Column<decimal>(nullable: false),
-                    category_Id = table.Column<int>(nullable: false),
-                    categoryid = table.Column<int>(nullable: true)
+                    shortDescription = table.Column<string>(nullable: true),
+                    categoryid = table.Column<int>(nullable: false),
+                    img = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,7 +43,7 @@ namespace Teste.Data.Migrations
                         column: x => x.categoryid,
                         principalTable: "Category",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

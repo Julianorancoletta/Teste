@@ -12,7 +12,8 @@ namespace Teste.Business.viewModel
         public decimal price { get; set; }
         public bool sale { get; set; }
         public decimal sale_price { get; set; }
-        public int category_Id { get; set; }
+        public int categoryId { get; set; }
+        public string shortDescription { get; set; }
         public string category { get; set; }
         public string img { get; set; }
     }

@@ -26,7 +26,7 @@ namespace Teste.Data.Services
             var list =
                  (from product in _context.Set<Product>()
                   join category in _context.Set<Category>()
-                  on product.category_Id equals category.id
+                  on product.categoryid equals category.id
                   select new productView
                   {
                       id = product.id,
@@ -35,7 +35,8 @@ namespace Teste.Data.Services
                       price = product.price,
                       sale = product.sale,
                       sale_price = product.sale_price,
-                      category_Id = category.id,
+                      categoryId = category.id,
+                      shortDescription = product.shortDescription,
                       category = category.description,
                       img = System.Text.Encoding.UTF8.GetString(product.img)
                   }).ToListAsync();
@@ -63,7 +64,7 @@ namespace Teste.Data.Services
             var list =
                  (from product in _context.Set<Product>()
                   join category in _context.Set<Category>()
-                  on product.category_Id equals category.id
+                  on product.categoryid equals category.id
                   where product.id == id
                   select new productView
                   {
@@ -73,7 +74,8 @@ namespace Teste.Data.Services
                       price = product.price,
                       sale = product.sale,
                       sale_price = product.sale_price,
-                      category_Id = category.id,
+                      categoryId = category.id,
+                      shortDescription = product.shortDescription,
                       category = category.description,
                       img = Convert.ToBase64String(product.img)
                   });

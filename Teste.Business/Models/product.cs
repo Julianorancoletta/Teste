@@ -17,7 +17,8 @@ namespace Teste.Business.Models
         public decimal price { get; set; }
         public bool sale { get; set; }
         public decimal sale_price { get; set; }
-        public int category_Id { get; set; }
+        public string shortDescription { get; set; }
+        public int categoryid { get; set; }
         public Category category { get;set; }
         public byte[] img { get; set; }
     }

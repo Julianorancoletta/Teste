@@ -44,10 +44,7 @@ namespace Teste.Data.Migrations
                     b.Property<string>("brand")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("category_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("categoryid")
+                    b.Property<int>("categoryid")
                         .HasColumnType("int");
 
                     b.Property<byte[]>("img")
@@ -61,6 +58,9 @@ namespace Teste.Data.Migrations
 
                     b.Property<decimal>("sale_price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("shortDescription")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("title")
                         .HasColumnType("nvarchar(max)");
@@ -76,7 +76,9 @@ namespace Teste.Data.Migrations
                 {
                     b.HasOne("Teste.Business.Models.Category", "category")
                         .WithMany("products")
-                        .HasForeignKey("categoryid");
+                        .HasForeignKey("categoryid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

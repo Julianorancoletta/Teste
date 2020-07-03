@@ -10,8 +10,8 @@ using Teste.Data.Context;
 namespace Teste.Data.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20200625235831_img")]
-    partial class img
+    [Migration("20200627015340_loja")]
+    partial class loja
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,14 +46,11 @@ namespace Teste.Data.Migrations
                     b.Property<string>("brand")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("category_Id")
+                    b.Property<int>("categoryid")
                         .HasColumnType("int");
 
-                    b.Property<int?>("categoryid")
-                        .HasColumnType("int");
-
-                    b.Property<byte>("img")
-                        .HasColumnType("tinyint");
+                    b.Property<byte[]>("img")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<decimal>("price")
                         .HasColumnType("decimal(18,2)");
@@ -63,6 +60,9 @@ namespace Teste.Data.Migrations
 
                     b.Property<decimal>("sale_price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("shortDescription")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("title")
                         .HasColumnType("nvarchar(max)");
@@ -78,7 +78,9 @@ namespace Teste.Data.Migrations
                 {
                     b.HasOne("Teste.Business.Models.Category", "category")
                         .WithMany("products")
-                        .HasForeignKey("categoryid");
+                        .HasForeignKey("categoryid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

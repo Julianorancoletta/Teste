@@ -1,0 +1,33 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+ }
+ .order {
+    width: 100%;
+    border-left: 1px solid #eee;
+    padding: 1rem;
+    height: 100vh;
+  }
+  
+  .order-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .order-item {
+    border-bottom: 1px solid #eee;
+    margin-top: 1rem;
+  }
+  
+  .order-total {
+    display: flex;
+  }
+  
+  .order-price {
+    width: 100%;
+  }

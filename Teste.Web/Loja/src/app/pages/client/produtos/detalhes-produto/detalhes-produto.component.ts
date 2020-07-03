@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProdutosService } from '../produtos.service';
-import { ProductModel } from 'src/app/models/product.model';
+import { ProductModel } from 'src/app/core/models/product.model';
+
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) { }
+}
 
 @Component({
   selector: 'app-detalhes-produto',
@@ -20,6 +25,7 @@ export class DetalhesProdutoComponent implements OnInit {
 
   id: string;
   produto: ProductModel;
+  selectedFile: ImageSnippet;
 
   ngOnInit(): void {
     this.buscarProduto()
@@ -28,9 +34,8 @@ export class DetalhesProdutoComponent implements OnInit {
   buscarProduto() {
     this.produtoService.getProduct(this.id).subscribe(
       result => {
-      this.produto = result[0];
-      debugger
-    },
-    error => alert('Produto não encontrado erro: ' + error.message))
+        this.produto = result[0];
+      },
+      error => alert('Produto não encontrado erro: ' + error.message))
   }
 }

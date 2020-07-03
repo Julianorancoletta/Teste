@@ -5,7 +5,8 @@ export class ProductModel {
         price:number
         sale:boolean
         sale_price:number
-        category_Id:number
+        categoryId:number
+        shortDescription:string
         category:string
         img:string
 }

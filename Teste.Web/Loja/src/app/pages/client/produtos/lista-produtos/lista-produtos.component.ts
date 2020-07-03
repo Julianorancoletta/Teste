@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProdutosService } from '../produtos.service';
-import { ProductModel } from 'src/app/models/product.model';
+
+import { car } from 'src/app/component/car/car';
+import { ProductModel } from 'src/app/core/models/product.model';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -10,6 +12,8 @@ import { ProductModel } from 'src/app/models/product.model';
 export class ListaProdutosComponent implements OnInit {
 
   @Input() produto: ProductModel 
+
+  cars: any = new car();
 
   constructor() { }
 
