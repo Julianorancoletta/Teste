@@ -1,20 +1,27 @@
-<div class="footer">
-  <p>Carrinho</p>
+<!-- <div class="footer">
+  
+
+</div> -->
+<div class="carrinho">
+  <h4>Carrinho</h4>
+
   <div>
-      <h1 class="order-title">Itens do pedido</h1>
-      <div
-        class="order-item"
-        *ngFor="let selected of cars.returnCar(); index as i">
-        {{ selected.name }} R${{ selected.price * selected.num | | currency:'BRL':true:'1.2-2':'pt'}}
-        <br>
-         <input #number type="number" id="quantity" name="quantity" min="0" max="5" (click)="cars.quantiy(selected,number.value)" value="{{selected.num}}">
-        <h5 (click)="cars.remove(selected.id)">Remover item</h5>
-      </div>
 
-      <div class="order-total">
-        <h2 class="order-price">Valor total</h2>
+    <p class="order-title">Itens do pedido</p>
+    <div class="order-item" *ngFor="let selected of cars.returnCar(); index as i">
+      {{ selected.name }} R${{ selected.price * selected.num }}
+      <br>
+      <input #number type="number" id="quantity" name="quantity" min="0" max="5"
+        (click)="cars.quantiy(selected,number.value)" value="{{selected.num}}">
+      <p (click)="cars.remove(selected.id)">Remover item</p>
+    </div>
 
-        <h2>R${{ cars.GetTotal() | | currency:'BRL':true:'1.2-2':'pt'}}</h2>
-      </div>
+
+    <div class="order-total">
+      <p class="order-price">Valor total</p>
+
+      <p>R${{ cars.GetTotal()  }}</p>
+    </div>
+
   </div>
 </div>

@@ -4,8 +4,6 @@ import { Injectable, EventEmitter, Output } from '@angular/core';
 @Injectable()
 export class car {
 
-    
- 
     selectedItems = [];
      
     setCar(item: any) {
