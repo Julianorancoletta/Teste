@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter, Output } from '@angular/core';
-import { CarComponent } from './car.component';
+
 
 @Injectable()
 export class car {
@@ -30,15 +30,17 @@ export class car {
         })
         this.set();
     }
-    quantiy(item, num) {  
+    quantiy(item, num):Promise<any> {  
         this.get();
-        if (num == 0) {
-            this.remove(item.id)
-        } else {
-            const productExistInCart = this.selectedItems.find(({ id }) => id === item.id);
-            productExistInCart.num = num;
-            this.set();
-        }
+        return  new Promise((resolve, reject) => {
+            if (num == 0) {
+                this.remove(item.id)
+            } else {
+                const productExistInCart = this.selectedItems.find(({ id }) => id === item.id);
+                productExistInCart.num = num;
+                this.set();
+            }
+        });
     }
 
     private set(){
