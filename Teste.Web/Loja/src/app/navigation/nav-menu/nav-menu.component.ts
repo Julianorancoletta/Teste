@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { car } from 'src/app/component/car/car';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+  cars: any = new car();
 
   collapse() {
     this.isExpanded = false;

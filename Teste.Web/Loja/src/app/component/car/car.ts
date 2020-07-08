@@ -55,4 +55,9 @@ export class car {
         return JSON.parse(localStorage.getItem('car'))
     }
 
+    TotalCart(){
+        this.get();
+        return this.selectedItems.length;
+    }
+
 }

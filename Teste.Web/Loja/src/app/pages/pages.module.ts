@@ -29,7 +29,8 @@ import { CadastroProdutoComponent } from './client/produtos/cadastro-produto/cad
     HttpClientModule,
     CardModule,
     CommonModule,
-    ProdutoRoutesModule
+    ProdutoRoutesModule,
+    RouterModule
   ]
 })
 export class PagesModule { }
