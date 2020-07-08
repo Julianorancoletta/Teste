@@ -7,6 +7,7 @@ export class car {
     selectedItems = [];
      
     setCar(item: any) {
+        this.get();
         const productExistInCart = this.selectedItems.find(({ id }) => id === item.id);
         if (!productExistInCart) {
             this.selectedItems.push({ ...item, num: 1 });
