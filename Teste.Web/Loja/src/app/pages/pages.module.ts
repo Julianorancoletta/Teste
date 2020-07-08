@@ -10,12 +10,15 @@ import { DetalhesProdutoComponent } from './client/produtos/detalhes-produto/det
 registerLocaleData(localePt);
 import {CarouselModule} from 'primeng/carousel';
 import { ComponentsModule } from '../component/components.module';
+import { ProdutoRoutesModule } from './client/produtos/produtos.routes';
+import { CadastroProdutoComponent } from './client/produtos/cadastro-produto/cadastro-produto.component';
 
 @NgModule({
   declarations: [
     ListaProdutosComponent,
     ProdutosComponent,
-    DetalhesProdutoComponent
+    DetalhesProdutoComponent,
+    CadastroProdutoComponent
   ],
   exports: [
     ProdutosComponent
@@ -27,6 +30,7 @@ import { ComponentsModule } from '../component/components.module';
     CardModule,
     CommonModule,
     RouterModule,
+    ProdutoRoutesModule
   ]
 })
 export class PagesModule { }

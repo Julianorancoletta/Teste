@@ -1,18 +1,5 @@
 
-
-<div class="container">
-    <div class="card-deck mb-3 text-center">
-        <ng-container *ngFor="let produto of produtos">
-            <app-lista-produtos [produto]="produto"></app-lista-produtos>
-        </ng-container>
-    </div>
-</div>
-
-
-<!-- <p-carousel [value]="produtos" styleClass="custom-carousel" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
-    <p-header>
-        <h3>Circular, AutoPlay, 3 Items per Page and Scroll by 1</h3>
-    </p-header>
+<p-carousel [value]="produtos" styleClass="custom-carousel" [numVisible]="1" [numScroll]="1" [circular]="true" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions">
     <ng-template let-car pTemplate="item">
         <div class="car-details">
             <div class="p-grid p-nogutter">
@@ -25,4 +12,14 @@
             </div>
         </div>
     </ng-template>
-</p-carousel> -->
+</p-carousel>
+
+<div class="container">
+    <div class="card-deck mb-3 text-center">
+        <ng-container *ngFor="let produto of produtos">
+            <app-lista-produtos [produto]="produto"></app-lista-produtos>
+        </ng-container>
+    </div>
+</div>
+
+
