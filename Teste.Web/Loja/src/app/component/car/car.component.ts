@@ -8,6 +8,7 @@ import { car } from './car';
 })
 export class CarComponent{
   cars: any = new car();
+  total:number
   constructor() {
   }
 }

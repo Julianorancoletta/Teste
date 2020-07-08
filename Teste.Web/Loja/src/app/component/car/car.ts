@@ -19,6 +19,7 @@ export class car {
     }
 
     GetTotal() {
+        this.get();
         return this.selectedItems.reduce((acc, prod) => acc += prod.price * prod.num, 0)
     }
 
