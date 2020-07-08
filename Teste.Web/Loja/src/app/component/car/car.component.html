@@ -4,7 +4,7 @@
   <div>
     <div class="order-item" *ngFor="let selected of cars.returnCar(); index as i">
 
-      <span id="title">{{ selected.title }}</span> <span price> R${{ selected.price * selected.num }} </span>
+      <span id="title">{{ selected.title }}</span> <span price> {{ selected.price  * selected.num | currency:'BRL':true:'1.2-2':'pt' }} </span>
 
       <!-- <input #number type="number" id="quantity" name="quantity" min="0" max="5"
         (click)="cars.quantiy(selected,number.value)" value="{{selected.num}}"> -->
@@ -14,8 +14,8 @@
     </div>
 
 
-    <div class="order-total">
-      <p class="order-price">Valor total R${{ cars.GetTotal() }}</p>
+    <div class="order-total" >
+      <p class="order-price">Valor total {{ cars.GetTotal() | currency:'BRL':true:'1.2-2':'pt' }}</p>
     </div>
 
   </div>
