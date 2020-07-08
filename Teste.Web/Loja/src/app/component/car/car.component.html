@@ -1,26 +1,21 @@
-<!-- <div class="footer">
-  
-
-</div> -->
 <div class="carrinho">
-  <h4>Carrinho</h4>
+  <h4 class="text-center">Carrinho</h4>
 
   <div>
-
-    <p class="order-title">Itens do pedido</p>
     <div class="order-item" *ngFor="let selected of cars.returnCar(); index as i">
-      {{ selected.name }} R${{ selected.price * selected.num }}
-      <br>
-      <input #number type="number" id="quantity" name="quantity" min="0" max="5"
-        (click)="cars.quantiy(selected,number.value)" value="{{selected.num}}">
-      <p (click)="cars.remove(selected.id)">Remover item</p>
+
+      <span id="title">{{ selected.title }}</span> <span price> R${{ selected.price * selected.num }} </span>
+
+      <!-- <input #number type="number" id="quantity" name="quantity" min="0" max="5"
+        (click)="cars.quantiy(selected,number.value)" value="{{selected.num}}"> -->
+
+      <span class="fa fa-times text-danger remov" (click)="cars.remove(selected.id)"></span>
+      <p><small>Quantidade {{ selected.num }}</small></p>
     </div>
 
 
     <div class="order-total">
-      <p class="order-price">Valor total</p>
-
-      <p>R${{ cars.GetTotal()  }}</p>
+      <p class="order-price">Valor total R${{ cars.GetTotal() }}</p>
     </div>
 
   </div>
