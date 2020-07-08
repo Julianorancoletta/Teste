@@ -1,6 +1,7 @@
-import { CommonModule } from '@angular/common'
+import { CommonModule ,registerLocaleData} from '@angular/common'
 import { NgModule } from '@angular/core'
-
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt);
 
 import { CarComponent } from './car/car.component'
 import { car } from './car/car';
