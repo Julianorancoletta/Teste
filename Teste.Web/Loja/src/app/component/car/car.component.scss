@@ -20,11 +20,14 @@ img {
   justify-content: unset;
 }
 
-#title {
-  color: darkslateblue !important;
-  font-weight: bold;
-}
-
 .remov {
   text-align: end;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: unset;
 }

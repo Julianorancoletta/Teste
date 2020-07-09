@@ -19,3 +19,9 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+
+#title {
+  color: darkslateblue !important;
+  font-weight: bold;
+}

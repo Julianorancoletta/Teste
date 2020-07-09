@@ -1,0 +1,20 @@
+input {
+    max-width: 120px;
+}
+
+.table-head {
+    font-weight: bold;
+    color: darkslateblue;
+}
+
+.table-head {
+    font-size: 125%;
+}
+
+#title {
+    margin-bottom: 4%;
+}
+
+.entrega{
+    border: 1px solid darkslateblue;
+}

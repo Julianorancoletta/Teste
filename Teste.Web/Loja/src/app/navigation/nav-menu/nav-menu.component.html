@@ -15,7 +15,7 @@
             <a class="nav-link" [routerLink]="['/escolaridade']">Escolaridade</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fa fa-shopping-cart" (mouseover)="op.show($event)">
+            <a class="nav-link fa fa-shopping-cart" (mouseover)="op.show($event)" [routerLink]="['/checkout']">
               {{cars.TotalCart()}}
             </a>
           </li>
