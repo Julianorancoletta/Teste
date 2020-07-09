@@ -3,59 +3,62 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Teste.Data.Migrations
 {
-    public partial class V01 : Migration
+    public partial class loja : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Escolaridades",
+                name: "Category",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    descricao = table.Column<string>(nullable: true)
+                    description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Escolaridades", x => x.id);
+                    table.PrimaryKey("PK_Category", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Usuarios",
+                name: "Product",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nome = table.Column<string>(nullable: true),
-                    sobrenome = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    DataNascimento = table.Column<DateTime>(nullable: false),
-                    escolaridadeId = table.Column<int>(nullable: false)
+                    title = table.Column<string>(nullable: true),
+                    brand = table.Column<string>(nullable: true),
+                    price = table.Column<decimal>(nullable: false),
+                    sale = table.Column<bool>(nullable: false),
+                    sale_price = table.Column<decimal>(nullable: false),
+                    shortDescription = table.Column<string>(nullable: true),
+                    categoryid = table.Column<int>(nullable: false),
+                    img = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuarios", x => x.id);
+                    table.PrimaryKey("PK_Product", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Usuarios_Escolaridades_escolaridadeId",
-                        column: x => x.escolaridadeId,
-                        principalTable: "Escolaridades",
+                        name: "FK_Product_Category_categoryid",
+                        column: x => x.categoryid,
+                        principalTable: "Category",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuarios_escolaridadeId",
-                table: "Usuarios",
-                column: "escolaridadeId");
+                name: "IX_Product_categoryid",
+                table: "Product",
+                column: "categoryid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Product");
 
             migrationBuilder.DropTable(
-                name: "Escolaridades");
+                name: "Category");
         }
     }
 }

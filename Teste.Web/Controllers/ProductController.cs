@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Teste.Business.Intefaces;
 using Teste.Business.Models;
+using Teste.Business.viewModel;
 using Teste.Data.Context;
 
 namespace Teste.Web.Controllers
@@ -21,27 +22,27 @@ namespace Teste.Web.Controllers
            _IProduct = product;
         }
 
-        // GET: api/Usuario
+        // GET: api/Product
         [HttpGet]
-        public async Task<List<Product>> Get()
+        public async Task<List<productView>> Get()
         {
-            return await _IProduct.();
+            return await _IProduct.GetProduct();
         }
 
-        // GET: api/Usuario/5
+        // GET: api/Product/5
         [HttpGet("{id}", Name = "Get")]
-        public Task<List<UsuarioView>> Get(int id)
+        public Task<productView> Get(int id)
         {
-             return _IProduct.BuscaUsuario(id);
+            return _IProduct.BuscaProduct(id);
         }
 
-        // POST: api/Usuario
+        // POST: api/Product
         [HttpPost]
-        public async Task<ActionResult<Usuario>> Post([FromQuery] Usuario usuario)
+        public async Task<ActionResult<Product>> Post([FromQuery] Product Product)
         {
             if (ModelState.IsValid)
             {
-                    return await_IProduct.AdicionarUsuario(usuario);
+                    return await _IProduct.addProduct(Product);
             }
             else
             {
@@ -51,32 +52,32 @@ namespace Teste.Web.Controllers
 
         
         [HttpPut("{id}")]
-        public  ActionResult<Usuario> Put([FromQuery] Usuario usuario)
+        public  ActionResult<Product> Put([FromQuery] Product Product)
         {
-            if (usuario == null)
+            if (Product == null)
             {
                 return NotFound();
             }
             
-            _IProduct.UpdateUsuario(usuario);
+            _IProduct.UpdateProduct(Product);
 
-            return  usuario;
+            return  Product;
         }
 
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Usuario>> Delete(int id)
+        public async Task<ActionResult<Product>> Delete(int id)
         {
-            var usuario =  await_IProduct.BuscaUsuarioInId(id);
-            if (usuario == null)
+            var Product =  await _IProduct.BuscaProductId(id);
+            if (Product == null)
             {
                 return NotFound();  
             }
 
-           _IProduct.Delete(usuario);
+           _IProduct.Delete(Product);
             
 
-            return usuario;
+            return Product;
         }
 
     }

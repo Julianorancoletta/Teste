@@ -15,29 +15,29 @@ namespace Teste.Web.Controllers
     public class CategoryController : ControllerBase
     {
 
-        private readonly IEscolaridade _IEscolaridade;
+        private readonly ICategory _ICategory;
 
-        public CategoryController(IEscolaridade escolaridade)
+        public CategoryController(ICategory Category)
         {
-            _IEscolaridade = escolaridade;
+            _ICategory = Category;
         }
 
         [HttpGet]
-        public async Task<IList<Escolaridade>> Get()
+        public async Task<IList<Category>> Get()
         {
-                return await _IEscolaridade.GetEscolaridadeList();
+                return await _ICategory.GetCategoryList();
         }
 
         [HttpPost]
         [Route("")]
-        public async Task<ActionResult<Escolaridade>> Post ([FromQuery] Escolaridade escolaridade)
+        public async Task<ActionResult<Category>> Post ([FromQuery] Category Category)
         {
             
             if (ModelState.IsValid)
             {
-               await _IEscolaridade.AddEscolaridade(escolaridade);
+               await _ICategory.AddCategory(Category);
                 
-                return escolaridade;
+                return Category;
             }
             else
             {

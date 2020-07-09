@@ -1,0 +1,30 @@
+.carrinho {
+  width: 220px;
+}
+
+img {
+  width: 25px;
+  height: 25px;
+}
+
+.order-item {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-bottom: 5% !important;
+  padding: 2px;
+  border-bottom: 1px solid darkslateblue;
+}
+
+.order-item p{
+  justify-content: unset;
+}
+
+#title {
+  color: darkslateblue !important;
+  font-weight: bold;
+}
+
+.remov {
+  text-align: end;
+}
