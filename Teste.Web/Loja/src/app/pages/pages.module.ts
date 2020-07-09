@@ -12,13 +12,15 @@ import {CarouselModule} from 'primeng/carousel';
 import { ComponentsModule } from '../component/components.module';
 import { ProdutoRoutesModule } from './client/produtos/produtos.routes';
 import { CadastroProdutoComponent } from './client/produtos/cadastro-produto/cadastro-produto.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
     ListaProdutosComponent,
     ProdutosComponent,
     DetalhesProdutoComponent,
-    CadastroProdutoComponent
+    CadastroProdutoComponent,
+    CheckoutComponent
   ],
   exports: [
     ProdutosComponent

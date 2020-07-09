@@ -1,22 +1,16 @@
 <div class="carrinho">
-  <h4 class="text-center">Carrinho</h4>
+  <h4 class="text-center" id="title"><span class="fa fa-shopping-cart"></span> Carrinho</h4>
 
   <div>
     <div class="order-item" *ngFor="let selected of cars.returnCar(); index as i">
-
-      <span id="title">{{ selected.title }}</span> <span price> {{ selected.price  * selected.num | currency:'BRL':true:'1.2-2':'pt' }} </span>
-
-      <!-- <input #number type="number" id="quantity" name="quantity" min="0" max="5"
-        (click)="cars.quantiy(selected,number.value)" value="{{selected.num}}"> -->
-
+      <img src="data:image/jpeg;base64,{{ selected.img }}" alt="{{ selected.title }}">
+      <span id="title">{{ selected.title }}</span> <span id="price">
+        {{ selected.price  * selected.num | currency:'BRL':true:'1.2-2':'pt' }} </span>
       <span class="fa fa-times text-danger remov" (click)="cars.remove(selected.id)"></span>
-      <p><small>Quantidade {{ selected.num }}</small></p>
+      <p><small>Quantidade: {{ selected.num }}</small></p>
     </div>
-
-
-    <div class="order-total" >
-      <p class="order-price">Valor total {{ cars.GetTotal() | currency:'BRL':true:'1.2-2':'pt' }}</p>
+    <div class="order-total">
+      <p class="order-price"><span id="title">Valor total:</span>  {{ cars.GetTotal() | currency:'BRL':true:'1.2-2':'pt' }}</p>
     </div>
-
   </div>
 </div>
