@@ -3,11 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProdutosComponent } from './pages/client/produtos/produtos.component';
 import { DetalhesProdutoComponent } from './pages/client/produtos/detalhes-produto/detalhes-produto.component';
 import { CadastroProdutoComponent } from './pages/client/produtos/cadastro-produto/cadastro-produto.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+
 
 const routes: Routes = [
-    { path: '', component: ProdutosComponent,pathMatch: 'full'},
+    { path: '', component: ProdutosComponent, pathMatch: 'full' },
     { path: 'produto-detalhes/:id', component: DetalhesProdutoComponent },
-    { path: 'produto-Cadastro', component: CadastroProdutoComponent }
+    { path: 'produto-Cadastro', component: CadastroProdutoComponent },
+    { path: 'checkout', component: CheckoutComponent }
     
 ];
 
