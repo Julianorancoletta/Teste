@@ -1,17 +1,22 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProdutosComponent } from './pages/client/produtos/produtos.component';
-import { DetalhesProdutoComponent } from './pages/client/produtos/detalhes-produto/detalhes-produto.component';
-import { CadastroProdutoComponent } from './pages/client/produtos/cadastro-produto/cadastro-produto.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { HomeComponent } from './pages/home/home.component';
 
 
 const routes: Routes = [
-    { path: '', component: ProdutosComponent, pathMatch: 'full' },
-    { path: 'produto-detalhes/:id', component: DetalhesProdutoComponent },
-    { path: 'produto-Cadastro', component: CadastroProdutoComponent },
-    { path: 'checkout', component: CheckoutComponent }
-    
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    {
+        path: 'produto',
+        loadChildren: () => import('./pages/pages.module')
+            .then(m => m.PagesModule)
+    },
+    {
+        path: 'checkout',
+        loadChildren: () => import('./pages/checkout/checkout.module')
+            .then(m => m.checkoutModule)
+    },
+
+
 ];
 
 @NgModule({
