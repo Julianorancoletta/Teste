@@ -4,7 +4,7 @@ import { Injectable, EventEmitter, Output } from '@angular/core';
 @Injectable()
 export class car {
 
-    selectedItems = [];
+    private selectedItems:any[] = [];
      
     setCar(item: any) {
         this.get();
@@ -48,7 +48,8 @@ export class car {
     }
 
     private get(){
-        this.selectedItems = JSON.parse(localStorage.getItem('car'));
+        this.selectedItems = JSON.parse(localStorage.getItem('car')) 
+        ? JSON.parse(localStorage.getItem('car')) : []
     }
 
     returnCar(){

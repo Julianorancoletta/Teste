@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ProdutosService } from './produtos.service';
 import { ProductModel } from 'src/app/core/models/product.model';
+import { ProdutosService } from '../produtos.service';
 
 
 @Component({

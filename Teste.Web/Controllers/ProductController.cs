@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -30,7 +31,7 @@ namespace Teste.Web.Controllers
         }
 
         // GET: api/Product/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}")]
         public Task<productView> Get(int id)
         {
             return _IProduct.BuscaProduct(id);
@@ -38,11 +39,13 @@ namespace Teste.Web.Controllers
 
         // POST: api/Product
         [HttpPost]
-        public async Task<ActionResult<Product>> Post([FromQuery] Product Product)
+        public async Task<ActionResult<Product>> Post([FromBody] Product Product)
         {
+           
+
             if (ModelState.IsValid)
             {
-                    return await _IProduct.addProduct(Product);
+                return await _IProduct.addProduct(Product);
             }
             else
             {
@@ -52,7 +55,7 @@ namespace Teste.Web.Controllers
 
         
         [HttpPut("{id}")]
-        public  ActionResult<Product> Put([FromQuery] Product Product)
+        public  ActionResult<Product> Put([FromBody] Product Product)
         {
             if (Product == null)
             {
@@ -79,6 +82,24 @@ namespace Teste.Web.Controllers
 
             return Product;
         }
+        [HttpPost("upload")]
+        public async Task<ActionResult<Product>> EnviaArquivo([FromBody] Photo photo )
+        {
+            Product Product = await _IProduct.BuscaProductId(photo.Id);
 
+            if (Product == null)
+            {
+                return NotFound();
+            }
+
+            var imageDataByteArray = Convert.FromBase64String(photo.file);
+
+            Product.img =imageDataByteArray;
+  
+            _IProduct.UpdateProduct(Product);
+
+            return Product;
+
+        }
     }
 }
