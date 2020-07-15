@@ -10,7 +10,7 @@ import { ListaComponent } from './lista/lista.component';
 import {TableModule} from 'primeng/table';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
 @NgModule({
   declarations: [
     CadastroProdutoComponent,
@@ -25,9 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule,
     ComponentsModule,
     HttpClientModule,
-    CommonModule,
     ProdutoRoutesModule,
     TableModule,
+    DynamicDialogModule
   ]
 })
 export class ProdutosModule { }

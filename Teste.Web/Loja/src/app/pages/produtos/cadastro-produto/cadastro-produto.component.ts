@@ -11,13 +11,14 @@ import { Category } from 'src/app/core/models/category.model';
 import { ProdutosService } from '../produtos.service';
 import { Photo } from 'src/app/core/models/photo';
 import { ProductModel } from 'src/app/core/models/product.model';
+import { DialogService, DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 
 // import { CurrencyUtils } from 'src/app/utils/currency-utils';
 
 @Component({
   selector: 'app-cadastro-produto',
   templateUrl: './cadastro-produto.component.html',
-  styleUrls: ['./cadastro-produto.component.css']
+  styleUrls: ['./cadastro-produto.component.css'],
 })
 export class CadastroProdutoComponent extends ProdutoBaseComponent implements OnInit {
 
@@ -33,9 +34,10 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
   category: Category[];
 
   constructor(private fb: FormBuilder,
-    private router: Router,
     private produtoService: ProdutosService,
-    private categoryService: categoryService) { super(); }
+    private categoryService: categoryService,
+    public ref: DynamicDialogRef,
+    public config: DynamicDialogConfig) { super(); }
 
   ngOnInit(): void {
 
@@ -71,12 +73,13 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
 
       this.produtoService.post(this.produto)
         .subscribe(
-          (produto:ProductModel) => {
+          (produto: ProductModel) => {
             this.photo.ProductId = produto.id
+            this.ref.close(produto)
             this.produtoService.postImg(this.photo)
               .subscribe(
                 sucesso => {
-                  this.processarSucesso(sucesso)
+                  this.processarSucesso(sucesso);
                 },
                 falha => { this.processarFalha(falha) }
               );
@@ -109,7 +112,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
 
     this.photo = new Photo
     this.photo.file = files.item(0)
-    
+
     // this.imageChangedEvent = event;
     // this.imagemNome = event.currentTarget.files[0].name;
   }

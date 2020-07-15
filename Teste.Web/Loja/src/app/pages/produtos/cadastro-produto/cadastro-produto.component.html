@@ -1,7 +1,4 @@
 <div class="container main-container">
-
-    <h3>Novo Produto </h3>
-
     <hr>
     <div class="row">
         <div class="col-md-10">
@@ -13,7 +10,6 @@
                         <li *ngFor="let error of errors">{{ error }}</li>
                     </ul>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label">Categoria</label>
                     <select class="form-control" id="categoryId" formControlName="categoryId" [ngClass]="{'is-invalid': displayMessage.categoryId }">
@@ -23,7 +19,6 @@
                         <p [innerHTML]="displayMessage.categoryId"></p>
                     </span>
                 </div>
-
                 <div class="form-group">
                     <label class="control-label">Titulo</label>
                     <div>
