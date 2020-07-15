@@ -20,7 +20,7 @@ namespace Teste.Web.Controllers
 
         public ProductController(IProduct product)
         {
-           _IProduct = product;
+            _IProduct = product;
         }
 
         // GET: api/Product
@@ -41,7 +41,7 @@ namespace Teste.Web.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> Post([FromBody] Product Product)
         {
-           
+
 
             if (ModelState.IsValid)
             {
@@ -53,53 +53,34 @@ namespace Teste.Web.Controllers
             }
         }
 
-        
+
         [HttpPut("{id}")]
-        public  ActionResult<Product> Put([FromBody] Product Product)
+        public ActionResult<Product> Put([FromBody] Product Product)
         {
             if (Product == null)
             {
                 return NotFound();
             }
-            
+
             _IProduct.UpdateProduct(Product);
 
-            return  Product;
+            return Product;
         }
 
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> Delete(int id)
         {
-            var Product =  await _IProduct.BuscaProductId(id);
-            if (Product == null)
-            {
-                return NotFound();  
-            }
-
-           _IProduct.Delete(Product);
-            
-
-            return Product;
-        }
-        [HttpPost("upload")]
-        public async Task<ActionResult<Product>> EnviaArquivo([FromBody] Photo photo )
-        {
-            Product Product = await _IProduct.BuscaProductId(photo.Id);
-
+            var Product = await _IProduct.BuscaProductId(id);
             if (Product == null)
             {
                 return NotFound();
             }
 
-            var imageDataByteArray = Convert.FromBase64String(photo.file);
+            _IProduct.Delete(Product);
 
-            Product.img =imageDataByteArray;
-  
-            _IProduct.UpdateProduct(Product);
 
             return Product;
-
         }
     }
 }

@@ -7,13 +7,18 @@ const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     {
         path: 'produto',
-        loadChildren: () => import('./pages/pages.module')
-            .then(m => m.PagesModule)
+        loadChildren: () => import('./pages/produtos/produtos.routes')
+            .then(m => m.ProdutoRoutesModule)
     },
     {
         path: 'checkout',
         loadChildren: () => import('./pages/checkout/checkout.module')
             .then(m => m.checkoutModule)
+    },
+    {
+        path: 'showcase',
+        loadChildren: () => import('./pages/showcase/show_case.module')
+            .then(m => m.ShowcaseModule)
     },
 
 

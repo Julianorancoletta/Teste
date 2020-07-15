@@ -4,13 +4,17 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment'
 import { ProductModel } from 'src/app/core/models/product.model';
 import { Observable } from 'rxjs';
+import { Photo } from 'src/app/core/models/photo';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProdutosService {
   protected readonly url = `${environment.api}/product`;
-  protected readonly img = `${environment.api}/product/upload`;
+  protected readonly img = `${environment.api}/Imagem/upload`;
+
+
 
   constructor(private http: HttpClient) {
   }
@@ -38,8 +42,12 @@ export class ProdutosService {
       .post(this.url, product, this.ObterHeaderJson());
   }
 
-  postImg(photo) {
-
-    return this.http.post(`${this.img}`, photo, this.ObterHeaderJson());
+  postImg(photo:Photo){
+    const formData = new FormData();
+    formData.append('ProductId', photo.ProductId.toString());
+    formData.append('file', photo.file);
+ 
+    return this.http.post(`${this.img}`, formData)
+    
   }
 }

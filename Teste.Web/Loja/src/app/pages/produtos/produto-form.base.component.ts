@@ -3,10 +3,12 @@ import { FormGroup } from '@angular/forms';
 import { ElementRef } from '@angular/core';
 import { FormBaseComponent } from 'src/app/component/form/form-base.component';
 import { ProductModel } from 'src/app/core/models/product.model';
+import { Photo } from 'src/app/core/models/photo';
 
 export abstract class ProdutoBaseComponent extends FormBaseComponent {
 
     produto: ProductModel;
+    photo:Photo;
     errors: any[] = [];
     produtoForm: FormGroup;
 

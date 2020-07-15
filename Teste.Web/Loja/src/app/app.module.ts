@@ -8,6 +8,8 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
 import { ComponentsModule } from './component/components.module';
+import { ProdutosModule } from './pages/produtos/produtos.module';
+
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { ComponentsModule } from './component/components.module';
     AppRoutingModule,
     OverlayPanelModule,
     BrowserAnimationsModule,
+    ProdutosModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

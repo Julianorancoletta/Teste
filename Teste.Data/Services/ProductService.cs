@@ -38,7 +38,7 @@ namespace Teste.Data.Services
                       categoryId = category.id,
                       shortDescription = product.shortDescription,
                       category = category.description,
-                      img = System.Text.Encoding.UTF8.GetString(product.img)
+                      img = product.img
                   }).ToListAsync();
 
             return await list;
@@ -77,7 +77,7 @@ namespace Teste.Data.Services
                       categoryId = category.id,
                       shortDescription = product.shortDescription,
                       category = category.description,
-                      img = Convert.ToBase64String(product.img)
+                      img = product.img
                   });
 
             return await list.FirstAsync();

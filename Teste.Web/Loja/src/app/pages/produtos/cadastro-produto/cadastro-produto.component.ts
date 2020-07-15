@@ -5,9 +5,12 @@ import { ProdutoBaseComponent } from '../produto-form.base.component';
 import { Router } from '@angular/router';
 import { Validacao } from 'src/app/utils/validacao';
 import { CurrencyUtils } from 'src/app/utils/currency-utils';
-import { ProdutosService } from '../produtos.service';
+
 import { categoryService } from '../../catefory/category.service';
 import { Category } from 'src/app/core/models/category.model';
+import { ProdutosService } from '../produtos.service';
+import { Photo } from 'src/app/core/models/photo';
+import { ProductModel } from 'src/app/core/models/product.model';
 
 // import { CurrencyUtils } from 'src/app/utils/currency-utils';
 
@@ -21,20 +24,18 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
   imageChangedEvent: any = '';
-  croppedImage: any = '';
-  canvasRotation = 0;
-  rotation = 0;
-  scale = 1;
+
   showCropper = false;
-  containWithinAspectRatio = false;
-  imageURL: string;
-  imagemNome: string;
-  category:Category[];
+  fileToUpload: File = null;
+
+
+  //imagemNome: string;
+  category: Category[];
 
   constructor(private fb: FormBuilder,
     private router: Router,
     private produtoService: ProdutosService,
-    private categoryService :categoryService) { super(); }
+    private categoryService: categoryService) { super(); }
 
   ngOnInit(): void {
 
@@ -63,14 +64,23 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
   adicionarProduto() {
     if (this.produtoForm.dirty && this.produtoForm.valid) {
       this.produto = Object.assign({}, this.produto, this.produtoForm.value);
-      this.produto.categoryId = Number(this.produto.categoryId); 
+      this.produto.categoryId = Number(this.produto.categoryId);
       this.produto.img = null;
-      this.produto.salePrice = CurrencyUtils.StringParaDecimal(this.produto.salePrice);
-      this.produto.price = CurrencyUtils.StringParaDecimal(this.produto.price);
+      this.produto.salePrice = Number(this.produto.salePrice);
+      this.produto.price = Number(this.produto.price);
 
       this.produtoService.post(this.produto)
         .subscribe(
-          sucesso => { this.processarSucesso(sucesso) },
+          (produto:ProductModel) => {
+            this.photo.ProductId = produto.id
+            this.produtoService.postImg(this.photo)
+              .subscribe(
+                sucesso => {
+                  this.processarSucesso(sucesso)
+                },
+                falha => { this.processarFalha(falha) }
+              );
+          },
           falha => { this.processarFalha(falha) }
         );
 
@@ -95,12 +105,16 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
     // this.toastr.error('Ocorreu um erro!', 'Opa :(');
   }
 
-  fileChangeEvent(event: any): void {
-    this.imageChangedEvent = event;
-    this.imagemNome = event.currentTarget.files[0].name;
+  fileChangeEvent(files: FileList): void {
+
+    this.photo = new Photo
+    this.photo.file = files.item(0)
+    
+    // this.imageChangedEvent = event;
+    // this.imagemNome = event.currentTarget.files[0].name;
   }
   sale() {
-    if(!this.produtoForm.controls.sale.value) this.produtoForm.controls['salePrice'].setValue(0.00);
+    if (!this.produtoForm.controls.sale.value) this.produtoForm.controls['salePrice'].setValue(0.00);
     return this.produtoForm.controls.sale.value
   }
   imageLoaded() {
@@ -108,7 +122,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
   }
 
   loadImageFailed() {
-    this.errors.push('O formato do arquivo ' + this.imagemNome + ' não é aceito.');
+    //this.errors.push('O formato do arquivo ' + this.imagemNome + ' não é aceito.');
   }
 }
 

@@ -70,10 +70,10 @@
 
                     <div class="custom-file">
                         <input type="file" accept="image/jpeg,image/png" class="custom-file-input" id="img"
-                            formControlName="img" (change)="fileChangeEvent($event)"
+                            formControlName="img" (change)="fileChangeEvent($event.target.files)"
                             [ngClass]="{'is-invalid': displayMessage.img }">
                         <label data-browse="Procurar" style="width: 400px" class="custom-file-label"></label>
-                        <span *ngIf='imagemNome'><br>{{ imgNome }}<br></span>
+                        <!-- <span *ngIf='imagemNome'><br>{{ imgNome }}<br></span> -->
                         <span class="text-danger" *ngIf="displayMessage.img">
                             <p [innerHTML]="displayMessage.img"></p>
                         </span>

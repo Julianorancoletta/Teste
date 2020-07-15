@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { ProductModel } from 'src/app/core/models/product.model';
-import { ProdutosService } from '../produtos.service';
+import { ProdutosService } from '../../produtos/produtos.service';
 
 
 class ImageSnippet {
@@ -35,7 +35,7 @@ export class DetalhesProdutoComponent implements OnInit {
   buscarProduto() {
     this.produtoService.getProduct(this.id).subscribe(
       result => {
-        this.produto = result[0];
+        this.produto = result;
       },
       error => alert('Produto não encontrado erro: ' + error.message))
   }

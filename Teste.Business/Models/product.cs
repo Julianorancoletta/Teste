@@ -20,6 +20,6 @@ namespace Teste.Business.Models
         public string shortDescription { get; set; }
         public int categoryid { get; set; }
         public Category category { get;set; }
-        public byte[] img { get; set; }
+        public string img { get; set; }
     }
 }
