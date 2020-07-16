@@ -16,7 +16,6 @@ export class ShowCaseComponent implements OnInit {
   produtos:ProductModel[];
   
   ngOnInit(): void {
-    debugger
     this.produtoService.getProducts().subscribe(listProdutos =>{
       this.produtos = listProdutos
     },error => console.log(error))
