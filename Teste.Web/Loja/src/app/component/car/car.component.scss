@@ -2,7 +2,7 @@
   width: 220px;
 }
 
-img {
+#prdFoto {
   width: 25px;
   height: 25px;
 }
@@ -30,4 +30,13 @@ a {
 
 a:visited {
   color: unset;
+}
+
+#cesta {
+  filter: invert(28%) sepia(22%) saturate(1680%) hue-rotate(209deg) brightness(89%) contrast(97%);
+}
+
+.carrinho-vazio {
+  font-size: 18px;
+  text-align: center;
 }
