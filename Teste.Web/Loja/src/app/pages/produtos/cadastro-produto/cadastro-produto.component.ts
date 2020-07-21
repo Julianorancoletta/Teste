@@ -24,7 +24,8 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
   id: number
   showCropper = false;
   fileToUpload: File = null;
-  errors: any
+  errors: any;
+  img: string
   constructor(private fb: FormBuilder,
     private produtoService: ProdutosService,
     private categoryService: categoryService,
@@ -82,7 +83,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
     if (this.produtoForm.dirty && this.produtoForm.valid) {
       this.produto = Object.assign({}, this.produto, this.produtoForm.value);
 
-      this.produto.img = null;
+
       this.produto.categoryId = Number(this.produto.categoryId)
       this.produto.price = CurrencyUtils.StringParaDecimal(this.produto.price)
       this.produto.salePrice = CurrencyUtils.StringParaDecimal(this.produto.salePrice);
@@ -90,6 +91,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
 
       if (this.config.data.id) {
         this.produto.id = this.id;
+        this.produto.img = this.img
         this.produtoService.atualizarProduto(this.produto)
           .subscribe(
             (produto: ProductModel) => {
@@ -108,7 +110,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
             falha => { this.processarFalha(falha) }
           )
       } else {
-
+        this.produto.img = null;
         this.produtoService.post(this.produto)
           .subscribe(
             (produto: ProductModel) => {
@@ -125,7 +127,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
       }
       this.mudancasNaoSalvas = false;
     } else {
-      this.messagemToastr('Ocorreu um erro',tiposDeAlert.error)
+      this.messagemToastr('Ocorreu um erro', tiposDeAlert.error)
     }
   }
 
@@ -136,7 +138,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
 
   processarFalha(fail: any) {
     this.errors = fail.error.errors;
-    this.messagemToastr('Ocorreu um erro',tiposDeAlert.error)
+    this.messagemToastr('Ocorreu um erro', tiposDeAlert.error)
   }
 
   fileChangeEvent(files: FileList): void {
