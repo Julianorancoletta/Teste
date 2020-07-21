@@ -2,13 +2,11 @@ export class CurrencyUtils {
 
     public static StringParaDecimal(input): any {
         if (input === null) return 0;
-
-        input = input.replace(/\./g, '');
-        input = input.replace(/,/g, '.');
-        return parseFloat(input);
+        input = input.replace(/\D/g, '').replace(/([0-9]{2})$/g, ".$1")
+        return Number(input);
     }
 
-    public static DecimalParaString(input): any {
+    public  static DecimalParaString(input): any {
         var ret = (input) ? input.toString().replace(".", ",") : null;
         if (ret) {
             var decArr = ret.split(",");

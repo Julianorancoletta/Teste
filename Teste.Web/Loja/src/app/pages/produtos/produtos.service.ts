@@ -12,7 +12,7 @@ import { Photo } from 'src/app/core/models/photo';
 })
 export class ProdutosService {
   protected readonly url = `${environment.api}/product`;
-  protected readonly img = `${environment.api}/Imagem/upload`;
+  protected readonly img = `${environment.api}/product/upload`;
 
 
 
@@ -42,12 +42,20 @@ export class ProdutosService {
       .post(this.url, product, this.ObterHeaderJson());
   }
 
-  postImg(photo:Photo){
+  delete(id: number) {
+    return this.http
+      .delete(`${this.url}/${id}`,this.ObterHeaderJson());
+  }
+  postImg(photo: Photo) {
     const formData = new FormData();
     formData.append('ProductId', photo.ProductId.toString());
     formData.append('file', photo.file);
- 
+
     return this.http.post(`${this.img}`, formData)
-    
+  }
+
+  atualizarProduto(roduct: ProductModel): Observable<ProductModel> {
+    return this.http
+      .put<ProductModel>(`${this.url}/${roduct.id}`, roduct, this.ObterHeaderJson());
   }
 }

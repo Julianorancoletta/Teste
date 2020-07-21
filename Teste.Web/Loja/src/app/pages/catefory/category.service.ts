@@ -27,15 +27,4 @@ export class categoryService {
     return this.http
       .get<Category[]>(this.url, this.ObterHeaderJson());
   }
-
-  // getProduct(id: string): Observable<ProductModel> {
-  //   return this.http
-  //     .get<ProductModel>(`${this.url}/${id}`, this.ObterHeaderJson());
-  // }
-
-  // post(product: ProductModel) {
-  //   return this.http
-  //     .post(this.url, product, this.ObterHeaderJson());
-  // }
-
 }

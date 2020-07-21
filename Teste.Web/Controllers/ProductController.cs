@@ -86,7 +86,7 @@ namespace Teste.Web.Controllers
             return Product;
         }
         [HttpPost("upload")]
-        public async Task<string> EnviaArquivo([FromForm] Photo photo)
+        public async Task<string> EnviaArquivo([FromForm] PhotoView photo)
         {
             if (photo.file.Length > 0)
             {

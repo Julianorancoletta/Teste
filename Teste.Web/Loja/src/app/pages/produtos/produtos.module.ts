@@ -7,18 +7,14 @@ import { ComponentsModule } from 'src/app/component/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProdutoRoutesModule } from './produtos.routes';
 import { ListaComponent } from './lista/lista.component';
-import {TableModule} from 'primeng/table';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { TableModule } from 'primeng/table';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 @NgModule({
   declarations: [
     CadastroProdutoComponent,
-    ListaComponent
+    ListaComponent,
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

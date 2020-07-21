@@ -9,7 +9,7 @@
         <ul class="list-unstyled mt-3 mb-4" [ngSwitch]="produto.sale">
             <ng-container *ngSwitchCase="true">
                 <strike>{{ produto.price | currency:'BRL':true:'1.2-2':'pt' }}</strike>
-                {{ produto.sale_price | currency:'BRL':true:'1.2-2':'pt' }}
+                {{ produto.salePrice | currency:'BRL':true:'1.2-2':'pt' }}
             </ng-container>
             <ng-container *ngSwitchCase="false">
                {{ produto.price | currency:'BRL':true:'1.2-2':'pt' }}

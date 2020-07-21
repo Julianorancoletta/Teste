@@ -1,64 +1,58 @@
-import { Injectable, EventEmitter, Output } from '@angular/core';
+import { Injectable, EventEmitter, Output, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 
 
 @Injectable()
 export class car {
 
-    private selectedItems:any[] = [];
-     
     setCar(item: any) {
-        this.get();
-        const productExistInCart = this.selectedItems.find(({ id }) => id === item.id);
+        const product = this.get(),
+        productExistInCart = product.find(({ id }) => id == item.id);
         if (!productExistInCart) {
-            this.selectedItems.push({ ...item, num: 1 });
-            this.set();
+            let product: any[] = this.get();
+            product.push({ ...item, num: 1 });
+            this.set(product);
             return;
         }
         productExistInCart.num += 1;
-        this.set();
+        this.set(product);
     }
 
     GetTotal() {
-        this.get();
-        return this.selectedItems.reduce((acc, prod) => acc += prod.price * prod.num, 0)
+        return this.get().reduce((acc, prod) => acc += prod.price * prod.num, 0)
     }
 
     remove(index: number) {
-        this.get();
-        this.selectedItems = this.selectedItems.filter((p, i) => {
+        let product = this.get().filter((p, i) => {
             return p.id !== index
         })
-        this.set();
+        this.set(product);
     }
-    quantiy(item, num):Promise<any> {  
-        this.get();
-        return  new Promise((resolve, reject) => {
-            if (num == 0) {
-                this.remove(item.id)
-            } else {
-                const productExistInCart = this.selectedItems.find(({ id }) => id === item.id);
-                productExistInCart.num = num;
-                this.set();
-            }
-        });
+    quantiy(item, num:number) {
+        const product = this.get()
+        if (num == 0) {
+            this.remove(item.id)
+        } else {
+            const productExistInCart = product.find(({ id }) => id == item.id);
+            productExistInCart.num = Number(num);
+            this.set(product);
+        }
     }
 
-    private set(){
-        localStorage.setItem('car', JSON.stringify(this.selectedItems))
+    private set(product: any) {
+        localStorage.setItem('car', JSON.stringify(product))
     }
 
-    private get(){
-        this.selectedItems = JSON.parse(localStorage.getItem('car')) 
-        ? JSON.parse(localStorage.getItem('car')) : []
+    private get() {
+        return JSON.parse(localStorage.getItem('car'))
+            ? JSON.parse(localStorage.getItem('car')) : []
     }
 
-    returnCar(){
+    returnCar() {
         return JSON.parse(localStorage.getItem('car'))
     }
 
-    TotalCart(){
-        this.get();
-        return this.selectedItems.length;
+    TotalCart() {
+        return this.get().length;
     }
 
 }

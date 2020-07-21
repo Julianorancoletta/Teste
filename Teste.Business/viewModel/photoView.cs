@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Teste.Business.Models
 {
-    public class Photo
+    public class PhotoView
     {
         [Key]
         public int Id { get; set; }

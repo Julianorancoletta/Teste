@@ -13,7 +13,7 @@ namespace Teste.Business.Models
         [Key]
         public int id { get; set; }
         public string title { get; set; }
-        public string brand { get; set; }
+        public string brand { get; set; }   
         public decimal price { get; set; }
         public bool sale { get; set; }
         public decimal salePrice { get; set; }

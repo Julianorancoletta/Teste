@@ -4,10 +4,12 @@ import { ElementRef } from '@angular/core';
 import { FormBaseComponent } from 'src/app/component/form/form-base.component';
 import { ProductModel } from 'src/app/core/models/product.model';
 import { Photo } from 'src/app/core/models/photo';
+import { Category } from 'src/app/core/models/category.model';
 
 export abstract class ProdutoBaseComponent extends FormBaseComponent {
 
     produto: ProductModel;
+    category: Category[];
     photo:Photo;
     errors: any[] = [];
     produtoForm: FormGroup;
@@ -19,7 +21,7 @@ export abstract class ProdutoBaseComponent extends FormBaseComponent {
             categoryId: {
                 required: 'Escolha um categoria',
             },
-            Title: {
+            title: {
                 required: 'Informe o Titulo',
                 minlength: 'Mínimo de 2 caracteres',
                 maxlength: 'Máximo de 200 caracteres'
