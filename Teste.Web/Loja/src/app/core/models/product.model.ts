@@ -2,9 +2,9 @@ export class ProductModel {
         id: number 
         title: string 
         brand: string 
-        price: string 
+        price: number 
         sale: boolean 
-        salePrice: string 
+        salePrice: number 
         categoryId: number 
         shortDescription: string 
         category: string 

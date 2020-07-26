@@ -26,6 +26,7 @@
     "@sweetalert2/ngx-sweetalert2": "^8.1.1",
     "aspnet-prerendering": "^3.0.1",
     "bootstrap": "^4.5.0",
+    "br-mask": "0.0.10",
     "core-js": "^3.6.5",
     "jquery": "^3.5.1",
     "js-brasil": "^2.1.0",

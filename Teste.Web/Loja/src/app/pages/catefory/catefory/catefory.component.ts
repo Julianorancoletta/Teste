@@ -5,7 +5,7 @@ import { ProdutoBaseComponent } from '../produto-form.base.component';
 import { Validacao } from 'src/app/utils/validacao';
 import { CurrencyUtils } from 'src/app/utils/currency-utils';
 import { tiposDeAlert } from 'src/app/enumerable/tipos_de_alert.enum'
-import { categoryService } from '../../catefory/category.service';
+import { categoryService } from '../category.service';
 import { ProdutosService } from '../produtos.service';
 import { Photo } from 'src/app/core/models/photo';
 import { ProductModel } from 'src/app/core/models/product.model';
@@ -16,7 +16,7 @@ import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
   templateUrl: './cadastro-produto.component.html',
   styleUrls: ['./cadastro-produto.component.css'],
 })
-export class CadastroProdutoComponent extends ProdutoBaseComponent implements OnInit {
+export class CateforyComponent extends ProdutoBaseComponent implements OnInit {
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
