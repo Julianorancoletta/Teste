@@ -14,3 +14,7 @@ export interface Imagem {
         arquivo: string,
         imgNome: string
 }
+export class Photo {
+        ProductId:number
+        file:File
+}

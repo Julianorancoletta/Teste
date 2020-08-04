@@ -1,6 +1,11 @@
-
-
 <div class="container">
+    <div class="row">
+        <div class="row justify-content-between">
+            <div>
+                <app-bigger-smaller (change)="order($event.target.value)"></app-bigger-smaller>
+            </div>
+        </div>
+    </div>
     <div class="card-deck mb-3 text-center">
         <ng-container *ngFor="let produto of produtos">
             <app-lista-produtos [produto]="produto"></app-lista-produtos>

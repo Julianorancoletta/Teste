@@ -26,12 +26,15 @@ namespace Teste.Web.Controllers
             _IProduct = product;
         }
 
+        
         // GET: api/Product
         [HttpGet]
-        public async Task<List<productView>> Get()
+        public async Task<List<productView>> Get([FromQuery] Busca busca)
         {
-            return await _IProduct.GetProduct();
+            return await _IProduct.GetProduct(busca);
         }
+
+
 
         // GET: api/Product/5
         [HttpGet("{id}")]

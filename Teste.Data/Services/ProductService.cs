@@ -20,7 +20,7 @@ namespace Teste.Data.Services
             _context = context;
         }
 
-        public async Task<List<productView>> GetProduct()
+        public async Task<List<productView>> GetProduct(Busca busca = null)
         {
 
             var list =
@@ -39,9 +39,13 @@ namespace Teste.Data.Services
                       shortDescription = product.shortDescription,
                       category = category.description,
                       img = product.img
-                  }).ToListAsync();
+                  });
 
-            return await list;
+            if (!string.IsNullOrEmpty(busca.ItemBuscado)) list = list.Where(x => x.title.StartsWith(busca.ItemBuscado));
+            
+            list = busca.order > 0 ? list.OrderByDescending(x => x.price) : list.OrderBy(x => x.price);
+            
+            return await list.ToListAsync();
         }
 
         public async Task<Product> addProduct(Product product)

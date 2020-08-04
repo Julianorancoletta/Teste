@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment'
-import { ProductModel } from 'src/app/core/models/product.model';
+import { ProductModel, Photo } from 'src/app/core/models/product.model';
 import { Observable } from 'rxjs';
-import { Photo } from 'src/app/core/models/photo';
+
+import { busca } from 'src/app/core/models/busca.model';
 
 
 @Injectable({
@@ -27,9 +28,9 @@ export class ProdutosService {
     };
   }
 
-  getProducts(): Observable<ProductModel[]> {
+  getProducts(Busca:busca): Observable<ProductModel[]> {
     return this.http
-      .get<ProductModel[]>(this.url, this.ObterHeaderJson());
+      .get<ProductModel[]>(`${this.url}?${Busca}`, this.ObterHeaderJson());
   }
 
   getProduct(id: string): Observable<ProductModel> {

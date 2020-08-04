@@ -7,8 +7,7 @@ import { CurrencyUtils } from 'src/app/utils/currency-utils';
 import { tiposDeAlert } from 'src/app/enumerable/tipos_de_alert.enum'
 import { categoryService } from '../../catefory/category.service';
 import { ProdutosService } from '../produtos.service';
-import { Photo } from 'src/app/core/models/photo';
-import { ProductModel } from 'src/app/core/models/product.model';
+import { ProductModel, Photo } from 'src/app/core/models/product.model';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProductModel } from 'src/app/core/models/product.model';
 import { ProdutosService } from '../produtos/produtos.service';
-
+import { busca } from 'src/app/core/models/busca.model'
 
 @Component({
   selector: 'app-showcase',
@@ -10,14 +10,25 @@ import { ProdutosService } from '../produtos/produtos.service';
 })
 export class ShowCaseComponent implements OnInit {
 
-  constructor(private produtoService: ProdutosService) { 
+  Busca : busca
+
+  constructor(private produtoService: ProdutosService) {
   }
 
-  produtos:ProductModel[];
-  
+  produtos: ProductModel[];
+
+  order(value) {
+    this.Busca.order = value
+  }
+
   ngOnInit(): void {
-    this.produtoService.getProducts().subscribe(listProdutos =>{
+    this.loaderProducts();
+  }
+
+  loaderProducts(){
+    this.produtoService.getProducts(this.Busca).subscribe(listProdutos => {
       this.produtos = listProdutos
-    },error => console.log(error))
-  }  
+    }, error => console.log(error))
+  }
+
 }

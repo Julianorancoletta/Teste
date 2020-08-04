@@ -44,5 +44,39 @@ namespace Teste.Web.Controllers
                 return BadRequest(ModelState);
             }
         }
+
+        //public async Task<string> EnviaArquivo([FromForm] PhotoView photo)
+        //{
+        //    if (photo.file.Length > 0)
+        //    {
+        //        Product Product = await _IProduct.BuscaProductId(photo.ProductId);
+        //        try
+        //        {
+        //            if (!Directory.Exists(_environment.WebRootPath + "\\imagens\\"))
+        //            {
+        //                Directory.CreateDirectory(_environment.WebRootPath + "\\imagens\\");
+        //            }
+        //            using (FileStream filestream = System.IO.File.Create(_environment.WebRootPath + "\\imagens\\" + photo.file.FileName))
+        //            {
+        //                await photo.file.CopyToAsync(filestream);
+        //                filestream.Flush();
+
+        //                Product.img = "/imagens/" + photo.file.FileName;
+        //                _IProduct.UpdateProduct(Product);
+        //                return "\\imagens\\" + photo.file.FileName;
+
+
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return ex.ToString();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return "Ocorreu uma falha no envio do arquivo...";
+        //    }
+        //}
     }
 }
