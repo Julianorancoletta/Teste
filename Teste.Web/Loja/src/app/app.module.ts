@@ -9,8 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
 import { ComponentsModule } from './component/components.module';
 import { ProdutosModule } from './pages/produtos/produtos.module';
-
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +25,7 @@ import { ProdutosModule } from './pages/produtos/produtos.module';
     OverlayPanelModule,
     BrowserAnimationsModule,
     ProdutosModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

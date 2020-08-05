@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { car } from 'src/app/component/car/car';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,6 +8,9 @@ import { car } from 'src/app/component/car/car';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
+
+  constructor(private router: Router) { }
+
   isExpanded = false;
   cars: any = new car();
 
@@ -16,5 +20,11 @@ export class NavMenuComponent {
 
   toggle() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  buscar(produto) {
+
+    this.router.navigate(['showcase/pesquisa/' + produto])
+
   }
 }

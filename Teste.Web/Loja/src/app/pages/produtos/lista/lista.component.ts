@@ -4,6 +4,7 @@ import { ProdutosService } from '../produtos.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CadastroProdutoComponent } from '../cadastro-produto/cadastro-produto.component';
 import { MessageService } from 'primeng/api';
+import { busca } from 'src/app/core/models/busca.model';
 
 @Component({
   selector: 'app-lista-produto',
@@ -19,11 +20,12 @@ export class ListaComponent implements OnInit {
   ) { }
 
   products: ProductModel[];
-  ref: DynamicDialogRef
+  ref: DynamicDialogRef;
   cols: any[];
   loading: boolean;
-  msg: string = null
-  product :ProductModel
+  msg: string = null;
+  product :ProductModel;
+  Busca:busca;
 
   ngOnInit(): void {
     this.cols = [
@@ -38,7 +40,7 @@ export class ListaComponent implements OnInit {
 
   listaProdutos() {
     this.loading = true;
-    this.produtoService.getProducts().subscribe(listProdutos => {
+    this.produtoService.getProducts(this.Busca).subscribe(listProdutos => {
       this.products = listProdutos
     }, error => console.log(error)
       , () => {

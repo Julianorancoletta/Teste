@@ -15,8 +15,6 @@ export class ProdutosService {
   protected readonly url = `${environment.api}/product`;
   protected readonly img = `${environment.api}/product/upload`;
 
-
-
   constructor(private http: HttpClient) {
   }
 

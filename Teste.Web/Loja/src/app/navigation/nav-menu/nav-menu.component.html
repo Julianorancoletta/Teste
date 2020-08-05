@@ -29,6 +29,10 @@
           </li>
         </ul>
       </div>
+      <form class="index-search-form">
+        <input #searchBox class="form-control mr-sm-2 search-box" type="search" placeholder="Procure os seus produtos" aria-label="Search">
+        <button name="submit" class="btn" type="submit" (click)="buscar(searchBox.value)"><i class="fa fa-search" aria-hidden="true"></i></button>
+      </form>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
           <li class="nav-item">

@@ -76,8 +76,6 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
 
   ngAfterViewInit(): void {
     super.configurarValidacaoFormulario(this.formInputElements);
-
-
   }
 
   adicionarProduto() {

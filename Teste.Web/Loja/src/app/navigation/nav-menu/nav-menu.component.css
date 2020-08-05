@@ -2,7 +2,7 @@ nav {
   background-color: darkslateblue !important;
 }
 
-nav a{
+nav a {
   color: white !important;
 }
 
@@ -19,6 +19,7 @@ a.navbar-brand {
 html {
   font-size: 14px;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -29,3 +30,63 @@ html {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
+input {
+  width: 25rem !important;
+  font-weight: 500 !important;
+  color: darkslateblue !important;
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* Remover o X chato do carai */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+search-box::-ms-clear {
+  display: none;
+}
+
+::placeholder {
+  color: darkslateblue !important;
+}
+
+.btn-outline-success {
+  background-color: white !important;
+  color: darkslateblue !important;
+}
+
+form.index-search-form {
+  position: relative;
+  display: inline-flex;
+}
+
+button[name="submit"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Remove as bordas do botão quando clica */
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:active:focus:not(:disabled):not(.disabled), .btn:focus, .btn:active, .btn:hover {
+  box-shadow: none!important;
+  outline: 0;
+}
+
+/* Remove as bordas do input quando da focus */
+input[type="search"], textarea {
+  outline: none;
+  box-shadow: none !important;
+  border: 1px solid #ccc !important;
+}
+
+input.search-box {
+  width: 250px;
+  font-family: FontAwesome;
+  padding: 2px 0;
+  border-radius: 0;
+}
+
+.fa-search {
+  color: darkslateblue !important;
+}

@@ -4,9 +4,9 @@ import { ShowCaseComponent } from "./show_case.component";
 import { DetalhesProdutoComponent } from "./detalhes-produto/detalhes-produto.component";
 
 const routes: Routes = [
-
     { path: '', component: ShowCaseComponent},
     { path: 'produto-detalhe/:id', component: DetalhesProdutoComponent },
+    { path: 'pesquisa/:id', component: ShowCaseComponent }
 
 ]
 
