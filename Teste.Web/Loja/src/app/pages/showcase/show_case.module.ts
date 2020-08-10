@@ -6,7 +6,7 @@ import { CardModule } from 'primeng/card';
 import { RouterModule } from '@angular/router';
 import { ComponentsModule } from 'src/app/component/components.module';
 import localePt from '@angular/common/locales/pt';
-import { ProdutosService } from '../produtos/produtos.service';
+import { ProdutosService } from '../produtos/services/produtos.service';
 import { ShowCaseComponent } from './show_case.component';
 import { ShowcaseRoutesModule } from './show_case.routes';
 registerLocaleData(localePt);

@@ -1,19 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { car } from 'src/app/component/car/car';
 import { Router } from '@angular/router';
+import { Category } from 'src/app/core/models/category.model';
+import {categoryService} from 'src/app/pages/catefory/category.service'
 
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css']
 })
-export class NavMenuComponent {
+export class NavMenuComponent implements OnInit{
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private category_Service:categoryService) { }
+
 
   isExpanded = false;
   cars: any = new car();
+  Category :Category[]
 
+  ngOnInit(): void {
+    this.category_Service.getcategory().
+    subscribe(category =>{
+      this.Category = category
+    })
+  }
+  
   collapse() {
     this.isExpanded = false;
   }
@@ -23,8 +35,6 @@ export class NavMenuComponent {
   }
 
   buscar(produto) {
-
-    this.router.navigate(['showcase/pesquisa/' + produto])
-
+    this.router.navigate(['showcase/' + produto])
   }
 }

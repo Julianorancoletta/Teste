@@ -10,6 +10,7 @@ namespace Teste.Business.viewModel
         public int order { get; set; }
         public string ItemBuscado { get; set; }
         public string range { get; set; }
+        public string categoria { get; set; }
         public DateTime date { get; set; }
 
     }

@@ -2,16 +2,27 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ShowCaseComponent } from "./show_case.component";
 import { DetalhesProdutoComponent } from "./detalhes-produto/detalhes-produto.component";
+import { ProdutoResolve } from "../produtos/services/produtos.resolve";
 
-const routes: Routes = [
-    { path: '', component: ShowCaseComponent},
+const produtoRouterConfig: Routes = [
+    {
+        path: ':id', component: ShowCaseComponent,
+        resolve: {
+            Product: ProdutoResolve
+        }
+    },
+    {
+        path: '', component: ShowCaseComponent,
+        resolve: {
+            Product: ProdutoResolve
+        }
+    },
     { path: 'produto-detalhe/:id', component: DetalhesProdutoComponent },
-    { path: 'pesquisa/:id', component: ShowCaseComponent }
-
 ]
 
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)]
+    imports: [RouterModule.forChild(produtoRouterConfig)],
+    exports: [RouterModule]
 })
 export class ShowcaseRoutesModule { }

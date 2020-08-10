@@ -3,8 +3,10 @@ nav {
 }
 
 nav a {
-  color: white !important;
+  color: red !important;
 }
+
+
 
 nav a:hover {
   color: rgb(193, 184, 252) !important;

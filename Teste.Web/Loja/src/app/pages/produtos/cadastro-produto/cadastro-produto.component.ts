@@ -6,7 +6,7 @@ import { Validacao } from 'src/app/utils/validacao';
 import { CurrencyUtils } from 'src/app/utils/currency-utils';
 import { tiposDeAlert } from 'src/app/enumerable/tipos_de_alert.enum'
 import { categoryService } from '../../catefory/category.service';
-import { ProdutosService } from '../produtos.service';
+import { ProdutosService } from '../services/produtos.service';
 import { ProductModel, Photo } from 'src/app/core/models/product.model';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 
@@ -88,7 +88,6 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
       this.produto.salePrice = CurrencyUtils.StringParaDecimal(this.produto.salePrice);
 
       if (this.config.data.id) {
-        debugger
         this.produtoService.atualizarProduto(this.produto)
           .subscribe(
             (produto: ProductModel) => {

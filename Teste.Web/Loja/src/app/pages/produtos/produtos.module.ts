@@ -10,6 +10,8 @@ import { ListaComponent } from './lista/lista.component';
 import { TableModule } from 'primeng/table';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BrMaskerModule } from 'br-mask';
+import { ProdutoResolve } from './services/produtos.resolve'
+
 @NgModule({
   declarations: [
     CadastroProdutoComponent,
@@ -26,6 +28,9 @@ import { BrMaskerModule } from 'br-mask';
     ProdutoRoutesModule,
     TableModule,
     DynamicDialogModule
+  ],
+  providers: [
+    ProdutoResolve
   ]
 })
 export class ProdutosModule { }

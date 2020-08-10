@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Teste.Business.Intefaces;
 using Teste.Business.Models;
+using Teste.Business.viewModel;
 using Teste.Data.Context;
 
 namespace Teste.Web.Controllers
@@ -23,7 +24,7 @@ namespace Teste.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IList<Category>> Get()
+        public async Task<IList<Category>> Get([FromQuery] Busca busca)
         {
                 return await _ICategory.GetCategoryList();
         }

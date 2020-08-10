@@ -1,6 +1,7 @@
 export class busca {
-    order : number
-    ItemBuscado :string 
-    range:string 
-    date:string 
+    order : number = 0
+    ItemBuscado :string = "" 
+    range:string = ""
+    categoria:string = ""
+    date:Date
 }

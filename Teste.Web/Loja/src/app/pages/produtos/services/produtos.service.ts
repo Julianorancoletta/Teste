@@ -27,8 +27,12 @@ export class ProdutosService {
   }
 
   getProducts(Busca:busca): Observable<ProductModel[]> {
+    const params = new HttpParams()
+    .set('ItemBuscado', Busca.ItemBuscado)
+    .set('order', Busca.order.toString())
+    .set('categoria', Busca.categoria.toString())
     return this.http
-      .get<ProductModel[]>(`${this.url}?${Busca}`, this.ObterHeaderJson());
+      .get<ProductModel[]>(`${this.url}?${params}`, this.ObterHeaderJson());
   }
 
   getProduct(id: string): Observable<ProductModel> {

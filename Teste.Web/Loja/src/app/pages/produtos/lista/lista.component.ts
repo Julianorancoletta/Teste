@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductModel } from 'src/app/core/models/product.model';
-import { ProdutosService } from '../produtos.service';
+import { ProdutosService } from '../services/produtos.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CadastroProdutoComponent } from '../cadastro-produto/cadastro-produto.component';
 import { MessageService } from 'primeng/api';
@@ -17,7 +17,9 @@ export class ListaComponent implements OnInit {
   constructor(
     private produtoService: ProdutosService,
     public dialogService: DialogService,
-  ) { }
+  ) {
+    this.Busca = new busca;
+   }
 
   products: ProductModel[];
   ref: DynamicDialogRef;

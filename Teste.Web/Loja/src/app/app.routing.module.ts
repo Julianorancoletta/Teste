@@ -20,8 +20,6 @@ const routes: Routes = [
         loadChildren: () => import('./pages/showcase/show_case.module')
             .then(m => m.ShowcaseModule)
     },
-
-
 ];
 
 @NgModule({

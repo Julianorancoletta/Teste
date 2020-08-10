@@ -42,7 +42,7 @@ namespace Teste.Data.Services
                   });
 
             if (!string.IsNullOrEmpty(busca.ItemBuscado)) list = list.Where(x => x.title.StartsWith(busca.ItemBuscado));
-            
+            if (!string.IsNullOrEmpty(busca.categoria)) list = list.Where(x => x.category == busca.categoria);
             list = busca.order > 0 ? list.OrderByDescending(x => x.price) : list.OrderBy(x => x.price);
             
             return await list.ToListAsync();
