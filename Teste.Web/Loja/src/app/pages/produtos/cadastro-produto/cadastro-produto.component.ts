@@ -2,13 +2,15 @@ import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 
 import { FormControlName, FormBuilder, Validators } from '@angular/forms';
 import { ProdutoBaseComponent } from '../produto-form.base.component';
-import { Validacao } from 'src/app/utils/validacao';
-import { CurrencyUtils } from 'src/app/utils/currency-utils';
-import { tiposDeAlert } from 'src/app/enumerable/tipos_de_alert.enum'
-import { categoryService } from '../../catefory/category.service';
-import { ProdutosService } from '../services/produtos.service';
-import { ProductModel, Photo } from 'src/app/core/models/product.model';
+
+import { categoryService } from '../../../services/catefory/category.service';
+import { ProdutosService } from '../../../services/produtos/produtos.service';
+
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { Validacao } from 'app/utils/validacao';
+import { ProductModel, Photo } from 'app/core/models/product.model';
+import { CurrencyUtils } from 'app/utils/currency-utils';
+import { tiposDeAlert } from 'app/enumerable/tipos_de_alert.enum';
 
 @Component({
   selector: 'app-cadastro-produto',
@@ -121,7 +123,6 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
             falha => { this.processarFalha(falha) }
           );
       }
-      this.mudancasNaoSalvas = false;
     } else {
       this.messagemToastr('Ocorreu um erro', tiposDeAlert.error)
     }

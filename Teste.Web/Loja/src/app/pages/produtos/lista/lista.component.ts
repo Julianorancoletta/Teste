@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductModel } from 'src/app/core/models/product.model';
-import { ProdutosService } from '../services/produtos.service';
+
+import { ProdutosService } from '../../../services/produtos/produtos.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CadastroProdutoComponent } from '../cadastro-produto/cadastro-produto.component';
 import { MessageService } from 'primeng/api';
-import { busca } from 'src/app/core/models/busca.model';
+import { busca } from 'app/core/models/busca.model';
+import { ProductModel } from 'app/core/models/product.model';
+
 
 @Component({
   selector: 'app-lista-produto',

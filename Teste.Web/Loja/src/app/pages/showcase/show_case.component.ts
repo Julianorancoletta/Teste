@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ProductModel } from 'src/app/core/models/product.model';
-import { ProdutosService } from '../produtos/services/produtos.service';
-import { busca } from 'src/app/core/models/busca.model'
+
+import { ProdutosService } from '../../services/produtos/produtos.service';
+
 import { ActivatedRoute } from '@angular/router';
+import { busca } from 'app/core/models/busca.model';
+import { ProductModel } from 'app/core/models/product.model';
 
 @Component({
   selector: 'app-showcase',

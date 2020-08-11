@@ -4,11 +4,11 @@ import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.co
 import { ListaProdutosComponent } from './lista-produto/lista-produto.component';
 import { CardModule } from 'primeng/card';
 import { RouterModule } from '@angular/router';
-import { ComponentsModule } from 'src/app/component/components.module';
 import localePt from '@angular/common/locales/pt';
-import { ProdutosService } from '../produtos/services/produtos.service';
+import { ProdutosService } from '../../services/produtos/produtos.service';
 import { ShowCaseComponent } from './show_case.component';
 import { ShowcaseRoutesModule } from './show_case.routes';
+import { ComponentsModule } from 'app/component/components.module';
 registerLocaleData(localePt);
 
 
@@ -25,7 +25,7 @@ registerLocaleData(localePt);
     ShowcaseRoutesModule,
     CommonModule
   ],
-  providers:[
+  providers: [
     ProdutosService
   ]
 })

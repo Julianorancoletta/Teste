@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { car } from 'src/app/component/car/car';
+import { car } from 'app/component/car/car';
 import { Router } from '@angular/router';
-import { Category } from 'src/app/core/models/category.model';
-import {categoryService} from 'src/app/pages/catefory/category.service'
+import { Category } from 'app/core/models/category.model';
+import { categoryService } from 'app/services/catefory/category.service';
+
+
 
 @Component({
   selector: 'app-nav-menu',

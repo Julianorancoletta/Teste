@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import { CadastroProdutoComponent } from './cadastro-produto/cadastro-produto.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ComponentsModule } from 'src/app/component/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProdutoRoutesModule } from './produtos.routes';
 import { ListaComponent } from './lista/lista.component';
 import { TableModule } from 'primeng/table';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BrMaskerModule } from 'br-mask';
-import { ProdutoResolve } from './services/produtos.resolve'
+import { ProdutoResolve } from 'app/services/produtos/produtos.resolve';
+import { ComponentsModule } from 'app/component/components.module';
+
 
 @NgModule({
   declarations: [
