@@ -10,7 +10,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ComponentsModule } from './component/components.module';
 import { ProdutosModule } from './pages/produtos/produtos.module';
 import { FormsModule } from '@angular/forms';
-import {AutoCompleteModule} from 'primeng/autocomplete';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
     BrowserAnimationsModule,
     ProdutosModule,
     FormsModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

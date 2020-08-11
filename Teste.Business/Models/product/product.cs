@@ -3,8 +3,9 @@ using System;
 using System.Buffers.Text;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-
+using Teste.Business.Models.product;
 
 namespace Teste.Business.Models
 {
@@ -18,8 +19,10 @@ namespace Teste.Business.Models
         public bool sale { get; set; }
         public decimal salePrice { get; set; }
         public string shortDescription { get; set; }
-        public int categoryid { get; set; }
+        [ForeignKey("categoryid")]
         public Category category { get;set; }
+        [ForeignKey("subCategoriaid")]
+        public SubCategoria subCategoria { get; set; }
         public string img { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace Teste.Data.Services
             var list =
                  (from product in _context.Set<Product>()
                   join category in _context.Set<Category>()
-                  on product.categoryid equals category.id
+                  on product.category.id equals category.id
                   select new productView
                   {
                       id = product.id,
@@ -68,7 +68,7 @@ namespace Teste.Data.Services
             var list =
                  (from product in _context.Set<Product>()
                   join category in _context.Set<Category>()
-                  on product.categoryid equals category.id
+                  on product.category.id equals category.id
                   where product.id == id
                   select new productView
                   {

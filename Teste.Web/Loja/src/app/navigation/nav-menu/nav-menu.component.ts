@@ -17,7 +17,8 @@ export class NavMenuComponent implements OnInit{
 
   isExpanded = false;
   cars: any = new car();
-  Category :Category[]
+  Category :Category[];
+  subCategoria: any[];
 
   ngOnInit(): void {
     this.category_Service.getcategory().
@@ -36,5 +37,16 @@ export class NavMenuComponent implements OnInit{
 
   buscar(produto) {
     this.router.navigate(['showcase/' + produto])
+  }
+
+  buscarMarcas(categoria) {
+    this.category_Service.getsubcategory(categoria).subscribe(
+      (subcategoria: any[]) => {
+        this.subCategoria = subcategoria;
+      },
+      error => {
+        console.log(error)
+      }
+    )
   }
 }

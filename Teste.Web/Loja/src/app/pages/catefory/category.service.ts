@@ -10,6 +10,7 @@ import { Category } from 'src/app/core/models/category.model';
 })
 export class categoryService {
   protected readonly url = `${environment.api}/Category`;
+  protected readonly urlsub = `${environment.api}/SubCategoria`;
 
   constructor(private http: HttpClient) {
   }
@@ -25,5 +26,10 @@ export class categoryService {
   getcategory(): Observable<Category[]> {
     return this.http
       .get<Category[]>(this.url, this.ObterHeaderJson());
+  }
+
+  getsubcategory(id:Number) {
+    return this.http
+      .get(`${this.urlsub}/${id}`, this.ObterHeaderJson());
   }
 }

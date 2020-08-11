@@ -9,27 +9,40 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" [routerLink]="['/produto']">Cadastro de produtos<span
+                class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" [routerLink]="['/showcase']">Produtos</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown link
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categorias
             </a>
-            <div  class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a *ngFor="let item of Category" class="dropdown-item"  routerLinkActive="active"[routerLink]="['/showcase',{categoria:item.description},'']">{{item.description}}</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+              <li class="dropdown-submenu">
+                <a id="title" *ngFor="let item of Category" tabindex="-1" class="dropdown-item"
+                  routerLinkActive="active"
+                  [routerLink]="['/showcase',{categoria:item.description},'']"
+                  (mouseover)="buscarMarcas(item.id)">{{item.description}}</a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item">
+                    <a *ngFor="let item of subCategoria" class="dropdown-item" id="title" tabindex="-1" href="#">
+                      {{ item.nome }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
       <form class="index-search-form">
-        <input #searchBox class="form-control mr-sm-2 search-box" type="search" placeholder="Procure os seus produtos" aria-label="Search">
-        <button name="submit" class="btn" type="submit" (click)="buscar(searchBox.value)"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <input #searchBox class="form-control mr-sm-2 search-box" type="search" placeholder="Procure os seus produtos"
+          aria-label="Search">
+        <button name="submit" class="btn" type="submit" (click)="buscar(searchBox.value)"><i class="fa fa-search"
+            aria-hidden="true"></i></button>
       </form>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">

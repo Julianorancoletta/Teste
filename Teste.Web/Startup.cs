@@ -27,6 +27,7 @@ namespace Teste.Web
 
             services.AddScoped<IProduct, ProductService>();
             services.AddScoped<ICategory, CategoryService>();
+            services.AddScoped<ISubCategoria, SubCategoriaService>();
 
             services.AddDbContext<BancoContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Teste.Business.Models;
+using Teste.Business.Models.product;
 
 namespace Teste.Data.Context
 {
@@ -13,6 +14,8 @@ namespace Teste.Data.Context
         public DbSet<Product> Product { get; set; }
 
         public DbSet<Category> Category { get; set; }
+
+        public DbSet<SubCategoria> SubCategoria { get; set; }
 
         //public DbSet<Photo> Photo { get; set; }
     }
