@@ -11,7 +11,7 @@ namespace Teste.Business.Models.product
         [Key]
         public int id { get; set; }
         public string nome { get; set; }
-        [ForeignKey("categoryid")]
+        public int categoryid { get; set; }
         public Category category { get; set; }
     }
 }

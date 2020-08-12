@@ -1,9 +1,9 @@
 
 import { FormGroup } from '@angular/forms';
 import { ElementRef } from '@angular/core';
-import { ProductModel, Photo } from 'app/core/models/product.model';
-import { FormBaseComponent } from 'app/component/form/form-base.component';
-import { Category } from 'app/core/models/category.model';
+import { ProductModel, Photo } from '../../core/models/product.model';
+import { FormBaseComponent } from '../../component/form/form-base.component';
+import { Category,SubCategoria } from '../../core/models/category.model';
 
 
 export abstract class ProdutoBaseComponent extends FormBaseComponent {
@@ -11,6 +11,7 @@ export abstract class ProdutoBaseComponent extends FormBaseComponent {
     produto: ProductModel;
     category: Category[];
     photo:Photo;
+    subCategoria :SubCategoria[];
     errors: any[] = [];
     produtoForm: FormGroup;
 
@@ -20,6 +21,9 @@ export abstract class ProdutoBaseComponent extends FormBaseComponent {
         this.validationMessages = {
             categoryId: {
                 required: 'Escolha um categoria',
+            },
+            subCategoriaId: {
+                required: 'Escolha um Sub Categoria',
             },
             title: {
                 required: 'Informe o Titulo',

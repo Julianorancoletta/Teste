@@ -5,14 +5,12 @@ export class ProductModel {
         price: number 
         sale: boolean 
         salePrice: number 
+        subCategoria
+        subCategoriaId :number
+        category: string 
         categoryId: number 
         shortDescription: string 
-        category: string 
         img: string 
-}
-export interface Imagem {
-        arquivo: string,
-        imgNome: string
 }
 export class Photo {
         ProductId:number

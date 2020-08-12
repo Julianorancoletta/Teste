@@ -3,5 +3,6 @@ export class busca {
     ItemBuscado :string = "" 
     range:string = ""
     categoria:string = ""
+    subCategoria:string = ""
     date:Date
 }

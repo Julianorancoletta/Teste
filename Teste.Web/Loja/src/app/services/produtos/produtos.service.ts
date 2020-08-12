@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
-import { environment } from 'src/environments/environment'
-import { ProductModel, Photo } from 'src/app/core/models/product.model';
+import { environment } from '../../../environments/environment'
+import { ProductModel, Photo } from '../../../app/core/models/product.model';
 import { Observable } from 'rxjs';
-
-import { busca } from 'src/app/core/models/busca.model';
+import { busca } from '../../../app/core/models/busca.model';
 
 
 @Injectable({
@@ -30,7 +29,8 @@ export class ProdutosService {
     const params = new HttpParams()
     .set('ItemBuscado', Busca.ItemBuscado)
     .set('order', Busca.order.toString())
-    .set('categoria', Busca.categoria.toString())
+    .set('categoria', Busca.categoria)
+    .set('subCategoria',Busca.subCategoria)
     return this.http
       .get<ProductModel[]>(`${this.url}?${params}`, this.ObterHeaderJson());
   }

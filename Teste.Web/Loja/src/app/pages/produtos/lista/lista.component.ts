@@ -4,8 +4,8 @@ import { ProdutosService } from '../../../services/produtos/produtos.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CadastroProdutoComponent } from '../cadastro-produto/cadastro-produto.component';
 import { MessageService } from 'primeng/api';
-import { busca } from 'app/core/models/busca.model';
-import { ProductModel } from 'app/core/models/product.model';
+import { busca } from '../../../core/models/busca.model';
+import { ProductModel } from '../../../core/models/product.model';
 
 
 @Component({

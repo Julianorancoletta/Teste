@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Teste.Business.Intefaces;
 using Teste.Business.Models;
+using Teste.Business.Models.product;
 using Teste.Business.viewModel;
 using Teste.Data.Context;
 
@@ -23,10 +24,12 @@ namespace Teste.Data.Services
         public async Task<List<productView>> GetProduct(Busca busca = null)
         {
 
-            var list =
+             var list =
                  (from product in _context.Set<Product>()
                   join category in _context.Set<Category>()
                   on product.category.id equals category.id
+                  join SubCategoria in _context.Set<SubCategoria>()
+                  on product.subCategoria.id equals SubCategoria.id
                   select new productView
                   {
                       id = product.id,
@@ -38,11 +41,14 @@ namespace Teste.Data.Services
                       categoryId = category.id,
                       shortDescription = product.shortDescription,
                       category = category.description,
+                      subCategoriaId = SubCategoria.id,
+                      subCategoria = SubCategoria.nome,
                       img = product.img
                   });
 
             if (!string.IsNullOrEmpty(busca.ItemBuscado)) list = list.Where(x => x.title.StartsWith(busca.ItemBuscado));
             if (!string.IsNullOrEmpty(busca.categoria)) list = list.Where(x => x.category == busca.categoria);
+            if (!string.IsNullOrEmpty(busca.subCategoria)) list = list.Where(x => x.subCategoria == busca.subCategoria);
             list = busca.order > 0 ? list.OrderByDescending(x => x.price) : list.OrderBy(x => x.price);
             
             return await list.ToListAsync();
@@ -69,6 +75,8 @@ namespace Teste.Data.Services
                  (from product in _context.Set<Product>()
                   join category in _context.Set<Category>()
                   on product.category.id equals category.id
+                  join SubCategoria in _context.Set<SubCategoria>()
+                  on product.subCategoria.id equals SubCategoria.id
                   where product.id == id
                   select new productView
                   {
@@ -81,6 +89,7 @@ namespace Teste.Data.Services
                       categoryId = category.id,
                       shortDescription = product.shortDescription,
                       category = category.description,
+                      subCategoriaId = SubCategoria.id,
                       img = product.img
                   });
 

@@ -19,9 +19,9 @@ namespace Teste.Business.Models
         public bool sale { get; set; }
         public decimal salePrice { get; set; }
         public string shortDescription { get; set; }
-        [ForeignKey("categoryid")]
+        public int categoryid { get; set; }
         public Category category { get;set; }
-        [ForeignKey("subCategoriaid")]
+        public int subCategoriaid { get; set; }
         public SubCategoria subCategoria { get; set; }
         public string img { get; set; }
     }

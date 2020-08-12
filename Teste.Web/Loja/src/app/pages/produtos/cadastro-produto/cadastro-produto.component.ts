@@ -7,10 +7,12 @@ import { categoryService } from '../../../services/catefory/category.service';
 import { ProdutosService } from '../../../services/produtos/produtos.service';
 
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
-import { Validacao } from 'app/utils/validacao';
-import { ProductModel, Photo } from 'app/core/models/product.model';
-import { CurrencyUtils } from 'app/utils/currency-utils';
-import { tiposDeAlert } from 'app/enumerable/tipos_de_alert.enum';
+import { Validacao } from '../../../utils/validacao';
+import { ProductModel, Photo } from '../../../core/models/product.model';
+import { CurrencyUtils } from '../../../utils/currency-utils';
+import { tiposDeAlert } from '../../../enumerable/tipos_de_alert.enum';
+import { SubCategoriaService } from '../../../services/subCategoria/sub-categoria.service';
+
 
 @Component({
   selector: 'app-cadastro-produto',
@@ -26,11 +28,14 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
   showCropper = false;
   fileToUpload: File = null;
   errors: any;
+  subCategoriaId
+
   constructor(private fb: FormBuilder,
     private produtoService: ProdutosService,
     private categoryService: categoryService,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
+    public subCategoriaService: SubCategoriaService
   ) { super(); }
 
   ngOnInit(): void {
@@ -42,6 +47,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
 
     this.produtoForm = this.fb.group({
       categoryId: [Number, [Validators.required]],
+      subCategoriaId: [Number, [Validators.required]],
       title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
       shortDescription: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(1000)]],
       sale: [false, [Validacao.Sale]],
@@ -49,14 +55,17 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
       img: [''],
       brand: ['', [Validators.required]],
       price: ['', [Validators.required]],
-      //ativo: [true]
     });
     if (this.config.data.id) {
       this.produtoService.getProduct(this.config.data.id).subscribe(
-        (product:ProductModel) => {
-          delete product.category
-          this.editar(product)
+        (product: ProductModel) => {
+          delete product.category;
+          delete product.subCategoria;
           this.produto = product;
+          this.imageChangedEvent = product.img
+          this.changeCategory(product.categoryId).then(resposta => {
+            if (resposta) this.editar(product);
+          });
         })
     } else {
       this.produtoForm.controls['salePrice'].setValue("0.00")
@@ -72,6 +81,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
       salePrice: CurrencyUtils.DecimalParaString(produto.salePrice),
       brand: produto.brand,
       price: CurrencyUtils.DecimalParaString(produto.price),
+      subCategoriaId: produto.subCategoriaId
     });
   }
 
@@ -86,10 +96,12 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
       this.produto = Object.assign({}, this.produto, this.produtoForm.value);
 
       this.produto.categoryId = Number(this.produto.categoryId)
+      this.produto.subCategoriaId = Number(this.produto.subCategoriaId)
       this.produto.price = CurrencyUtils.StringParaDecimal(this.produto.price)
       this.produto.salePrice = CurrencyUtils.StringParaDecimal(this.produto.salePrice);
 
       if (this.config.data.id) {
+        this.produto.img = this.imageChangedEvent;
         this.produtoService.atualizarProduto(this.produto)
           .subscribe(
             (produto: ProductModel) => {
@@ -155,5 +167,18 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
   loadImageFailed() {
     this.errors.push('O formato do arquivo  não é aceito.');
   }
+
+  changeCategory(item): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.subCategoriaService.getProduct(item).
+        subscribe(resp => {
+          this.subCategoria = resp
+        }, error => reject(false)
+          , () => {
+            resolve(true)
+          })
+    });
+  }
+
 }
 

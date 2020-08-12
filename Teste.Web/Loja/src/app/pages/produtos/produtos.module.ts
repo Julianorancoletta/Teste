@@ -9,8 +9,9 @@ import { ListaComponent } from './lista/lista.component';
 import { TableModule } from 'primeng/table';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BrMaskerModule } from 'br-mask';
-import { ProdutoResolve } from 'app/services/produtos/produtos.resolve';
-import { ComponentsModule } from 'app/component/components.module';
+import { ProdutoResolve } from '../../services/produtos/produtos.resolve';
+import { ComponentsModule } from '../../component/components.module';
+import { SubCategoriaService } from '../../services/subCategoria/sub-categoria.service';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ComponentsModule } from 'app/component/components.module';
     DynamicDialogModule
   ],
   providers: [
-    ProdutoResolve
+    ProdutoResolve,
+    SubCategoriaService
   ]
 })
 export class ProdutosModule { }

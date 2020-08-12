@@ -20,11 +20,20 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label">Categoria</label>
-                    <select class="form-control" id="categoryId" formControlName="categoryId" [ngClass]="{'is-invalid': displayMessage.categoryId }">
+                    <select class="form-control" id="categoryId" formControlName="categoryId"  (change)="changeCategory($event.target.value)" [ngClass]="{'is-invalid': displayMessage.categoryId }">
                         <option *ngFor="let item of category" value="{{ item.id }}">{{ item.description }}</option>
                     </select>
                     <span class="text-danger" *ngIf="displayMessage.categoryId">
                         <p [innerHTML]="displayMessage.categoryId"></p>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Sub Categoria</label>
+                    <select class="form-control" id="subCategoriaId" formControlName="subCategoriaId" [ngClass]="{'is-invalid': displayMessage.subCategoriaId }">
+                        <option *ngFor="let item of subCategoria" value="{{ item.id }}">{{ item.nome }}</option>
+                    </select>
+                    <span class="text-danger" *ngIf="displayMessage.subCategoriaId">
+                        <p [innerHTML]="displayMessage.subCategoriaId"></p>
                     </span>
                 </div>
                 <div class="form-group">

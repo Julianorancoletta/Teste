@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { car } from 'app/component/car/car';
+import { car } from '../../component/car/car';
 import { Router } from '@angular/router';
-import { Category } from 'app/core/models/category.model';
-import { categoryService } from 'app/services/catefory/category.service';
+import { Category } from '../../core/models/category.model';
+import { categoryService } from '../../services/catefory/category.service';
 
 
 

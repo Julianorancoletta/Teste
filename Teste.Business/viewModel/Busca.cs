@@ -11,6 +11,7 @@ namespace Teste.Business.viewModel
         public string ItemBuscado { get; set; }
         public string range { get; set; }
         public string categoria { get; set; }
+        public string subCategoria { get; set; }
         public DateTime date { get; set; }
 
     }

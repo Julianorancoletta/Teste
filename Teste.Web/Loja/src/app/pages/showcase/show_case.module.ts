@@ -8,7 +8,7 @@ import localePt from '@angular/common/locales/pt';
 import { ProdutosService } from '../../services/produtos/produtos.service';
 import { ShowCaseComponent } from './show_case.component';
 import { ShowcaseRoutesModule } from './show_case.routes';
-import { ComponentsModule } from 'app/component/components.module';
+import { ComponentsModule } from '../../component/components.module';
 registerLocaleData(localePt);
 
 

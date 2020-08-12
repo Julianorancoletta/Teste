@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProdutosService } from '../../../services/produtos/produtos.service';
-import { ProductModel } from 'app/core/models/product.model';
+import { ProductModel } from '../../../core/models/product.model';
+
 
 
 class ImageSnippet {

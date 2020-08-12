@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './navigation/nav-menu/nav-menu.component';
 import { AppRoutingModule } from './app.routing.module';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +11,7 @@ import { ProdutosModule } from './pages/produtos/produtos.module';
 import { FormsModule } from '@angular/forms';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { DropdownModule } from 'primeng/dropdown';
+import { NavMenuComponent } from './navigation/nav-menu/nav-menu.component';
 
 @NgModule({
   declarations: [

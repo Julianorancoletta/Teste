@@ -3,8 +3,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProdutosService } from '../../services/produtos/produtos.service';
 
 import { ActivatedRoute } from '@angular/router';
-import { busca } from 'app/core/models/busca.model';
-import { ProductModel } from 'app/core/models/product.model';
+import { busca } from '../../core/models/busca.model';
+import { ProductModel } from '../../core/models/product.model';
 
 @Component({
   selector: 'app-showcase',
@@ -24,8 +24,8 @@ export class ShowCaseComponent {
       this.Busca = new busca
       this.produtos = this.route.snapshot.data['Product'];
       this.Busca.ItemBuscado = params.id ? params.id : " ";
+      this.Busca.subCategoria = params.subCategoria ? params.subCategoria : " ";
       this.Busca.categoria = params.categoria ? params.categoria :" " 
-
     });    
   }
 

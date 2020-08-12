@@ -2,8 +2,8 @@ import { ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { Observable, fromEvent, merge } from 'rxjs';
-import { DisplayMessage, GenericValidator, ValidationMessages } from 'app/utils/generic-form-validation';
-import { tiposDeAlert } from 'app/enumerable/tipos_de_alert.enum';
+import { DisplayMessage, GenericValidator, ValidationMessages } from '../../utils/generic-form-validation';
+import { tiposDeAlert } from '../../enumerable/tipos_de_alert.enum';
 
 
 

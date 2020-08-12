@@ -28,7 +28,8 @@
                   (mouseover)="buscarMarcas(item.id)">{{item.description}}</a>
                 <ul class="dropdown-menu">
                   <li class="dropdown-item">
-                    <a *ngFor="let item of subCategoria" class="dropdown-item" id="title" tabindex="-1" href="#">
+                    <a *ngFor="let item of subCategoria" class="dropdown-item" 
+                    [routerLink]="['/showcase',{subCategoria:item.nome},'']" id="title" tabindex="-1" href="#">
                       {{ item.nome }}
                     </a>
                   </li>

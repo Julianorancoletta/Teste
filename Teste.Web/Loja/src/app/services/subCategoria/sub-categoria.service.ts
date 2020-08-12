@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'environments/environment';
-
-
-
-
+import { environment } from '../../../environments/environment'
+import { Observable } from 'rxjs';
+import { SubCategoria } from '../../core/models/category.model';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProdutosService {
-    protected readonly url = `${environment.api}/product`;
-    protected readonly img = `${environment.api}/product/upload`;
+export class SubCategoriaService {
+    protected readonly url = `${environment.api}/SubCategoria`;  
 
     constructor(private http: HttpClient) {
     }
@@ -24,9 +21,9 @@ export class ProdutosService {
         };
     }
 
-    getProduct(id: string) {
+    getProduct(id: string):Observable<SubCategoria[]> {
         return this.http
-            .get(`${this.url}/${id}`, this.ObterHeaderJson());
+            .get<SubCategoria[]>(`${this.url}/${id}`, this.ObterHeaderJson());
     }
 
 }
