@@ -1,6 +1,7 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
+import { LoaderComponent } from './component/loader/loader.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
         path: 'showcase',
         loadChildren: () => import('./pages/showcase/show_case.module')
             .then(m => m.ShowcaseModule)
+    },    
+    {
+        path: 'loading',
+        component: LoaderComponent
     },
 ];
 

@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { Category } from '../../core/models/category.model';
 import { categoryService } from '../../services/catefory/category.service';
 
-
-
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',

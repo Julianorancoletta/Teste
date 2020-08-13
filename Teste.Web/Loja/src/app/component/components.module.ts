@@ -10,6 +10,9 @@ import { ToastModule } from 'primeng/toast';
 import { ToastComponent } from './toast/toast.component';
 import { SearchComponent } from './search/search.component';
 import { BiggerSmallerComponent } from './checkbox/bigger-smaller/bigger-smaller.component';
+import { LoaderComponent } from './loader/loader.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderService } from './loader/loader.services';
 
 @NgModule({
   declarations: [
@@ -17,20 +20,27 @@ import { BiggerSmallerComponent } from './checkbox/bigger-smaller/bigger-smaller
     ToastDeleteComponent,
     ToastComponent,
     SearchComponent,
-    BiggerSmallerComponent
+    BiggerSmallerComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     ToastModule,
+    MatProgressSpinnerModule
+
   ],
-  providers: [car],
+  providers: [
+    car,
+    LoaderService
+  ],
   bootstrap: [],
   exports: [
     BiggerSmallerComponent,
     ToastDeleteComponent,
     CarComponent,
-    ToastComponent
+    ToastComponent,
+    LoaderComponent
   ],
 })
 export class ComponentsModule { }
