@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using X.PagedList;
 
 namespace Teste.Business.viewModel
 {
@@ -19,4 +21,12 @@ namespace Teste.Business.viewModel
         public string subCategoria { get; set; }
         public string img { get; set; }
     }
+
+    public class ProductList
+    {
+        public IPagedList<productView> product { get; set; }
+        public int numPagina { get; set; }
+    }
+
+
 }

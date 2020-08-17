@@ -10,6 +10,7 @@ using Teste.Business.Intefaces;
 using Teste.Business.Models;
 using Teste.Business.viewModel;
 using Teste.Data.Context;
+using X.PagedList;
 
 namespace Teste.Web.Controllers
 {
@@ -29,9 +30,9 @@ namespace Teste.Web.Controllers
         
         // GET: api/Product
         [HttpGet]
-        public async Task<List<productView>> Get([FromQuery] Busca busca)
+        public ProductList Get([FromQuery] Busca busca)
         {
-            return await _IProduct.GetProduct(busca);
+            return _IProduct.GetProduct(busca);
         }
 
 

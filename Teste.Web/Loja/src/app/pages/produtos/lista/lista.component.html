@@ -2,7 +2,7 @@
 
 <button type="button" class="btn btn-outline-primary" (click)="cadastro()">Cadastro</button>
 
-<p-table [columns]="cols" [lazy]="true" [value]="products" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+<p-table [columns]="cols" [lazy]="true" [value]="products" [rows]="10" [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [loading]="loading">
     <ng-template pTemplate="header" let-columns>
         <tr>

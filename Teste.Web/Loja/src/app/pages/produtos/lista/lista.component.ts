@@ -5,7 +5,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CadastroProdutoComponent } from '../cadastro-produto/cadastro-produto.component';
 import { MessageService } from 'primeng/api';
 import { busca } from '../../../core/models/busca.model';
-import { ProductModel } from '../../../core/models/product.model';
+import { ProductModel, listProduct } from '../../../core/models/product.model';
 
 
 @Component({
@@ -44,8 +44,8 @@ export class ListaComponent implements OnInit {
 
   listaProdutos() {
     this.loading = true;
-    this.produtoService.getProducts(this.Busca).subscribe(listProdutos => {
-      this.products = listProdutos
+    this.produtoService.getProducts(this.Busca).subscribe((listProdutos:listProduct) => {
+      this.products = listProdutos.product
     }, error => console.log(error)
       , () => {
         this.loading = false;

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { ProductModel} from '../../../app/core/models/product.model';
+import { ProductModel, listProduct} from '../../../app/core/models/product.model';
 import { busca } from '../../../app/core/models/busca.model';
 import { ProdutosService } from './produtos.service';
 
 @Injectable()
-export class ProdutoResolve implements Resolve<ProductModel[]> {
+export class ProdutoResolve implements Resolve<listProduct> {
     Busca:busca 
     constructor(private produtoService: ProdutosService) { }
 

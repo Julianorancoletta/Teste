@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment'
-import { ProductModel, Photo } from '../../../app/core/models/product.model';
+import { ProductModel, Photo, listProduct } from '../../../app/core/models/product.model';
 import { Observable } from 'rxjs';
 import { busca } from '../../../app/core/models/busca.model';
 
@@ -25,14 +25,16 @@ export class ProdutosService {
     };
   }
 
-  getProducts(Busca:busca): Observable<ProductModel[]> {
+  getProducts(Busca:busca): Observable<listProduct> {
     const params = new HttpParams()
     .set('ItemBuscado', Busca.ItemBuscado)
     .set('order', Busca.order.toString())
     .set('categoria', Busca.categoria)
     .set('subCategoria',Busca.subCategoria)
+    .set('numeroPagina', Busca.numeroPagina.toString())
+    .set('itensPorPagina',Busca.itensPorPagina.toString())
     return this.http
-      .get<ProductModel[]>(`${this.url}?${params}`, this.ObterHeaderJson());
+      .get<listProduct>(`${this.url}?${params}`, this.ObterHeaderJson());
   }
 
   getProduct(id: string): Observable<ProductModel> {

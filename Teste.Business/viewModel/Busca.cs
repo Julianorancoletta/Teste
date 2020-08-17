@@ -14,5 +14,8 @@ namespace Teste.Business.viewModel
         public string subCategoria { get; set; }
         public DateTime date { get; set; }
 
+        public int numeroPagina { get; set; }
+        public int itensPorPagina { get; set; }
+
     }
 }

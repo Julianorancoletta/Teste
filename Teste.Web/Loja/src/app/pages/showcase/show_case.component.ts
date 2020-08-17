@@ -4,7 +4,7 @@ import { ProdutosService } from '../../services/produtos/produtos.service';
 
 import { ActivatedRoute } from '@angular/router';
 import { busca } from '../../core/models/busca.model';
-import { ProductModel } from '../../core/models/product.model';
+import { ProductModel, listProduct } from '../../core/models/product.model';
 
 @Component({
   selector: 'app-showcase',
@@ -15,6 +15,7 @@ import { ProductModel } from '../../core/models/product.model';
 export class ShowCaseComponent {
 
   produtos: ProductModel[];
+  listaProduto : listProduct;
   Busca: busca;
 
   constructor(
@@ -22,7 +23,8 @@ export class ShowCaseComponent {
     private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.Busca = new busca
-      this.produtos = this.route.snapshot.data['Product'];
+      this.listaProduto = this.route.snapshot.data['Product'];
+      this.produtos = this.listaProduto.product;
       this.Busca.ItemBuscado = params.id ? params.id : " ";
       this.Busca.subCategoria = params.subCategoria ? params.subCategoria : " ";
       this.Busca.categoria = params.categoria ? params.categoria :" " 
@@ -36,8 +38,8 @@ export class ShowCaseComponent {
   }
 
   loaderProducts() {
-    this.produtoService.getProducts(this.Busca).subscribe(listProdutos => {
-      this.produtos = listProdutos
+    this.produtoService.getProducts(this.Busca).subscribe((listProdutos:listProduct) => {
+      this.produtos = listProdutos.product
     }, error => console.log(error))
   }
 
