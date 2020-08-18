@@ -16,13 +16,13 @@
         <p class="order-price"><span id="title">SubTotal:</span>
           {{ cars.GetTotal() | currency:'BRL':true:'1.2-2':'pt' }}</p>
       </div>
-
-      <div class="carrinho-vazio" *ngSwitchCase="false">
-        <span id="title" class="text-center"><img id="cesta" class="text-center"
-            src="assets/img/shopping_basket-24px.svg" alt="Cesta de compras">
-          Você ainda não tem produtos no seu carrinho
-        </span>
-      </div>
     </div>
-
+    
+    <div class="carrinho-vazio" *ngSwitchCase="false">
+      <span id="title" class="text-center"><img id="cesta" class="text-center" src="assets/img/shopping_basket-24px.svg"
+          alt="Cesta de compras">
+        Você ainda não tem produtos no seu carrinho
+      </span>
+    </div>
   </div>
+</div>

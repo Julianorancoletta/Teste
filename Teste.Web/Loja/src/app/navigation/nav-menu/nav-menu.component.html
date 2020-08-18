@@ -25,7 +25,7 @@
                 <a id="title" *ngFor="let item of Category" tabindex="-1" class="dropdown-item"
                   routerLinkActive="active"
                   [routerLink]="['/showcase',{categoria:item.description},'']"
-                  (mouseover)="buscarMarcas(item.id)">{{item.description}}</a>
+                  (mouseover)="buscarMarcas(item.id)">{{ item.description }}</a>
                 <ul class="dropdown-menu">
                   <li class="dropdown-item">
                     <a *ngFor="let item of subCategoria" class="dropdown-item" 
