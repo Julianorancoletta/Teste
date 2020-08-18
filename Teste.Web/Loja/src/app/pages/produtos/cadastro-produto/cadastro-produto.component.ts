@@ -151,11 +151,16 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
   }
 
   fileChangeEvent(files: FileList): void {
-
+    if (files.item(0).type && files.item(0).type.indexOf('image') === -1) {
+      console.log('File is not an image.', files.item(0).type, files.item(0));
+      return;
+    }
+    
     this.photo = new Photo
     this.photo.file = files.item(0)
-    // this.imageChangedEvent = event;
-    // this.imagemNome = event.currentTarget.files[0].name;
+    const reader = new FileReader();
+
+    debugger
   }
   sale() {
     return this.produtoForm.controls.sale.value

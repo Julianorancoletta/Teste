@@ -7,6 +7,7 @@ export class CurrencyUtils {
     }
 
     public  static DecimalParaString(input): any {
+        debugger
         var ret = (input) ? input.toString().replace(".", ",") : null;
         if (ret) {
             var decArr = ret.split(",");

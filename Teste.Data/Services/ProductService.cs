@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,10 +53,12 @@ namespace Teste.Data.Services
             if (!string.IsNullOrEmpty(busca.subCategoria)) list = list.Where(x => x.subCategoria == busca.subCategoria);
             list = busca.order > 0 ? list.OrderByDescending(x => x.price) : list.OrderBy(x => x.price);
 
+            decimal numpagina = (list.Count() / busca.itensPorPagina);
+
             ProductList productList = new ProductList
             {
                 product = list.ToPagedList(busca.numeroPagina, busca.itensPorPagina),
-                numPagina = (list.Count() / busca.itensPorPagina)
+                numPagina = numpagina > 0 ? (int)Math.Ceiling(numpagina) : 1
             };
 
             return productList;
