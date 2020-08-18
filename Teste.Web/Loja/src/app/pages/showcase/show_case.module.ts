@@ -1,3 +1,4 @@
+import { DataViewModule } from 'primeng/dataview';
 import { NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.component';
@@ -23,7 +24,8 @@ registerLocaleData(localePt);
     RouterModule,
     CardModule,
     ShowcaseRoutesModule,
-    CommonModule
+    CommonModule,
+    DataViewModule
   ],
   providers: [
     ProdutosService

@@ -1,14 +1,55 @@
-<div class="container">
-    <div class="row">
-        <div class="row justify-content-between">
-            <div>
-                <app-bigger-smaller (change)="order($event.target.value)"></app-bigger-smaller>
-            </div>
-        </div>
-    </div>
-    <div class="card-deck mb-3 text-center">
-        <ng-container *ngFor="let produto of produtos">
-            <app-lista-produtos [produto]="produto"></app-lista-produtos>
-        </ng-container>
-    </div>
+<div class="content-section implementation">
+	<div class="row">
+		<div class="col-md-5">
+			<app-bigger-smaller (change)="order($event.target.value)"></app-bigger-smaller>
+		</div>
+		<div class="col-md-5"></div>
+		<div class="col-md-2">
+			<button type="button" class="btn btn-light" id="butListar" (click)="listar()">
+				<i class="fa fa-list" aria-hidden="true"></i> | <i class="fa fa-columns" aria-hidden="true"></i>
+			</button>
+		</div>
+	</div>
+
+	<div class="card">
+		<div [ngSwitch]="list" class="row">
+
+			<div *ngFor="let product of produtos" class="col-md-12">
+				<div *ngSwitchCase="true">
+					<div class="product-list-item">
+						<img [src]="product.img" [alt]="product.title" />
+						<div class="product-list-detail">
+							<div class="product-name" id="title">{{ product.title }}</div>
+							<div class="product-description">{{ product.shortDescription }}</div>
+						</div>
+						<div class="product-list-action">
+							<span class="product-price">${{ product.price }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div *ngFor="let product of produtos" class="col-md-4">
+				<div *ngSwitchCase="false">
+
+					<div class="product-grid-item card">
+						<div class="product-grid-item-top">
+							<div>
+								<i class="pi pi-tag product-category-icon"></i>
+								<span class="product-category">{{ product.category }}</span>
+							</div>
+						</div>
+						<div class="product-grid-item-content">
+							<img [src]="product.img" [alt]="product.title" />
+							<div class="product-name" id="title">{{ product.title }}</div>
+							<div class="product-description">{{ product.description }}</div>
+						</div>
+						<div class="product-grid-item-bottom">
+							<span class="product-price">${{ product.price }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

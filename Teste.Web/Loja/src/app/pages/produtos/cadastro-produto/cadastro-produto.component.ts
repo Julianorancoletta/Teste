@@ -1,18 +1,14 @@
 import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
-
 import { FormControlName, FormBuilder, Validators } from '@angular/forms';
 import { ProdutoBaseComponent } from '../produto-form.base.component';
-
 import { categoryService } from '../../../services/catefory/category.service';
 import { ProdutosService } from '../../../services/produtos/produtos.service';
-
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { Validacao } from '../../../utils/validacao';
 import { ProductModel, Photo } from '../../../core/models/product.model';
 import { CurrencyUtils } from '../../../utils/currency-utils';
 import { tiposDeAlert } from '../../../enumerable/tipos_de_alert.enum';
 import { SubCategoriaService } from '../../../services/subCategoria/sub-categoria.service';
-
 
 @Component({
   selector: 'app-cadastro-produto',
@@ -22,13 +18,12 @@ import { SubCategoriaService } from '../../../services/subCategoria/sub-categori
 export class CadastroProdutoComponent extends ProdutoBaseComponent implements OnInit {
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
-
   imageChangedEvent: any = '';
   id: number
   showCropper = false;
   fileToUpload: File = null;
   errors: any;
-  subCategoriaId
+  subCategoriaId;
 
   constructor(private fb: FormBuilder,
     private produtoService: ProdutosService,
@@ -92,9 +87,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
 
   adicionarProduto() {
     if (this.produtoForm.dirty && this.produtoForm.valid) {
-
       this.produto = Object.assign({}, this.produto, this.produtoForm.value);
-
       this.produto.categoryId = Number(this.produto.categoryId)
       this.produto.subCategoriaId = Number(this.produto.subCategoriaId)
       this.produto.price = CurrencyUtils.StringParaDecimal(this.produto.price)
@@ -155,16 +148,16 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
       console.log('File is not an image.', files.item(0).type, files.item(0));
       return;
     }
-    
+
     this.photo = new Photo
     this.photo.file = files.item(0)
     const reader = new FileReader();
-
-    debugger
   }
+
   sale() {
     return this.produtoForm.controls.sale.value
   }
+
   imageLoaded() {
     this.showCropper = true;
   }
@@ -176,12 +169,11 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
   changeCategory(item): Promise<boolean> {
     return new Promise((resolve, reject) => {
       this.subCategoriaService.getProduct(item).
-        subscribe(resp => {
-          this.subCategoria = resp
-        }, error => reject(false)
-          , () => {
-            resolve(true)
-          })
+      subscribe(
+        resp => { this.subCategoria = resp }, 
+        error => reject(false),
+        () => { resolve(true) }
+      )
     });
   }
 

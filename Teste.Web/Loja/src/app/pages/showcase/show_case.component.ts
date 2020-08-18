@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-
 import { ProdutosService } from '../../services/produtos/produtos.service';
-
 import { ActivatedRoute } from '@angular/router';
 import { busca } from '../../core/models/busca.model';
 import { ProductModel, listProduct } from '../../core/models/product.model';
@@ -9,11 +7,13 @@ import { ProductModel, listProduct } from '../../core/models/product.model';
 @Component({
   selector: 'app-showcase',
   templateUrl: './show_case.component.html',
-  styleUrls: ['./show_case.component.css'],
+  styleUrls: ['./show_case.component.scss'],
 
 })
+
 export class ShowCaseComponent {
 
+  list: boolean = false;
   produtos: ProductModel[];
   listaProduto : listProduct;
   Busca: busca;
@@ -31,8 +31,12 @@ export class ShowCaseComponent {
     });    
   }
 
+  listar() {
+    debugger
+    this.list = this.list == false ? true : false;
+  }
+
   order(value) {
-    
     this.Busca.order = value
     this.loaderProducts();
   }
