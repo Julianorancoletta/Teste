@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-	<div class="card">
+	<div class="card generalCard">
 		<div [ngSwitch]="list" class="row">
 
 			<div *ngFor="let product of produtos" class="col-md-12">
@@ -31,7 +31,6 @@
 
 			<div *ngFor="let product of produtos" class="col-md-4">
 				<div *ngSwitchCase="false">
-
 					<div class="product-grid-item card">
 						<div class="product-grid-item-top">
 							<div>
@@ -41,11 +40,22 @@
 						</div>
 						<div class="product-grid-item-content">
 							<img [src]="product.img" [alt]="product.title" />
-							<div class="product-name" id="title">{{ product.title }}</div>
+							<div class="product-name" id="title">{{ product.title.toUpperCase() }}</div>
 							<div class="product-description">{{ product.description }}</div>
 						</div>
-						<div class="product-grid-item-bottom">
-							<span class="product-price">${{ product.price }}</span>
+						<div class="product-grid-item-bottom" [ngSwitch]="product.sale">
+							<ng-container *ngSwitchCase="true">
+								<span class="product-price">
+									<strike>{{ product.price | currency:'BRL':true:'1.2-2':'pt' }}</strike>
+									{{ product.salePrice | currency:'BRL':true:'1.2-2':'pt' }}
+								</span>
+							</ng-container>
+							<ng-container *ngSwitchCase="false">
+								<span class="product-price">
+									{{ product.price | currency:'BRL':true:'1.2-2':'pt' }}
+								</span>
+							</ng-container>
+							<!-- ${{ product.price }}</span> -->
 						</div>
 					</div>
 				</div>

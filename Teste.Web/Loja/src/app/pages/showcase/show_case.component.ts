@@ -32,7 +32,6 @@ export class ShowCaseComponent {
   }
 
   listar() {
-    debugger
     this.list = this.list == false ? true : false;
   }
 
@@ -46,7 +45,4 @@ export class ShowCaseComponent {
       this.produtos = listProdutos.product
     }, error => console.log(error))
   }
-
-
-
 }
