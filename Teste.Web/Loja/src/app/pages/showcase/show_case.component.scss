@@ -95,9 +95,8 @@
     }
     
     .product-grid-item {
-        // width: 33%;
+        padding: 1rem;
         margin: .5em;
-        // border: 1px solid #dee2e6;
     
         .product-grid-item-top,
         .product-grid-item-bottom {
@@ -107,7 +106,7 @@
         }
     
         img {
-            height: 10rem;
+            height: 6rem;
             width: auto;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
             margin: 2rem 0;
@@ -157,4 +156,13 @@
 			width: 100%;
 		}
 	}
+}
+
+.card {
+    border: none;
+}
+
+.product-grid-item:hover {
+    border: 1px solid rgba(71, 61, 139, 0.568);
+    box-shadow: darkslateblue 1px 1px 5px;
 }

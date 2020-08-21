@@ -29,7 +29,7 @@
 				</div>
 			</div>
 
-			<div *ngFor="let product of produtos" class="col-md-4">
+			<div *ngFor="let product of produtos" class="col-md-3">
 				<div *ngSwitchCase="false">
 					<div class="product-grid-item card">
 						<div class="product-grid-item-top">
@@ -55,7 +55,6 @@
 									{{ product.price | currency:'BRL':true:'1.2-2':'pt' }}
 								</span>
 							</ng-container>
-							<!-- ${{ product.price }}</span> -->
 						</div>
 					</div>
 				</div>
