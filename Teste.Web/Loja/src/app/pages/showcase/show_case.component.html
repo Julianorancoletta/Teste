@@ -11,7 +11,11 @@
 		</div>
 	</div>
 
-	<div class="card generalCard">
+	<div class="card generalCard" 
+		infiniteScroll
+		[infiniteScrollDistance]="2"
+		[infiniteScrollThrottle]="50"
+		(scrolled)="onScroll()">
 		<div [ngSwitch]="list" class="row">
 
 			<div *ngFor="let product of produtos" class="col-md-12">

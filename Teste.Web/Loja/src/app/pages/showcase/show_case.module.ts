@@ -10,8 +10,8 @@ import { ProdutosService } from '../../services/produtos/produtos.service';
 import { ShowCaseComponent } from './show_case.component';
 import { ShowcaseRoutesModule } from './show_case.routes';
 import { ComponentsModule } from '../../component/components.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 registerLocaleData(localePt);
-
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ registerLocaleData(localePt);
     CardModule,
     ShowcaseRoutesModule,
     CommonModule,
-    DataViewModule
+    DataViewModule,
+    InfiniteScrollModule
   ],
   providers: [
     ProdutosService

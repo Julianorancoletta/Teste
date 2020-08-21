@@ -32,6 +32,7 @@
     "jquery": "^3.5.1",
     "js-brasil": "^2.1.0",
     "ng-brazil": "^2.0.10",
+    "ngx-infinite-scroll": "^9.0.0",
     "oidc-client": "^1.10.1",
     "popper.js": "^1.16.1",
     "primeflex": "^2.0.0-rc.1",

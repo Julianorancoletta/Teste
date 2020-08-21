@@ -5,7 +5,7 @@ export class busca {
     categoria:string = ""
     subCategoria:string = ""
     date:Date;
-    itensPorPagina:number = 5;
+    itensPorPagina:number = 8;
     numeroPagina:number = 1;
 
 }
