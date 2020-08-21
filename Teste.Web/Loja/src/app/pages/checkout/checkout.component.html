@@ -29,7 +29,8 @@
                             <span>{{ (selected.shortDescription.length>36) ? (selected.shortDescription | slice:0:36) + '...' : (selected.shortDescription) }}</span>
                         </div>
                         <div class="col-md-1">
-                            <span><input #num id="quant" type="number" value="{{selected.num}}" (blur)="cars.quantiy(selected,num.value)"></span>
+                            <span><input #num id="quant" type="number" value="{{selected.num}}"
+                                    (blur)="cars.quantiy(selected,num.value)"></span>
                         </div>
                         <div class="col-md-2">
                             <span>{{ selected.price  * selected.num | currency:'BRL':true:'1.2-2':'pt' }}</span>
@@ -68,14 +69,16 @@
                         </div>
                     </div>
                     <p class="resu">Frete: <span class="text-success"><strong>Grátis</strong></span></p>
-                    <button type="button" class="btn btn-light"><span id="title"><strong>Calcular</strong></span></button>
+                    <button type="button" class="btn btn-light"><span
+                            id="title"><strong>Calcular</strong></span></button>
                 </div>
-            </div>  
+            </div>
         </div>
-        
-        
+
+
         <div *ngSwitchCase="false">
-            <h1 class="text-center" id="title"><i class="fa fa-frown-o" aria-hidden="true"></i> Nenum produto encontrado</h1>
+            <h1 class="text-center" id="title"><i class="fa fa-frown-o" aria-hidden="true"></i> Nenum produto encontrado
+            </h1>
         </div>
     </ng-container>
 </div>
