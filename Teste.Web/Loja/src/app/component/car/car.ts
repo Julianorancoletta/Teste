@@ -1,6 +1,5 @@
 import { Injectable, EventEmitter, Output, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 
-
 @Injectable()
 export class car {
 

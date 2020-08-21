@@ -2,7 +2,6 @@ import { DataViewModule } from 'primeng/dataview';
 import { NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.component';
-import { ListaProdutosComponent } from './lista-produto/lista-produto.component';
 import { CardModule } from 'primeng/card';
 import { RouterModule } from '@angular/router';
 import localePt from '@angular/common/locales/pt';
@@ -16,7 +15,6 @@ registerLocaleData(localePt);
 @NgModule({
   declarations: [
     DetalhesProdutoComponent,
-    ListaProdutosComponent,
     ShowCaseComponent,
   ],
   imports: [

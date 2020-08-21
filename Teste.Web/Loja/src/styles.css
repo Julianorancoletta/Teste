@@ -24,3 +24,12 @@ code {
   color: darkslateblue !important;
   font-weight: bold;
 }
+
+html {
+  background-color: whitesmoke;
+}
+
+#conteudo {
+  background-color: white;
+  padding: 0.5rem;
+}

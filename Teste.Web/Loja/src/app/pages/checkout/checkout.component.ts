@@ -1,16 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { car } from 'src/app/component/car/car';
+import { Component } from '@angular/core';
+import { car } from '../../component/car/car';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
-export class CheckoutComponent implements OnInit {
 
+export class CheckoutComponent {
   constructor() { }
   cars = new car()
-  ngOnInit(): void {
-  }
-
 }

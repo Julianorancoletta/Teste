@@ -8,13 +8,37 @@ input {
 }
 
 .table-head {
-    font-size: 125%;
+    font-size: 115%;
 }
 
 #title {
-    margin-bottom: 4%;
+    font-weight: 400;
 }
 
 .entrega{
-    border: 1px solid darkslateblue;
+    margin-top: 3rem;
+}
+
+.resumo {
+    padding: 1rem;
+    color: white !important;
+    background-color: rgba(71, 61, 139, 0.863);
+}
+
+.resu {
+    color: white !important;
+    font-size: bold;
+}
+
+#quant {
+    max-width: 40px;
+}
+
+img {
+    height: 2rem;
+    width: auto;
+}
+
+th, td {
+    color: white;
 }

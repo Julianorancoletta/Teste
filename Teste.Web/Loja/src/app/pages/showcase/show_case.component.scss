@@ -104,6 +104,11 @@
             align-items: center;
             justify-content: space-between;
         }
+
+        .product-grid-item-bottom {
+            display: unset !important;
+            text-align: center;
+        }
     
         img {
             height: 6rem;
@@ -117,13 +122,10 @@
         }
     
         .product-price {
-            font-size: 1.5rem;
             font-weight: 600;
         }
     }
 }
-
-
 
 @media screen and (max-width: 576px) {
 	:host ::ng-deep .product-list-item {
@@ -158,6 +160,14 @@
 	}
 }
 
+#title {
+    font-size: 1rem !important;
+}
+
+.product-price {
+    font-size: 0.8rem !important;
+}
+
 .card {
     border: none;
 }
@@ -165,4 +175,12 @@
 .product-grid-item:hover {
     border: 1px solid rgba(71, 61, 139, 0.568);
     box-shadow: darkslateblue 1px 1px 5px;
+}
+
+#cesta {
+    height: 1.2rem;
+    width: 1.2rem;
+    margin: 0;
+    box-shadow: unset;
+    filter: invert(100%) sepia(0%) saturate(3363%) hue-rotate(240deg) brightness(111%) contrast(106%);
 }

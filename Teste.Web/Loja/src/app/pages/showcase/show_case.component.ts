@@ -3,21 +3,21 @@ import { ProdutosService } from '../../services/produtos/produtos.service';
 import { ActivatedRoute } from '@angular/router';
 import { busca } from '../../core/models/busca.model';
 import { ProductModel, listProduct } from '../../core/models/product.model';
+import { car } from '../../component/car/car';
 
 @Component({
   selector: 'app-showcase',
   templateUrl: './show_case.component.html',
   styleUrls: ['./show_case.component.scss'],
-
 })
 
 export class ShowCaseComponent {
-
   paginaAtual: number;
   list: boolean = false;
   produtos: ProductModel[];
   listaProduto: listProduct;
   Busca: busca;
+  cars: any = new car();
 
   constructor(
     private produtoService: ProdutosService,

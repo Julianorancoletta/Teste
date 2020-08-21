@@ -1,4 +1,4 @@
-<div class="content-section implementation">
+<div class="content-section implementation container-fluid" id="conteudo">
 	<div class="row">
 		<div class="col-md-5">
 			<app-bigger-smaller (change)="order($event.target.value)"></app-bigger-smaller>
@@ -50,8 +50,8 @@
 						<div class="product-grid-item-bottom" [ngSwitch]="product.sale">
 							<ng-container *ngSwitchCase="true">
 								<span class="product-price">
-									<strike>{{ product.price | currency:'BRL':true:'1.2-2':'pt' }}</strike>
-									{{ product.salePrice | currency:'BRL':true:'1.2-2':'pt' }}
+									De: <strike>{{ product.price | currency:'BRL':true:'1.2-2':'pt' }}</strike>
+									Por: {{ product.salePrice | currency:'BRL':true:'1.2-2':'pt' }}
 								</span>
 							</ng-container>
 							<ng-container *ngSwitchCase="false">
@@ -60,6 +60,11 @@
 								</span>
 							</ng-container>
 						</div>
+						<button (click)="cars.setCar(product)" type="button" class="btn btn-primary">
+							<img id="cesta" class="text-center" src="assets/img/shopping_basket-24px.svg" 
+							alt="Cesta de compras">
+							Comprar
+						</button>
 					</div>
 				</div>
 			</div>

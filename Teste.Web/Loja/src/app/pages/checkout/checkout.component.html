@@ -1,59 +1,81 @@
-<h3 class="text-center" id="title">Meu carrinho</h3>
-<ng-container [ngSwitch]="cars.TotalCart() > 0">
-    
-    <div *ngSwitchCase="true" class="meu-carrinho row">
-        <div class="tabela-checkout col-md-8">
-            <div class="row table-head">
-                <div class="col-md-2">
-                    <span>Produto</span>
+<div id="conteudo" class="container-fluid">
+    <h1 class="text-center" id="title">Meu carrinho</h1>
+    <ng-container [ngSwitch]="cars.TotalCart() > 0">
+        <div class="container">
+            <div *ngSwitchCase="true" class="meu-carrinho row">
+                <div class="tabela-checkout col-md-12">
+                    <div class="row table-head">
+                        <div class="col-md-4">
+                            <span>Produto</span>
+                        </div>
+                        <div class="col-md-5">
+                            <span>Descrição</span>
+                        </div>
+                        <div class="col-md-1">
+                            <span>Quant</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span>Preço</span>
+                        </div>
+                    </div>
+                    <div *ngFor="let selected of cars.returnCar(); index as i" class="row table-body">
+                        <div class="col-md-1">
+                            <img src="{{ selected.img }}" alt="Imagem">
+                        </div>
+                        <div class="col-md-3">
+                            <span>{{ (selected.title.length>18) ? (selected.title | slice:0:18) + '...' : (selected.title) }}</span>
+                        </div>
+                        <div class="col-md-5">
+                            <span>{{ (selected.shortDescription.length>36) ? (selected.shortDescription | slice:0:36) + '...' : (selected.shortDescription) }}</span>
+                        </div>
+                        <div class="col-md-1">
+                            <span><input #num id="quant" type="number" value="{{selected.num}}" (blur)="cars.quantiy(selected,num.value)"></span>
+                        </div>
+                        <div class="col-md-2">
+                            <span>{{ selected.price  * selected.num | currency:'BRL':true:'1.2-2':'pt' }}</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <span>Descrição</span>
-                </div>
-                <div class="col-md-2">
-                    <span>Quant</span>
-                </div>
-                <div class="col-md-2">
-                    <span>Preço</span>
-                </div>
+
             </div>
-            <div *ngFor="let selected of cars.returnCar(); index as i" class="row table-body">
-                <div class="col-md-2">
-                    <span>{{selected.title}}</span>
-                </div>
+            <div class="row entrega">
                 <div class="col-md-6">
-                    <span>{{selected.shortDescription}}</span>
+                    <h1 class="text-center" id="title">Especificações</h1>
                 </div>
-                <div class="col-md-2">
-                    <span><input #num type="number" value="{{selected.num}}" (blur)="cars.quantiy(selected,num.value)"></span>
+                <div class="col-md-6 resumo">
+                    <h1 class="text-center resu">Resumo do pedido</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Disponibilidade</th>
+                                <th scope="col">SubTotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ cars.TotalCart() }} Produto</td>
+                                <td>Em estoque</td>
+                                <td>{{ cars.GetTotal() | currency:'BRL':true:'1.2-2':'pt' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="form-group row">
+                        <label for="frete" class="col-md-6 col-form-label">Calcule o frete:</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="frete" placeholder="00000-000">
+                        </div>
+                    </div>
+                    <p class="resu">Frete: <span class="text-success"><strong>Grátis</strong></span></p>
+                    <button type="button" class="btn btn-light"><span id="title"><strong>Calcular</strong></span></button>
                 </div>
-                <div class="col-md-2">
-                    <span>{{ selected.price  * selected.num | currency:'BRL':true:'1.2-2':'pt' }}</span>
-                </div>
-            </div>
+            </div>  
         </div>
-        <div class="entrega col-md-4">
-            <h5 id="title" class="text-center">Resumo do pedido</h5>
-            <div class="resumo row">
-                <div class="col-md-4">{{cars.TotalCart()}} Produto</div>
-                <div class="col-md-4">Em estoque</div>
-                <div class="col-md-4">{{cars.GetTotal() | currency:'BRL':true:'1.2-2':'pt' }}</div>
-            </div>
-            <div class="form-group row">
-                <label for="frete" class="col-md-6 col-form-label">Calcule o frete:</label>
-                <div class="col-md-6">
-                    <input type="text" class="form-control" id="frete" placeholder="00000-000">
-                </div>
-            </div>
-            <p id="title">Frete: <span class="text-success">Grátis</span></p>
-            <button type="submit" class="btn btn-primary">Calcular</button>
+        
+        
+        <div *ngSwitchCase="false">
+            <h1 class="text-center" id="title"><i class="fa fa-frown-o" aria-hidden="true"></i> Nenum produto encontrado</h1>
         </div>
-    </div>
-    <div *ngSwitchCase="false">
-        <h1>Nenum produto encontrado</h1>
-    </div>
-</ng-container>
-
-
-
-
+    </ng-container>
+</div>
