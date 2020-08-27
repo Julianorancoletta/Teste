@@ -28,7 +28,7 @@ export class car {
     }
     quantiy(item, num:number) {
         const product = this.get()
-        if (num == 0) {
+        if (num <= 0) {
             this.remove(item.id)
         } else {
             const productExistInCart = product.find(({ id }) => id == item.id);

@@ -4,32 +4,24 @@ import { ActivatedRoute } from '@angular/router';
 import { busca } from '../../core/models/busca.model';
 import { ProductModel, listProduct } from '../../core/models/product.model';
 import { car } from '../../component/car/car';
-
+import { searchComponent } from '../../component/search/search.component';
 @Component({
   selector: 'app-showcase',
   templateUrl: './show_case.component.html',
   styleUrls: ['./show_case.component.scss'],
 })
 
-export class ShowCaseComponent {
-  paginaAtual: number;
-  list: boolean = false;
-  produtos: ProductModel[];
-  listaProduto: listProduct;
-  Busca: busca;
+export class ShowCaseComponent extends searchComponent {
+
   cars: any = new car();
 
   constructor(
-    private produtoService: ProdutosService,
-    private route: ActivatedRoute) {
+    private produtoService: ProdutosService,private route: ActivatedRoute) {
+    super();
+   
     this.route.params.subscribe(params => {
-      this.paginaAtual = 1;
-      this.Busca = new busca
       this.listaProduto = this.route.snapshot.data['Product'];
-      this.produtos = this.listaProduto.product;
-      this.Busca.ItemBuscado = params.id ? params.id : " ";
-      this.Busca.subCategoria = params.subCategoria ? params.subCategoria : " ";
-      this.Busca.categoria = params.categoria ? params.categoria : " "
+      super.onInit(params);
     });
   }
 

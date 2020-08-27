@@ -63,6 +63,14 @@ namespace Teste.Data.Services
 
             return productList;
         }
+        public async Task<List<string>> busca(Busca busca)
+        {
+
+            var list = _context.Product.Where(x => x.title.StartsWith(busca.ItemBuscado)).Select(x => x.title).ToListAsync();
+
+
+            return await list;
+        }
 
         public async Task<Product> addProduct(Product product)
         {

@@ -12,7 +12,7 @@ export class WithProgressBarService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let url = req.url.split('/')
     .filter(filtro => {
-      return filtro == 'SubCategoria'
+      return filtro == 'SubCategoria' || filtro.match('busca') 
     })
     if (url.length > 0) {
       return next.handle(req);

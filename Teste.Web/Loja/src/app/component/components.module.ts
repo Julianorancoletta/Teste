@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 import { ToastDeleteComponent } from './toast-delete/toast-delete.component';
 import { ToastModule } from 'primeng/toast';
 import { ToastComponent } from './toast/toast.component';
-import { SearchComponent } from './search/search.component';
 import { BiggerSmallerComponent } from './checkbox/bigger-smaller/bigger-smaller.component';
 import { LoaderComponent } from './loader/loader.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -19,7 +18,6 @@ import { LoaderService } from './loader/loader.services';
     CarComponent,
     ToastDeleteComponent,
     ToastComponent,
-    SearchComponent,
     BiggerSmallerComponent,
     LoaderComponent
   ],

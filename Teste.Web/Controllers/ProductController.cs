@@ -123,5 +123,12 @@ namespace Teste.Web.Controllers
                 return "Ocorreu uma falha no envio do arquivo...";
             }
         }
+
+        [HttpGet("busca")]
+        public Task<List<string>> busca([FromQuery] Busca busca)
+        {
+            return _IProduct.busca(busca);
+        }
+
     }
 }

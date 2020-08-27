@@ -13,12 +13,15 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { DropdownModule } from 'primeng/dropdown';
 import { NavMenuComponent } from './navigation/nav-menu/nav-menu.component';
 import { WithProgressBarService } from './with-progress-bar.service';
-
+import { headerComponent } from './navigation/header/header.component';
+import {CardModule} from 'primeng/card';
+  
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent
+    HomeComponent,
+    headerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,6 +34,7 @@ import { WithProgressBarService } from './with-progress-bar.service';
     FormsModule,
     AutoCompleteModule,
     DropdownModule,
+    CardModule
   ],
   providers: [
     {

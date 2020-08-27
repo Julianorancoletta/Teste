@@ -19,7 +19,9 @@
 			<div *ngFor="let product of produtos" class="col-md-12">
 				<div *ngSwitchCase="true">
 					<div class="product-list-item">
-						<img [src]="product.img" [alt]="product.title" />
+						<a [routerLink]="[ '/showcase/produto-detalhe', product.id ]">
+							<img [src]="product.img" [alt]="product.title" />
+						</a>
 						<div class="product-list-detail">
 							<div class="product-name" id="title">{{ product.title }}</div>
 							<div class="product-description">{{ product.shortDescription }}</div>
@@ -41,7 +43,9 @@
 							</div>
 						</div>
 						<div class="product-grid-item-content">
-							<img [src]="product.img" [alt]="product.title" />
+							<a [routerLink]="[ '/showcase/produto-detalhe', product.id ]">
+								<img [src]="product.img" [alt]="product.title" />
+							</a>
 							<div class="product-name" id="title">{{ product.title.toUpperCase() }}</div>
 							<div class="product-description">{{ product.description }}</div>
 						</div>
@@ -59,7 +63,8 @@
 							</ng-container>
 						</div>
 						<button (click)="cars.setCar(product)" type="button" class="btn btn-primary">
-							<img id="cesta" class="text-center" src="assets/img/shopping_basket-24px.svg" alt="Cesta de compras">
+							<img id="cesta" class="text-center" src="assets/img/shopping_basket-24px.svg"
+								alt="Cesta de compras">
 							Comprar
 						</button>
 					</div>

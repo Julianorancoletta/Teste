@@ -12,7 +12,6 @@ import { busca } from '../../../app/core/models/busca.model';
 })
 export class ProdutosService {
   protected readonly url = `${environment.api}/product`;
-  protected readonly img = `${environment.api}/product/upload`;
 
   constructor(private http: HttpClient) {
   }
@@ -56,11 +55,18 @@ export class ProdutosService {
     formData.append('ProductId', photo.ProductId.toString());
     formData.append('file', photo.file);
 
-    return this.http.post(`${this.img}`, formData)
+    return this.http.post(`${this.url}/upload`, formData)
   }
 
   atualizarProduto(roduct: ProductModel): Observable<ProductModel> {
     return this.http
       .put<ProductModel>(`${this.url}/${roduct.id}`, roduct, this.ObterHeaderJson());
+  }
+
+  getbusca(Busca:busca): Observable<string[]> {
+    const params = new HttpParams()
+    .set('ItemBuscado', Busca.ItemBuscado);
+    return this.http
+      .get<string[]>(`${this.url}/busca?${params}`, this.ObterHeaderJson());
   }
 }

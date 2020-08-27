@@ -15,6 +15,7 @@ namespace Teste.Business.Intefaces
         Task<productView> BuscaProduct(int id);
         void UpdateProduct(Product product);
         void Delete(Product product);
-        Task<Product> BuscaProductId(int id); 
+        Task<Product> BuscaProductId(int id);
+        Task<List<string>> busca(Busca busca);
     }
 }

@@ -14,13 +14,14 @@
                 </div>
                 <div *ngIf="config.data.id" class="form-group">
                     <label class="control-label">ID</label>
-                    <input class="form-control" id="id" type="text"
-                            value="{{config.data.id}}" disabled />
+                    <input class="form-control" id="id" type="text" value="{{config.data.id}}" disabled />
 
                 </div>
                 <div class="form-group">
                     <label class="control-label">Categoria</label>
-                    <select class="form-control" id="categoryId" formControlName="categoryId"  (change)="changeCategory($event.target.value)" [ngClass]="{'is-invalid': displayMessage.categoryId }">
+                    <select class="form-control" id="categoryId" formControlName="categoryId"
+                        (change)="changeCategory($event.target.value)"
+                        [ngClass]="{'is-invalid': displayMessage.categoryId }">
                         <option *ngFor="let item of category" value="{{ item.id }}">{{ item.description }}</option>
                     </select>
                     <span class="text-danger" *ngIf="displayMessage.categoryId">
@@ -29,7 +30,8 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label">Sub Categoria</label>
-                    <select class="form-control" id="subCategoriaId" formControlName="subCategoriaId" [ngClass]="{'is-invalid': displayMessage.subCategoriaId }">
+                    <select class="form-control" id="subCategoriaId" formControlName="subCategoriaId"
+                        [ngClass]="{'is-invalid': displayMessage.subCategoriaId }">
                         <option *ngFor="let item of subCategoria" value="{{ item.id }}">{{ item.nome }}</option>
                     </select>
                     <span class="text-danger" *ngIf="displayMessage.subCategoriaId">
@@ -68,10 +70,11 @@
                     <div [hidden]="!sale()" class="form-group">
                         <label class="control-label">Valor promocional</label>
                         <div>
-                            <input class="form-control" id="salePrice" type="text" placeholder="valor promocional (requerido)"
-                                formControlName="salePrice" [ngClass]="{'is-invalid': displayMessage.salePrice }" />
-                                
-                                <span class="text-danger" *ngIf="displayMessage.salePrice">
+                            <input class="form-control" id="salePrice" type="text"
+                                placeholder="valor promocional (requerido)" formControlName="salePrice"
+                                [ngClass]="{'is-invalid': displayMessage.salePrice }" />
+
+                            <span class="text-danger" *ngIf="displayMessage.salePrice">
                                 <p [innerHTML]="displayMessage.salePrice"></p>
                             </span>
                         </div>
@@ -81,7 +84,7 @@
                     <label class="control-label">image do Produto</label>
 
                     <div class="custom-file">
-                      
+
                         <input type="file" accept="image/jpeg,image/png" class="custom-file-input" id="img"
                             formControlName="img" (change)="fileChangeEvent($event.target.files)"
                             [ngClass]="{'is-invalid': displayMessage.img }">
@@ -108,14 +111,24 @@
                     <label class="control-label">Valor</label>
                     <div>
                         <input class="form-control" id="Price" type="tel" placeholder="valor (requerido)"
-                            formControlName="price" [ngClass]="{'is-invalid': displayMessage.price }" [brmasker]="{money: true,thousand: '.',  decimalCaracter: ','}" />
+                            formControlName="price" [ngClass]="{'is-invalid': displayMessage.price }"
+                            [brmasker]="{money: true,thousand: '.',  decimalCaracter: ','}" />
                         <span class="text-danger" *ngIf="displayMessage.price">
                             <p [innerHTML]="displayMessage.price"></p>
                         </span>
                     </div>
                 </div>
-
-
+                <div class="content-section implementation">
+                    <p-fieldset legend="Header" [toggleable]="true">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                            commodo consequat.
+                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </p-fieldset>
+                </div>
 
                 <!-- <div class="form-group form-check">
                     <label class="form-check-label">

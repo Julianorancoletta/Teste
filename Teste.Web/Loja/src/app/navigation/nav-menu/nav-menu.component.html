@@ -23,13 +23,12 @@
             <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
               <li class="dropdown-submenu">
                 <a id="title" *ngFor="let item of Category" tabindex="-1" class="dropdown-item"
-                  routerLinkActive="active"
-                  [routerLink]="['/showcase',{categoria:item.description},'']"
+                  routerLinkActive="active" [routerLink]="['/showcase',{categoria:item.description},'']"
                   (mouseover)="buscarMarcas(item.id)">{{ item.description }}</a>
                 <ul class="dropdown-menu">
                   <li class="dropdown-item">
-                    <a *ngFor="let item of subCategoria" class="dropdown-item" 
-                    [routerLink]="['/showcase',{subCategoria:item.nome},'']" id="title" tabindex="-1" href="#">
+                    <a *ngFor="let item of subCategoria" class="dropdown-item"
+                      [routerLink]="['/showcase',{subCategoria:item.nome},'']" id="title" tabindex="-1" href="#">
                       {{ item.nome }}
                     </a>
                   </li>
@@ -40,11 +39,11 @@
         </ul>
       </div>
       <form class="index-search-form">
-        <input #searchBox class="form-control mr-sm-2 search-box" type="search" placeholder="Procure os seus produtos"
-          aria-label="Search">
-        <button name="submit" class="btn" type="submit" (click)="buscar(searchBox.value)"><i class="fa fa-search"
+        <p-autoComplete #prd [(ngModel)]="prod" [suggestions]="results" (completeMethod)="search($event)" field=""
+          [size]="30" placeholder="Countries" [minLength]="2"></p-autoComplete>
+        <button name="submit" class="btn" type="submit" (click)="buscar(prd.value,prod)"><i class="fa fa-search"
             aria-hidden="true"></i></button>
-      </form>
+      </form>   
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
           <li class="nav-item">
