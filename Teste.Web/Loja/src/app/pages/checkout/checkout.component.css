@@ -2,7 +2,11 @@ input {
     max-width: 120px;
 }
 
-.table-head {
+th {
+    font-size: 115%;
+}
+
+.table-head, th, td {
     font-weight: bold;
     color: darkslateblue;
 }
@@ -12,7 +16,11 @@ input {
 }
 
 #title {
-    font-weight: 400;
+    font-weight: 500;
+}
+
+h1#title {
+    font-size: 200%;
 }
 
 .entrega{
@@ -30,15 +38,11 @@ input {
     font-size: bold;
 }
 
-#quant {
-    max-width: 40px;
-}
-
 img {
     height: 2rem;
     width: auto;
 }
 
-th, td {
+#resumColumn, #resumCont{
     color: white;
 }
