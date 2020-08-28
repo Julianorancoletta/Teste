@@ -1,46 +1,48 @@
-.carrinho {
-  width: 220px;
-}
+app-car {
+  .carrinho {
+    width: 220px;
+  }
 
-#prdFoto {
-  width: 25px;
-  height: 25px;
-}
+  #prdFoto {
+    width: 25px;
+    height: 25px;
+  }
 
-.prdTitulo {
-  font-size: 13px;
-}
+  .prdTitulo {
+    font-size: 13px;
+  }
 
-.order-item {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  margin-bottom: 5% !important;
-  padding: 2px;
-  border-bottom: 1px solid darkslateblue;
-}
+  .order-item {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-bottom: 5% !important;
+    padding: 2px;
+    border-bottom: 1px solid darkslateblue;
+  }
 
-.order-item p{
-  justify-content: unset;
-}
+  .order-item p {
+    justify-content: unset;
+  }
 
-.remov {
-  text-align: end;
-}
+  .remov {
+    text-align: end;
+  }
 
-a {
-  text-decoration: none;
-}
+  a {
+    text-decoration: none;
+  }
 
-a:visited {
-  color: unset;
-}
+  a:visited {
+    color: unset;
+  }
 
-#cesta {
-  filter: invert(28%) sepia(22%) saturate(1680%) hue-rotate(209deg) brightness(89%) contrast(97%);
-}
+  #cesta {
+    filter: invert(28%) sepia(22%) saturate(1680%) hue-rotate(209deg) brightness(89%) contrast(97%);
+  }
 
-.carrinho-vazio {
-  font-size: 18px;
-  text-align: center;
+  .carrinho-vazio {
+    font-size: 18px;
+    text-align: center;
+  }
 }

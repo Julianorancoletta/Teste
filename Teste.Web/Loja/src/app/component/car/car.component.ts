@@ -33,7 +33,6 @@ import { car } from './car';
     </div>
   </div>
 `,
-  styleUrls: ['./car.component.scss']
 })
 export class CarComponent{
   cars: any = new car();
