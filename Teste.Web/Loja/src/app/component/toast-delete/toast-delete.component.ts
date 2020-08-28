@@ -33,6 +33,4 @@ export class ToastDeleteComponent {
     this.messageService.clear();
     this.resposta.emit(false);
   }
-
-
 }

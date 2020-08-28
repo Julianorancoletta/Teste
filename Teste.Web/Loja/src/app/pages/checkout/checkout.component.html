@@ -3,61 +3,81 @@
     <ng-container [ngSwitch]="cars.TotalCart() > 0">
         <div class="container">
             <div *ngSwitchCase="true" class="meu-carrinho row">
-                <div class="tabela-checkout col-md-12">
-                    <div class="row table-head">
-                        <div class="col-md-4">
-                            <span>Produto</span>
-                        </div>
-                        <div class="col-md-5">
-                            <span>Descrição</span>
-                        </div>
-                        <div class="col-md-1">
-                            <span>Quant</span>
-                        </div>
-                        <div class="col-md-2">
-                            <span>Preço</span>
-                        </div>
-                    </div>
-                    <div *ngFor="let selected of cars.returnCar(); index as i" class="row table-body">
-                        <div class="col-md-1">
-                            <img src="{{ selected.img }}" alt="Imagem">
-                        </div>
-                        <div class="col-md-3">
-                            <span>{{ (selected.title.length>18) ? (selected.title | slice:0:18) + '...' : (selected.title) }}</span>
-                        </div>
-                        <div class="col-md-5">
-                            <span>{{ (selected.shortDescription.length>36) ? (selected.shortDescription | slice:0:36) + '...' : (selected.shortDescription) }}</span>
-                        </div>
-                        <div class="col-md-1">
-                            <span><input #num id="quant" type="number" value="{{selected.num}}"
-                                    (blur)="cars.quantiy(selected,num.value)"></span>
-                        </div>
-                        <div class="col-md-2">
-                            <span>{{ selected.price  * selected.num | currency:'BRL':true:'1.2-2':'pt' }}</span>
-                        </div>
-                    </div>
-                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Produto</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Preço</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let selected of cars.returnCar(); index as i">
+                            <td>
+                                <img src="{{ selected.img }}" alt="Imagem">
+                                {{ (selected.title.length>18) ? (selected.title | slice:0:18) + '...' : (selected.title) }}
+                            </td>
+                            <td>{{ (selected.shortDescription.length>36) ? (selected.shortDescription | slice:0:36) + '...' : (selected.shortDescription) }}
+                            </td>
+                            <td>
+                                <select #num id="quant" class="form-control"
+                                    (change)="cars.quantiy(selected, num.value)">
+                                    <option selected hidden>{{ selected.num }}</option>
+                                    <option *ngFor="let item of qntProd; index as i" [value]="item">
+                                        {{ item }}
+                                    </option>
+                                </select>
 
+                                <!-- <input class="form-control" #num id="quant" type="number" value="{{selected.num}}"
+                                (blur)="cars.quantiy(selected, num.value)"> -->
+                            </td>
+                            <td>{{ selected.price  * selected.num | currency:'BRL':true:'1.2-2':'pt' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+
             <div class="row entrega">
                 <div class="col-md-6">
                     <h1 class="text-center" id="title">Especificações</h1>
+
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th>Dimensões do produto - cm (AxLxP)</th>
+                                <td>70,4x101,1x26cm</td>
+                            </tr>
+                            <tr>
+                                <th>HDMI</th>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <th>Tecnologia da Tela</th>
+                                <td>LED</td>
+                            </tr>
+                            <tr>
+                                <th>Polegadas</th>
+                                <td>49"</td>
+                        </tbody>
+                    </table>
+
                 </div>
                 <div class="col-md-6 resumo">
                     <h1 class="text-center resu">Resumo do pedido</h1>
-                    <table class="table">
+                    <table class="table pedidoResum">
                         <thead>
                             <tr>
-                                <th scope="col">Quantidade</th>
-                                <th scope="col">Disponibilidade</th>
-                                <th scope="col">SubTotal</th>
+                                <th id="resumColumn" scope="col">Quantidade</th>
+                                <th id="resumColumn" scope="col">Disponibilidade</th>
+                                <th id="resumColumn" scope="col">SubTotal</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{ cars.TotalCart() }} Produto</td>
-                                <td>Em estoque</td>
-                                <td>{{ cars.GetTotal() | currency:'BRL':true:'1.2-2':'pt' }}</td>
+                                <td id="resumCont">{{ cars.TotalCart() }} Produto</td>
+                                <td id="resumCont">Em estoque</td>
+                                <td id="resumCont">{{ cars.GetTotal() | currency:'BRL':true:'1.2-2':'pt' }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -69,8 +89,9 @@
                         </div>
                     </div>
                     <p class="resu">Frete: <span class="text-success"><strong>Grátis</strong></span></p>
-                    <button type="button" class="btn btn-light"><span
-                            id="title"><strong>Calcular</strong></span></button>
+
+                    <button type="button" class="btn btn-light"><span id="title"><strong>Fechar
+                                pedido</strong></span></button>
                 </div>
             </div>
         </div>

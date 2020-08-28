@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { car } from '../../component/car/car';
 
 @Component({
@@ -7,7 +7,16 @@ import { car } from '../../component/car/car';
   styleUrls: ['./checkout.component.css']
 })
 
-export class CheckoutComponent {
+export class CheckoutComponent implements OnInit{
+  qntProd:number[] = [];
+
   constructor() { }
+
+  ngOnInit(): void {
+    for (let index = 0; index <= 10; index++) {      
+      if (index != 0)
+        this.qntProd.push(index)
+    }
+  }
   cars = new car()
 }
