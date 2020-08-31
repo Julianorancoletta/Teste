@@ -37,7 +37,7 @@ export class ListaComponent implements OnInit {
       { field: 'brand', header: 'Marca' },
       { field: 'price', header: 'Preço' },
       { field: 'sale', header: 'Promoção' },
-      { field: 'category', header: 'Categoria' },
+      { field: 'category', header: 'Categoria' }
     ];
     this.listaProdutos();
   }
