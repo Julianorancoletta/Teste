@@ -1,4 +1,3 @@
-
 import { FormGroup } from '@angular/forms';
 import { ElementRef } from '@angular/core';
 import { ProductModel, Photo } from '../../core/models/product.model';

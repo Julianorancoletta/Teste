@@ -15,6 +15,7 @@ import { SubCategoriaService } from '../../../services/subCategoria/sub-categori
   templateUrl: './cadastro-produto.component.html',
   styleUrls: ['./cadastro-produto.component.css'],
 })
+
 export class CadastroProdutoComponent extends ProdutoBaseComponent implements OnInit {
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
@@ -176,6 +177,5 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
       )
     });
   }
-
 }
 
