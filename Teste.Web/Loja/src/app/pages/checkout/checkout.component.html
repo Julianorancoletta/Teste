@@ -28,11 +28,8 @@
                                         {{ item }}
                                     </option>
                                 </select>
-
-                                <!-- <input class="form-control" #num id="quant" type="number" value="{{selected.num}}"
-                                (blur)="cars.quantiy(selected, num.value)"> -->
                             </td>
-                            <td>{{ selected.price  * selected.num | currency:'BRL':true:'1.2-2':'pt' }}</td>
+                            <td>{{ selected.price  * selected.num | currency:'BRL':'symbol':'1.2-2':'pt' }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -77,7 +74,7 @@
                             <tr>
                                 <td id="resumCont">{{ cars.TotalCart() }} Produto</td>
                                 <td id="resumCont">Em estoque</td>
-                                <td id="resumCont">{{ cars.GetTotal() | currency:'BRL':true:'1.2-2':'pt' }}</td>
+                                <td id="resumCont">{{ cars.GetTotal() | currency:'BRL':'symbol':'1.2-2':'pt' }}</td>
                             </tr>
                         </tbody>
                     </table>

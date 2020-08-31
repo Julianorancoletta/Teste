@@ -14,13 +14,13 @@ import { car } from './car';
             {{ selected.title }}
           </span>
           <span id="price">
-            {{ selected.price  * selected.num | currency:'BRL':true:'1.2-2':'pt' }} </span>
+            {{ selected.price  * selected.num | currency:'BRL':'symbol':'1.2-2':'pt' }} </span>
           <span class="fa fa-trash text-danger remov" (click)="cars.remove(selected.id)"></span>
           <p><small>Quantidade: {{ selected.num }}</small></p>
         </div>
         <div class="order-total">
           <p class="order-price"><span id="title">SubTotal:</span>
-            {{ cars.GetTotal() | currency:'BRL':true:'1.2-2':'pt' }}</p>
+            {{ cars.GetTotal() | currency:'BRL':'symbol':'1.2-2':'pt' }}</p>
         </div>
       </div>
       

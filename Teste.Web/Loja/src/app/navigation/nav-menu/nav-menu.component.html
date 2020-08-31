@@ -39,7 +39,7 @@
         </ul>
       </div>
       <form class="index-search-form">
-        <p-autoComplete #prd [(ngModel)]="prod" [suggestions]="results" (completeMethod)="search($event)" field=""
+        <p-autoComplete #prd [(ngModel)]="prod" name="autoComplete" [suggestions]="results" (completeMethod)="search($event)" field=""
           [size]="30" placeholder="Countries" [minLength]="2"></p-autoComplete>
         <button name="submit" class="btn" type="submit" (click)="buscar(prd.value,prod)"><i class="fa fa-search"
             aria-hidden="true"></i></button>

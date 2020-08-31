@@ -52,13 +52,13 @@
 						<div class="product-grid-item-bottom" [ngSwitch]="product.sale">
 							<ng-container *ngSwitchCase="true">
 								<span class="product-price">
-									De: <strike>{{ product.price | currency:'BRL':true:'1.2-2':'pt' }}</strike>
-									Por: {{ product.salePrice | currency:'BRL':true:'1.2-2':'pt' }}
+									De: <strike>{{ product.price | currency:'BRL':'symbol':'1.2-2':'pt' }}</strike>
+									Por: {{ product.salePrice | currency:'BRL':'symbol':'1.2-2':'pt' }}
 								</span>
 							</ng-container>
 							<ng-container *ngSwitchCase="false">
 								<span class="product-price">
-									{{ product.price | currency:'BRL':true:'1.2-2':'pt' }}
+									{{ product.price | currency:'BRL':'symbol':'1.2-2':'pt' }}
 								</span>
 							</ng-container>
 						</div>
