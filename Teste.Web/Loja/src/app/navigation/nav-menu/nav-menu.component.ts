@@ -1,27 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { car } from '../../component/car/car';
 import { Router } from '@angular/router';
 import { Category } from '../../core/models/category.model';
 import { categoryService } from '../../services/catefory/category.service';
 import { ProdutosService } from '../../services/produtos/produtos.service';
-import { listProduct, ProductModel } from '../../core/models/product.model';
-import { busca } from '../../core/models/busca.model';
-
-interface produto{
-  title:string
-}
-
+import { searchComponent } from '../../component/search/search.component';
 
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css']
 })
-export class NavMenuComponent implements OnInit {
+export class NavMenuComponent extends searchComponent implements OnInit {
 
+  @ViewChild("prd") divView: ElementRef;
+  
   constructor(private router: Router,
     private category_Service: categoryService,
-    private Produtos:ProdutosService) { }
+    private Produtos: ProdutosService) {
+    super();
+  }
 
 
   isExpanded = false;
@@ -29,8 +27,7 @@ export class NavMenuComponent implements OnInit {
   Category: Category[];
   subCategoria: any[];
   results: any[];
-  Busca:busca = new busca();
-  prod: string;
+  prod: any[];
 
   ngOnInit(): void {
     this.category_Service.getcategory().
@@ -47,8 +44,10 @@ export class NavMenuComponent implements OnInit {
     this.isExpanded = !this.isExpanded;
   }
 
-  buscar(produto,text) {
-    this.router.navigate(['showcase/' + produto])
+  buscar(item) {
+    debugger
+    let produto = item.value ? item.value : item
+    this.router.navigate(['showcase/' + produto]);
   }
 
   buscarMarcas(categoria) {
@@ -63,8 +62,8 @@ export class NavMenuComponent implements OnInit {
   }
   search(event) {
     this.Busca.ItemBuscado = event.query;
-    this.Produtos.getbusca(this.Busca).subscribe((Produto:string[])=>{
+    this.Produtos.getbusca(this.Busca).subscribe((Produto: string[]) => {
       this.results = Produto
-    },erro => console.log(erro))
+    }, erro => console.log(erro))
   }
 }

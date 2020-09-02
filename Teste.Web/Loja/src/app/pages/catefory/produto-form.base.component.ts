@@ -1,16 +1,15 @@
 
 import { FormGroup } from '@angular/forms';
 import { ElementRef } from '@angular/core';
-import { FormBaseComponent } from 'src/app/component/form/form-base.component';
-import { ProductModel } from './catefory/node_modules/src/app/core/models/product.model';
-import { Photo } from './catefory/node_modules/src/app/core/models/photo';
-import { Category } from 'src/app/core/models/category.model';
+import { Category } from '../../core/models/category.model';
+import { Photo } from '../../core/models/product.model';
+import { FormBaseComponent } from '../../component/form/form-base.component';
 
-export abstract class ProdutoBaseComponent extends FormBaseComponent {
 
-    produto: ProductModel;
-    category: Category[];
-    photo:Photo;
+export abstract class CateforyBaseComponent extends FormBaseComponent {
+
+    category: Category;
+    photo: Photo;
     errors: any[] = [];
     produtoForm: FormGroup;
 
@@ -18,33 +17,12 @@ export abstract class ProdutoBaseComponent extends FormBaseComponent {
         super();
 
         this.validationMessages = {
-            categoryId: {
-                required: 'Escolha um categoria',
-            },
-            title: {
-                required: 'Informe o Titulo',
+            description: {
+                required: 'Informe o nome da categoria',
                 minlength: 'Mínimo de 2 caracteres',
-                maxlength: 'Máximo de 200 caracteres'
-            },
-            shortDescription: {
-                required: 'Informe a descrição',
-                minlength: 'Mínimo de 2 caracteres',
-                maxlength: 'Máximo de 1000 caracteres'
-            },
-            imagem: {
-                required: 'Informe a Imagem',
-            },
-            brand: {
-                required: 'Informe a marca',
-            },
-            salePrice: {
-                required: 'Informe o valor',
-            },
-            price: {
-                required: 'Informe o valor',
+                maxlength: 'Máximo de 30 caracteres'
             }
         }
-
         super.configurarMensagensValidacaoBase(this.validationMessages);
     }
 

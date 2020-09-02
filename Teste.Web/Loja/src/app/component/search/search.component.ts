@@ -6,7 +6,8 @@ export abstract class searchComponent  {
     paginaAtual: number;
     list: boolean = false;
     listaProduto: listProduct;
-    Busca: busca;
+    Busca: busca = new busca;
+
 
     onInit(params){
         this.paginaAtual = 1;
@@ -16,6 +17,5 @@ export abstract class searchComponent  {
         this.Busca.subCategoria = params.subCategoria ? params.subCategoria : " ";
         this.Busca.categoria = params.categoria ? params.categoria : " "
     }
-
 
 }

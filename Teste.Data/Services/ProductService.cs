@@ -32,11 +32,13 @@ namespace Teste.Data.Services
                  on product.category.id equals category.id
                  join SubCategoria in _context.Set<SubCategoria>()
                  on product.subCategoria.id equals SubCategoria.id
+                 join brand in _context.Set<Brand>()
+                 on product.brand.id equals brand.id
                  select new productView
                  {
                      id = product.id,
-                     title = product.title,
-                     brand = product.brand,
+                     name = product.name,
+                     brand = brand.name,
                      price = product.price,
                      sale = product.sale,
                      salePrice = product.salePrice,
@@ -45,10 +47,11 @@ namespace Teste.Data.Services
                      category = category.description,
                      subCategoriaId = SubCategoria.id,
                      subCategoria = SubCategoria.nome,
+                     brandId = brand.id,
                      img = product.img
                  });
 
-            if (!string.IsNullOrEmpty(busca.ItemBuscado)) list = list.Where(x => x.title.StartsWith(busca.ItemBuscado));
+            if (!string.IsNullOrEmpty(busca.ItemBuscado)) list = list.Where(x => x.name.StartsWith(busca.ItemBuscado));
             if (!string.IsNullOrEmpty(busca.categoria)) list = list.Where(x => x.category == busca.categoria);
             if (!string.IsNullOrEmpty(busca.subCategoria)) list = list.Where(x => x.subCategoria == busca.subCategoria);
             list = busca.order > 0 ? list.OrderByDescending(x => x.price) : list.OrderBy(x => x.price);
@@ -66,7 +69,7 @@ namespace Teste.Data.Services
         public async Task<List<string>> busca(Busca busca)
         {
 
-            var list = _context.Product.Where(x => x.title.StartsWith(busca.ItemBuscado)).Select(x => x.title).ToListAsync();
+            var list = _context.Product.Where(x => x.name.StartsWith(busca.ItemBuscado)).Select(x => x.name).ToListAsync();
 
 
             return await list;
@@ -82,7 +85,7 @@ namespace Teste.Data.Services
 
         public void Delete(Product product)
         {
-            _context.Product.Remove(product);
+            _context.Remove(product);
             _context.SaveChangesAsync();
         }
 
@@ -95,12 +98,14 @@ namespace Teste.Data.Services
                   on product.category.id equals category.id
                   join SubCategoria in _context.Set<SubCategoria>()
                   on product.subCategoria.id equals SubCategoria.id
+                  join brand in _context.Set<Brand>()
+                  on product.brand.id equals brand.id
                   where product.id == id
                   select new productView
                   {
                       id = product.id,
-                      title = product.title,
-                      brand = product.brand,
+                      name = product.name,
+                      brand = brand.name,
                       price = product.price,
                       sale = product.sale,
                       salePrice = product.salePrice,
@@ -108,6 +113,7 @@ namespace Teste.Data.Services
                       shortDescription = product.shortDescription,
                       category = category.description,
                       subCategoriaId = SubCategoria.id,
+                      brandId = brand.id,
                       img = product.img
                   });
 
@@ -121,7 +127,6 @@ namespace Teste.Data.Services
             _context.SaveChanges();
 
         }
-
 
         public async Task<Product> BuscaProductId(int id)
         {

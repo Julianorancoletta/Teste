@@ -10,7 +10,10 @@ namespace Teste.Business.Models.product
     {
         [Key]
         public int id { get; set; }
+        [Column(TypeName = "varchar(30)")]
         public string nome { get; set; }
+        public string img { get; set; }
+        public bool Action { get; set; } = false;
         public int categoryid { get; set; }
         public Category category { get; set; }
     }

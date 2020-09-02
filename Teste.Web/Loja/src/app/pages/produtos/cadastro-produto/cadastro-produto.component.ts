@@ -24,6 +24,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
   fileToUpload: File = null;
   errors: any;
   subCategoriaId;
+  text1:string
 
   constructor(private fb: FormBuilder,
     private produtoService: ProdutosService,

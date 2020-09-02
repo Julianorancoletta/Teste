@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using Teste.Business.Intefaces;
 using Teste.Business.Models;
 using Teste.Business.viewModel;
@@ -30,18 +31,27 @@ namespace Teste.Web.Controllers
         
         // GET: api/Product
         [HttpGet]
-        public ProductList Get([FromQuery] Busca busca)
+        public ActionResult<ProductList> Get([FromQuery] Busca busca)
         {
-            return _IProduct.GetProduct(busca);
+            var produto = _IProduct.GetProduct(busca);
+            if (produto == null)
+            {
+                return NotFound();
+            }
+            return produto;
         }
-
-
 
         // GET: api/Product/5
         [HttpGet("{id}")]
-        public Task<productView> Get(int id)
+        public async Task<ActionResult<productView>> Get(int id)
         {
-            return _IProduct.BuscaProduct(id);
+            var produto = _IProduct.BuscaProduct(id);
+            if(produto == null)
+            {
+                return NotFound();
+            }
+
+            return await produto;
         }
 
         // POST: api/Product

@@ -11,12 +11,13 @@ namespace Teste.Data.Context
     {
         public BancoContext(DbContextOptions<BancoContext> options) : base(options) { }
 
-        public DbSet<Product> Product { get; set; }
-
+        public DbSet<Brand> brand { get; set; }
         public DbSet<Category> Category { get; set; }
-
+        public DbSet<Details> detail { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Specs> specs { get; set; }
         public DbSet<SubCategoria> SubCategoria { get; set; }
-
-        //public DbSet<Photo> Photo { get; set; }
+        public DbSet<Business.Models.product.Type> type { get; set; }
+        public DbSet<gallery> galleries { get; set; }
     }
 }

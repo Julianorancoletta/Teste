@@ -30,7 +30,6 @@ namespace Teste.Web.Controllers
         }
 
         [HttpPost]
-        [Route("")]
         public async Task<ActionResult<Category>> Post ([FromBody] Category Category)
         {
             
