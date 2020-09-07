@@ -39,9 +39,9 @@
         </ul>
       </div>
       <form class="index-search-form">
-        <p-autoComplete #prd [(ngModel)]="prod" (onSelect)="buscar($event)" [suggestions]="results" (completeMethod)="search($event)" field=""
-          [size]="30" placeholder="Countries" [minLength]="1"></p-autoComplete>
-        <button name="submit" class="btn" type="submit" (click)="buscar(prod)"><i class="fa fa-search"
+        <p-autoComplete #prd [(ngModel)]="prod" [suggestions]="results" (completeMethod)="search($event)" field=""
+          [size]="30" placeholder="Countries" [minLength]="2"></p-autoComplete>
+        <button name="submit" class="btn" type="submit" (click)="buscar(prd.value,prod)"><i class="fa fa-search"
             aria-hidden="true"></i></button>
       </form>   
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{show: isExpanded}">
