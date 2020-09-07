@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Teste.Business.Intefaces;
-using Teste.Business.Models;
-using Teste.Business.Models.product;
-using Teste.Data.Context;
+using Loja.Business.Intefaces;
+using Loja.Business.Models;
+using Loja.Business.Models.product;
+using Loja.Data.Context;
 
-namespace Teste.Data.Services
+namespace Loja.Data.Services
 {
     public class SubCategoriaService : ISubCategoria
     { 
@@ -20,9 +20,9 @@ namespace Teste.Data.Services
             _context = context;
         }
 
-        public async Task<IList<SubCategoria>> GetSubCategoriaList(int categoriaid)
+        public async Task<IList<SubCategoria>> GetSubCategoriaList(int categoriaId)
         {
-            return await _context.SubCategoria.Where(x => x.category.id == categoriaid).ToListAsync();
+            return await _context.SubCategoria.Where(x => x.category.Id == categoriaId).ToListAsync();
         }
 
         public async Task AddSubCategoria(SubCategoria subCategoria)

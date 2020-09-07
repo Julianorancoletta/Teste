@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Teste.Business.Intefaces;
-using Teste.Business.Models.product;
+using Loja.Business.Intefaces;
+using Loja.Business.Models.product;
 
-namespace Teste.Web.Controllers
+namespace Loja.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

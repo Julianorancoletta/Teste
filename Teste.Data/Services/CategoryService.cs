@@ -1,32 +1,29 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using Loja.Business.Intefaces;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using Teste.Business.Intefaces;
-using Teste.Business.Models;
-using Teste.Data.Context;
+using Loja.Business.Models;
 
-namespace Teste.Data.Services
+
+namespace Loja.Data.Services
 {
     public class CategoryService: ICategory
     {
-        private readonly BancoContext _context;
 
-        public CategoryService (BancoContext context)
+        private readonly IAsync<Category> _CategoryRepository;
+
+        public CategoryService (IAsync<Category> CategoryRepository)
         {
-            _context = context;
+            _CategoryRepository = CategoryRepository;
         }
 
         public async Task<IList<Category>> GetCategoryList()
         {
-            return await _context.Category.ToListAsync();
+            return await _CategoryRepository.ListAllAsync();
         }
 
-        public async Task AddCategory(Category escolaridade)
+        public async Task AddCategory (Category escolarIdade)
         {
-            _context.Category.Add(escolaridade);
-            await _context.SaveChangesAsync();
+            await _CategoryRepository.AddAsync(escolarIdade);
         }
     }
 }

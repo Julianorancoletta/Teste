@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Teste.Business.Models;
+using Loja.Business.Models;
 
-namespace Teste.Business.Intefaces
+namespace Loja.Business.Intefaces
 {
     public interface ICategory
     {

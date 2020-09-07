@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using X.PagedList;
 
-namespace Teste.Business.viewModel
+namespace Loja.Business.viewModel
 {
     public class productView
     {

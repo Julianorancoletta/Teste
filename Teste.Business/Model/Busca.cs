@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Teste.Business.viewModel
+namespace Loja.Business.viewModel
 {
     public class Busca
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Teste.Data.Migrations
+namespace Loja.Data.Migrations
 {
     public partial class init : Migration
     {
@@ -10,34 +10,36 @@ namespace Teste.Data.Migrations
                 name: "brand",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "varchar(30)", nullable: true),
                     Action = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_brand", x => x.id);
+                    table.PrimaryKey("PK_brand", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Category",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    description = table.Column<string>(type: "varchar(30)", nullable: true)
+                    description = table.Column<string>(type: "varchar(30)", nullable: true),
+                    img = table.Column<string>(nullable: true),
+                    Action = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.id);
+                    table.PrimaryKey("PK_Category", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "detail",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Garantia = table.Column<string>(nullable: true),
                     dimensoesEmbalagemA = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
@@ -51,7 +53,7 @@ namespace Teste.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_detail", x => x.id);
+                    table.PrimaryKey("PK_detail", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,21 +74,21 @@ namespace Teste.Data.Migrations
                 name: "type",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "varchar(30)", nullable: true),
                     Action = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_type", x => x.id);
+                    table.PrimaryKey("PK_type", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "SubCategoria",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nome = table.Column<string>(type: "varchar(30)", nullable: true),
                     img = table.Column<string>(nullable: true),
@@ -95,12 +97,12 @@ namespace Teste.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubCategoria", x => x.id);
+                    table.PrimaryKey("PK_SubCategoria", x => x.Id);
                     table.ForeignKey(
                         name: "FK_SubCategoria_Category_categoryid",
                         column: x => x.categoryid,
                         principalTable: "Category",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
                 });
 
@@ -108,7 +110,7 @@ namespace Teste.Data.Migrations
                 name: "Product",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "varchar(30)", nullable: true),
                     price = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
@@ -124,30 +126,30 @@ namespace Teste.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.id);
+                    table.PrimaryKey("PK_Product", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Product_brand_brandid",
                         column: x => x.brandid,
                         principalTable: "brand",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Product_Category_categoryid",
                         column: x => x.categoryid,
                         principalTable: "Category",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Product_detail_detailsid",
                         column: x => x.detailsid,
                         principalTable: "detail",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Product_SubCategoria_subCategoriaid",
                         column: x => x.subCategoriaid,
                         principalTable: "SubCategoria",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -155,7 +157,7 @@ namespace Teste.Data.Migrations
                 name: "specs",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     productid = table.Column<int>(nullable: false),
                     warranty = table.Column<string>(type: "varchar(30)", nullable: true),
@@ -167,7 +169,7 @@ namespace Teste.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_specs", x => x.id);
+                    table.PrimaryKey("PK_specs", x => x.Id);
                     table.ForeignKey(
                         name: "FK_specs_galleries_galleryid",
                         column: x => x.galleryid,
@@ -178,13 +180,13 @@ namespace Teste.Data.Migrations
                         name: "FK_specs_Product_productid",
                         column: x => x.productid,
                         principalTable: "Product",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_specs_type_typeid",
                         column: x => x.typeid,
                         principalTable: "type",
-                        principalColumn: "id",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 

@@ -5,14 +5,14 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Teste.Business.Intefaces;
-using Teste.Business.Models;
-using Teste.Business.Models.product;
-using Teste.Business.viewModel;
-using Teste.Data.Context;
+using Loja.Business.Intefaces;
+using Loja.Business.Models;
+using Loja.Business.Models.product;
+using Loja.Business.viewModel;
+using Loja.Data.Context;
 using X.PagedList;
 
-namespace Teste.Data.Services
+namespace Loja.Data.Services
 {
     public class ProductService : IProduct
     {
@@ -29,25 +29,25 @@ namespace Teste.Data.Services
             var list =
                 (from product in _context.Set<Product>()
                  join category in _context.Set<Category>()
-                 on product.category.id equals category.id
+                 on product.category.Id equals category.Id
                  join SubCategoria in _context.Set<SubCategoria>()
-                 on product.subCategoria.id equals SubCategoria.id
+                 on product.subCategoria.Id equals SubCategoria.Id
                  join brand in _context.Set<Brand>()
-                 on product.brand.id equals brand.id
+                 on product.brand.Id equals brand.Id
                  select new productView
                  {
-                     id = product.id,
+                     id = product.Id,
                      name = product.name,
                      brand = brand.name,
                      price = product.price,
                      sale = product.sale,
                      salePrice = product.salePrice,
-                     categoryId = category.id,
+                     categoryId = category.Id,
                      shortDescription = product.shortDescription,
                      category = category.description,
-                     subCategoriaId = SubCategoria.id,
+                     subCategoriaId = SubCategoria.Id,
                      subCategoria = SubCategoria.nome,
-                     brandId = brand.id,
+                     brandId = brand.Id,
                      img = product.img
                  });
 
@@ -89,31 +89,31 @@ namespace Teste.Data.Services
             _context.SaveChangesAsync();
         }
 
-        public async Task<productView> BuscaProduct(int id)
+        public async Task<productView> BuscaProduct(int Id)
         {
 
             var list =
                  (from product in _context.Set<Product>()
                   join category in _context.Set<Category>()
-                  on product.category.id equals category.id
+                  on product.category.Id equals category.Id
                   join SubCategoria in _context.Set<SubCategoria>()
-                  on product.subCategoria.id equals SubCategoria.id
+                  on product.subCategoria.Id equals SubCategoria.Id
                   join brand in _context.Set<Brand>()
-                  on product.brand.id equals brand.id
-                  where product.id == id
+                  on product.brand.Id equals brand.Id
+                  where product.Id == Id
                   select new productView
                   {
-                      id = product.id,
+                      id = product.Id,
                       name = product.name,
                       brand = brand.name,
                       price = product.price,
                       sale = product.sale,
                       salePrice = product.salePrice,
-                      categoryId = category.id,
+                      categoryId = category.Id,
                       shortDescription = product.shortDescription,
                       category = category.description,
-                      subCategoriaId = SubCategoria.id,
-                      brandId = brand.id,
+                      subCategoriaId = SubCategoria.Id,
+                      brandId = brand.Id,
                       img = product.img
                   });
 
@@ -128,9 +128,9 @@ namespace Teste.Data.Services
 
         }
 
-        public async Task<Product> BuscaProductId(int id)
+        public async Task<Product> BuscaProductId(int Id)
         {
-            return await _context.Product.FindAsync(id);
+            return await _context.Product.FindAsync(Id);
         }
     }
 }

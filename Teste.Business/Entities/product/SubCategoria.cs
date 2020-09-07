@@ -1,21 +1,20 @@
-﻿using System;
+﻿using Loja.Business.Models;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-using Teste.Business.Models.product;
 
-namespace Teste.Business.Models
+namespace Loja.Business.Models.product
 {
-    public class Category
+    public class SubCategoria : BaseEntity
     {
 
-        [Key]
-        public int id { get; set; }
         [Column(TypeName = "varchar(30)")]
-        public string description { get; set; }
+        public string nome { get; set; }
         public string img { get; set; }
         public bool Action { get; set; } = false;
+        public int categoryid { get; set; }
+        public Category category { get; set; }
     }
 }

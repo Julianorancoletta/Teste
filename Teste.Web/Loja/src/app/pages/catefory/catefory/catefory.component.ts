@@ -1,22 +1,15 @@
 import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 
 import { FormControlName, FormBuilder, Validators } from '@angular/forms';
-import { ProdutoBaseComponent } from '../produto-form.base.component';
-import { Validacao } from 'src/app/utils/validacao';
-import { CurrencyUtils } from 'src/app/utils/currency-utils';
-import { tiposDeAlert } from 'src/app/enumerable/tipos_de_alert.enum'
-import { categoryService } from '../category.service';
-import { ProdutosService } from '../produtos.service';
-import { Photo } from 'src/app/core/models/photo';
-import { ProductModel } from 'src/app/core/models/product.model';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { CateforyBaseComponent } from '../produto-form.base.component';
+import { categoryService } from 'app/services/catefory/category.service';
 
 @Component({
-  selector: 'app-cadastro-produto',
-  templateUrl: './cadastro-produto.component.html',
-  styleUrls: ['./cadastro-produto.component.css'],
+  templateUrl: './catefory.component.html',
+  styleUrls: ['./catefory.component.css'],
 })
-export class CateforyComponent extends ProdutoBaseComponent implements OnInit {
+export class CateforyComponent extends CateforyBaseComponent implements OnInit {
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
@@ -26,7 +19,6 @@ export class CateforyComponent extends ProdutoBaseComponent implements OnInit {
   fileToUpload: File = null;
   errors: any;
   constructor(private fb: FormBuilder,
-    private produtoService: ProdutosService,
     private categoryService: categoryService,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
@@ -34,10 +26,6 @@ export class CateforyComponent extends ProdutoBaseComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.categoryService.getcategory()
-      .subscribe(
-        category => this.category = category
-      );
 
     this.produtoForm = this.fb.group({
       categoryId: [Number, [Validators.required]],

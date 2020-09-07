@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Teste.Data.Context;
+using Loja.Data.Context;
 
-namespace Teste.Data.Migrations
+namespace Loja.Data.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20200902163616_init")]
+    [Migration("20200903014920_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,24 +20,30 @@ namespace Teste.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Teste.Business.Models.Category", b =>
+            modelBuilder.Entity("Loja.Business.Models.Category", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Action")
+                        .HasColumnType("bit");
+
                     b.Property<string>("description")
                         .HasColumnType("varchar(30)");
 
-                    b.HasKey("id");
+                    b.Property<string>("img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.Product", b =>
+            modelBuilder.Entity("Loja.Business.Models.Product", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -76,7 +82,7 @@ namespace Teste.Data.Migrations
                     b.Property<int>("subCategoriaid")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("brandid");
 
@@ -89,7 +95,7 @@ namespace Teste.Data.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.gallery", b =>
+            modelBuilder.Entity("Loja.Business.Models.gallery", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -107,9 +113,9 @@ namespace Teste.Data.Migrations
                     b.ToTable("galleries");
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.product.Brand", b =>
+            modelBuilder.Entity("Loja.Business.Models.product.Brand", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -120,14 +126,14 @@ namespace Teste.Data.Migrations
                     b.Property<string>("name")
                         .HasColumnType("varchar(30)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("brand");
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.product.Details", b =>
+            modelBuilder.Entity("Loja.Business.Models.product.Details", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -159,14 +165,14 @@ namespace Teste.Data.Migrations
                     b.Property<decimal>("embalagemPeso")
                         .HasColumnType("decimal(10,2)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("detail");
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.product.Specs", b =>
+            modelBuilder.Entity("Loja.Business.Models.product.Specs", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -192,7 +198,7 @@ namespace Teste.Data.Migrations
                     b.Property<string>("warranty")
                         .HasColumnType("varchar(30)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("galleryid");
 
@@ -203,9 +209,9 @@ namespace Teste.Data.Migrations
                     b.ToTable("specs");
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.product.SubCategoria", b =>
+            modelBuilder.Entity("Loja.Business.Models.product.SubCategoria", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -222,16 +228,16 @@ namespace Teste.Data.Migrations
                     b.Property<string>("nome")
                         .HasColumnType("varchar(30)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("categoryid");
 
                     b.ToTable("SubCategoria");
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.product.Type", b =>
+            modelBuilder.Entity("Loja.Business.Models.product.Type", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -242,62 +248,62 @@ namespace Teste.Data.Migrations
                     b.Property<string>("name")
                         .HasColumnType("varchar(30)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("type");
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.Product", b =>
+            modelBuilder.Entity("Loja.Business.Models.Product", b =>
                 {
-                    b.HasOne("Teste.Business.Models.product.Brand", "brand")
+                    b.HasOne("Loja.Business.Models.product.Brand", "brand")
                         .WithMany()
                         .HasForeignKey("brandid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Teste.Business.Models.Category", "category")
+                    b.HasOne("Loja.Business.Models.Category", "category")
                         .WithMany()
                         .HasForeignKey("categoryid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Teste.Business.Models.product.Details", "details")
+                    b.HasOne("Loja.Business.Models.product.Details", "details")
                         .WithMany()
                         .HasForeignKey("detailsid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Teste.Business.Models.product.SubCategoria", "subCategoria")
+                    b.HasOne("Loja.Business.Models.product.SubCategoria", "subCategoria")
                         .WithMany()
                         .HasForeignKey("subCategoriaid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.product.Specs", b =>
+            modelBuilder.Entity("Loja.Business.Models.product.Specs", b =>
                 {
-                    b.HasOne("Teste.Business.Models.gallery", "gallery")
+                    b.HasOne("Loja.Business.Models.gallery", "gallery")
                         .WithMany()
                         .HasForeignKey("galleryid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Teste.Business.Models.Product", "product")
+                    b.HasOne("Loja.Business.Models.Product", "product")
                         .WithMany()
                         .HasForeignKey("productid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Teste.Business.Models.product.Type", "type")
+                    b.HasOne("Loja.Business.Models.product.Type", "type")
                         .WithMany()
                         .HasForeignKey("typeid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Teste.Business.Models.product.SubCategoria", b =>
+            modelBuilder.Entity("Loja.Business.Models.product.SubCategoria", b =>
                 {
-                    b.HasOne("Teste.Business.Models.Category", "category")
+                    b.HasOne("Loja.Business.Models.Category", "category")
                         .WithMany()
                         .HasForeignKey("categoryid")
                         .OnDelete(DeleteBehavior.Cascade)

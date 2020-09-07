@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Loja.Business.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Teste.Business.Models.product
+namespace Loja.Business.Models.product
 {
-    public class Specs
-    {   [Key]
-        public int id { get; set; }
+    public class Specs : BaseEntity
+    {   
         public int productid { get; set; }
         public Product product { get; set; }
         [Column(TypeName = "varchar(30)")]

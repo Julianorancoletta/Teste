@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
-using Teste.Business.Intefaces;
-using Teste.Business.Models;
-using Teste.Business.viewModel;
-using Teste.Data.Context;
+using Loja.Business.Intefaces;
+using Loja.Business.Models;
+using Loja.Business.viewModel;
+using Loja.Data.Context;
 using X.PagedList;
 
-namespace Teste.Web.Controllers
+namespace Loja.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

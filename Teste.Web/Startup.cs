@@ -6,11 +6,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Teste.Business.Intefaces;
-using Teste.Data.Context;
-using Teste.Data.Services;
+using Loja.Data.Context;
+using Loja.Web.Configuration;
 
-namespace Teste.Web
+namespace Loja.Web
 {
     public class Startup
     {
@@ -24,10 +23,8 @@ namespace Teste.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddWebServices(Configuration);
 
-            services.AddScoped<IProduct, ProductService>();
-            services.AddScoped<ICategory, CategoryService>();
-            services.AddScoped<ISubCategoria, SubCategoriaService>();
 
             services.AddDbContext<BancoContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

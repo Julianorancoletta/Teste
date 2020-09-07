@@ -1,4 +1,5 @@
-﻿using Microsoft.AppCenter.Crashes.Ingestion.Models;
+﻿using Loja.Business.Models;
+using Microsoft.AppCenter.Crashes.Ingestion.Models;
 using System;
 using System.Buffers.Text;
 using System.Collections.Generic;
@@ -6,14 +7,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Permissions;
 using System.Text;
-using Teste.Business.Models.product;
+using Loja.Business.Models.product;
 
-namespace Teste.Business.Models
+namespace Loja.Business.Models
 {
-    public class Product
+    public class Product : BaseEntity
     {
-        [Key]
-        public int id { get; set; }
         [Column(TypeName = "varchar(30)")]
         public string name { get; set; }
         [Column(TypeName = "decimal(10,2)")]

@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Loja.Business.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Teste.Business.Models.product
+namespace Loja.Business.Models.product
 {
-    public class Details
+    public class Details : BaseEntity
     {
-        [Key]
-        public int id { get; set; }
         public string Garantia { get; set; }
         [Column(TypeName = "decimal(10,2)")]
         public decimal dimensoesEmbalagemA { get; set; }

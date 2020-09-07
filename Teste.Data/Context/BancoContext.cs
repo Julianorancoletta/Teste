@@ -2,10 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Teste.Business.Models;
-using Teste.Business.Models.product;
+using Loja.Business.Models;
+using Loja.Business.Models.product;
 
-namespace Teste.Data.Context
+namespace Loja.Data.Context
 {
     public class BancoContext :DbContext
     {
