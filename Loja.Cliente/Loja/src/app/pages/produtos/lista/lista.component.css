@@ -1,0 +1,16 @@
+.pageTitle {
+  font-size: 160%;
+}
+
+.excluir {
+  color: red;
+}
+
+.editar {
+  color: blue;
+}
+
+th {
+  color: darkslateblue !important;
+  font-size: 125%;
+}
