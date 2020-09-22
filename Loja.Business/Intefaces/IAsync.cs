@@ -18,5 +18,7 @@ namespace Loja.Business.Intefaces
     Task<int> CountAsync(ISpecification<T> spec);
     Task<T> FirstAsync(ISpecification<T> spec);
     Task<T> FirstOrDefaultAsync(ISpecification<T> spec);
+
+    Task <IReadOnlyList<T>> ListAsyncID (int id);
   }
 }
