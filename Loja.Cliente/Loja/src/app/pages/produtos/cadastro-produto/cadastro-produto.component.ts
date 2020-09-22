@@ -45,7 +45,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
     this.produtoForm = this.fb.group({
       categoryId: [Number, [Validators.required]],
       subCategoriaId: [Number, [Validators.required]],
-      title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
       shortDescription: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(1000)]],
       sale: [false, [Validacao.Sale]],
       salePrice: ['', [Validacao.SalePrice]],
@@ -72,7 +72,7 @@ export class CadastroProdutoComponent extends ProdutoBaseComponent implements On
   editar(produto: ProductModel) {
     this.produtoForm.patchValue({
       categoryId: produto.categoryId,
-      title: produto.title,
+      name: produto.name,
       shortDescription: produto.shortDescription,
       sale: produto.sale,
       salePrice: CurrencyUtils.DecimalParaString(produto.salePrice),

@@ -31,7 +31,6 @@ namespace Loja.Web.Controllers
     [HttpPost]
     public async Task<ActionResult<Category>> Post([FromBody] Category Category)
     {
-
       if (ModelState.IsValid)
       {
         await _Category.AddAsync(Category);

@@ -20,10 +20,10 @@
 				<div *ngSwitchCase="true">
 					<div class="product-list-item">
 						<a [routerLink]="[ '/showcase/produto-detalhe', product.id ]">
-							<img [src]="product.img" [alt]="product.title" />
+							<img [src]="product.img" [alt]="product.name" />
 						</a>
 						<div class="product-list-detail">
-							<div class="product-name" id="title">{{ product.title }}</div>
+							<div class="product-name" id="title">{{ product.name }}</div>
 							<div class="product-description">{{ product.shortDescription }}</div>
 						</div>
 						<div class="product-list-action">
@@ -44,9 +44,9 @@
 						</div>
 						<div class="product-grid-item-content">
 							<a [routerLink]="[ '/showcase/produto-detalhe', product.id ]">
-								<img [src]="product.img" [alt]="product.title" />
+								<img [src]="product.img" [alt]="product.name" />
 							</a>
-							<div class="product-name" id="title">{{ product.title.toUpperCase() }}</div>
+							<div class="product-name" id="title">{{ product.name.toUpperCase() }}</div>
 							<div class="product-description">{{ product.description }}</div>
 						</div>
 						<div class="product-grid-item-bottom" [ngSwitch]="product.sale">

@@ -1,6 +1,6 @@
 export class ProductModel {
 	id: number
-	title: string
+	name: string
 	brand: string
 	price: number
 	sale: boolean

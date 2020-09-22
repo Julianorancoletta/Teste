@@ -33,7 +33,7 @@ export class ListaComponent implements OnInit {
 
   ngOnInit(): void {
     this.cols = [
-      { field: 'title', header: 'Titulo' },
+      { field: 'name', header: 'Nome' },
       { field: 'brand', header: 'Marca' },
       { field: 'price', header: 'Preço' },
       { field: 'sale', header: 'Promoção' },
@@ -66,7 +66,7 @@ export class ListaComponent implements OnInit {
   }
 
   delete(product: ProductModel) {
-    this.msg = `teste ${product.title}`
+    this.msg = `teste ${product.name}`
     this.product = product
   }
 
