@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,10 +8,9 @@ namespace Loja.Business.Models
 {
     public class PhotoView
     {
-        [Key]
-        public int Id { get; set; }
         public IFormFile file { get; set; }
-        public int ProductId { get; set; }
+        [Required]
+        public string Pasta { get; set; }
 
     }
 }

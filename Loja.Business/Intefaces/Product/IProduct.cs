@@ -14,7 +14,6 @@ namespace Loja.Business.Intefaces
     void UpdateProduct(Product product);
     void Delete(Product product);
     Task<Product> BuscaProductId(int id);
-
     Task<List<string>> busca(Busca busca);
   }
 }
