@@ -11,23 +11,19 @@ using Loja.Business.Models.product;
 using Loja.Business.viewModel;
 using Loja.Data.Context;
 using X.PagedList;
+using Microsoft.eShopWeb.Infrastructure.Data;
 
 namespace Loja.Data.Services
 {
-  public class ProductRepositoty : IProduct
+  public class ProductRepositoty : EfRepository<Product>, IProduct
   {
-    private readonly BancoContext _context;
-    private readonly IAsync<Product> _Product;
 
-    public ProductRepositoty(BancoContext context, IAsync<Product> Product)
+    public ProductRepositoty(BancoContext context) : base(context)
     {
-      _context = context;
-      _Product = Product;
     }
 
     public ProductList GetProduct(Busca busca = null)
     {
-
       var list =
           (from product in _context.Set<Product>()
            join category in _context.Set<Category>()
@@ -79,15 +75,14 @@ namespace Loja.Data.Services
 
     public async Task<Product> addProduct(Product product)
     {
-      _context.Product.Add(product);
-      await _context.SaveChangesAsync();
+      await AddAsync(product);
 
       return product;
     }
 
     public void Delete(Product product)
     {
-      _Product.DeleteAsync(product);
+      //_Product.DeleteAsync(product);
     }
 
     public async Task<productView> BuscaProduct(int Id)
@@ -122,11 +117,9 @@ namespace Loja.Data.Services
 
     }
 
-    public void UpdateProduct(Product product)
+    public async Task UpdateProduct(Product product)
     {
-      _context.Entry(product).State = EntityState.Modified;
-      _context.SaveChanges();
-
+      await UpdateAsync(product);
     }
 
     public async Task<Product> BuscaProductId(int Id)

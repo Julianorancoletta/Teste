@@ -1,9 +1,10 @@
 
 import { FormGroup } from '@angular/forms';
 import { ElementRef } from '@angular/core';
-import { Category } from '../../models/category.model';
-import { Photo } from '../../models/product.model';
-import { FormBaseComponent } from '../../component/form/form-base.component';
+import { FormBaseComponent } from '../../../component/form/form-base.component';
+import { Category } from '../../../models/category.model';
+import { Photo } from '../../../models/product.model';
+
 
 
 export abstract class CateforyBaseComponent extends FormBaseComponent {

@@ -1,9 +1,8 @@
 import { FormGroup } from '@angular/forms';
 import { ElementRef } from '@angular/core';
-import { ProductModel, Photo } from '../../models/product.model';
-import { FormBaseComponent } from '../../component/form/form-base.component';
-import { Category,SubCategoria } from '../../models/category.model';
-
+import { Photo, ProductModel } from '../../../models/product.model';
+import { Category, SubCategoria } from '../../../models/category.model';
+import { FormBaseComponent } from '../../../component/form/form-base.component';
 
 export abstract class ProdutoBaseComponent extends FormBaseComponent {
 

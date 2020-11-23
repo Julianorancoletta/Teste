@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProdutosService } from '../../../services/produtos/produtos.service';
+import { ProdutosService } from '../../../../services/produtos/produtos.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CadastroProdutoComponent } from '../cadastro-produto/cadastro-produto.component';
 import { MessageService } from 'primeng/api';
-import { busca } from '../../../models/busca.model';
-import { ProductModel, listProduct } from '../../../models/product.model';
+import { busca } from '../../../../models/busca.model';
+import { ProductModel, listProduct } from '../../../../models/product.model';
 
 
 @Component({
@@ -84,7 +84,7 @@ export class ListaComponent implements OnInit {
   }
   deleteConfirm(resp: boolean) {
     if (resp) {
-      this.produtoService.delete(this.product.id).subscribe(resp => {
+      this.produtoService.delete('',this.product.id).subscribe(resp => {
         console.log(resp)
       }, erro => console.log(erro)
         , () => {

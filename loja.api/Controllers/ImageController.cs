@@ -33,7 +33,7 @@ namespace Loja.api.Controllers
       {
         return "Forneça uma imagem para este produto!";
       }
-      var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/"+ photo.Pasta, photo.Pasta + photo.file.FileName);
+      var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", photo.file.FileName);
 
       if (System.IO.File.Exists(path))
       {

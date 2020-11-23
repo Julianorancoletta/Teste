@@ -1,10 +1,10 @@
 import { Component, HostListener } from '@angular/core';
-import { ProdutosService } from '../../services/produtos/produtos.service';
 import { ActivatedRoute } from '@angular/router';
-import { busca } from '../../models/busca.model';
-import { ProductModel, listProduct } from '../../models/product.model';
-import { car } from '../../component/car/car';
-import { searchComponent } from '../../component/search/search.component';
+import { car } from '../../../component/car/car';
+import { searchComponent } from '../../../component/search/search.component';
+import { listProduct } from '../../../models/product.model';
+import { ProdutosService } from '../../../services/produtos/produtos.service';
+
 @Component({
   selector: 'app-showcase',
   templateUrl: './show_case.component.html',

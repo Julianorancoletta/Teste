@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { tiposDeAlert } from 'src/app/enumerable/tipos_de_alert.enum';
+import { tiposDeAlert } from '../../enumerable/tipos_de_alert.enum';
 
 @Component({
   selector: 'app-toast',

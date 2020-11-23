@@ -43,7 +43,7 @@ export abstract class ApiService {
       .pipe(retry(2), catchError(this.handleError))
   }
 
-  post(path: string, body: any): Observable<any> {
+  post(path: string, body: any) {
     return this.http
       .post(`${environment.api}${path}`, JSON.stringify(body), this.httpOptions)
       .pipe(catchError(this.formatErrors))
@@ -55,7 +55,7 @@ export abstract class ApiService {
       .pipe(catchError(this.formatErrors))
   }
 
-  delete(path: string, id: any): Observable<any> {
+  delete(path: string, id: any) {
     return this.http
       .delete(`${environment.api}${path}/${id}`, this.httpOptions)
       .pipe(catchError(this.formatErrors))

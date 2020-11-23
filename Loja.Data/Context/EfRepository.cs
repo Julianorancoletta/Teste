@@ -12,21 +12,21 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
 {
   public class EfRepository<T> : IAsync<T> where T : BaseEntity, IAggregateRoot
   {
-    protected readonly BancoContext _dbContext;
+    protected readonly BancoContext _context;
 
     public EfRepository(BancoContext dbContext)
     {
-      _dbContext = dbContext;
+      _context = dbContext;
     }
 
     public virtual async Task<T> GetByIdAsync(int id)
     {
-      return await _dbContext.Set<T>().FindAsync(id);
+      return await _context.Set<T>().FindAsync(id);
     }
 
     public async Task<IReadOnlyList<T>> ListAllAsync()
     {
-      return await _dbContext.Set<T>().ToListAsync();
+      return await _context.Set<T>().ToListAsync();
     }
 
     public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
@@ -37,7 +37,7 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
 
     public async Task<IReadOnlyList<T>> ListAsyncID(int id )
     {
-      return await _dbContext.Set<T>().Where(x => x.Id == id).ToListAsync();
+      return await _context.Set<T>().Where(x => x.Id == id).ToListAsync();
     }
 
     public async Task<int> CountAsync(ISpecification<T> spec)
@@ -48,22 +48,22 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
 
     public async Task<T> AddAsync(T entity)
     {
-      await _dbContext.Set<T>().AddAsync(entity);
-      await _dbContext.SaveChangesAsync();
+      await _context.Set<T>().AddAsync(entity);
+      await _context.SaveChangesAsync();
 
       return entity;
     }
 
     public async Task UpdateAsync(T entity)
     {
-      _dbContext.Entry(entity).State = EntityState.Modified;
-      await _dbContext.SaveChangesAsync();
+      _context.Entry(entity).State = EntityState.Modified;
+      await _context.SaveChangesAsync();
     }
 
     public async Task DeleteAsync(T entity)
     {
-      _dbContext.Set<T>().Remove(entity);
-      await _dbContext.SaveChangesAsync();
+      _context.Set<T>().Remove(entity);
+      await _context.SaveChangesAsync();
     }
 
     public async Task<T> FirstAsync(ISpecification<T> spec)
@@ -81,7 +81,7 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
     private IQueryable<T> ApplySpecification(ISpecification<T> spec)
     {
       var evaluator = new SpecificationEvaluator<T>();
-      return evaluator.GetQuery(_dbContext.Set<T>().AsQueryable(), spec);
+      return evaluator.GetQuery(_context.Set<T>().AsQueryable(), spec);
     }
   }
 }

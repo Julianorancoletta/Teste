@@ -5,11 +5,12 @@ import { DetalhesProdutoComponent } from './detalhes-produto/detalhes-produto.co
 import { CardModule } from 'primeng/card';
 import { RouterModule } from '@angular/router';
 import localePt from '@angular/common/locales/pt';
-import { ProdutosService } from '../../services/produtos/produtos.service';
 import { ShowCaseComponent } from './show_case.component';
 import { ShowcaseRoutesModule } from './show_case.routes';
-import { ComponentsModule } from '../../component/components.module';
+
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ComponentsModule } from '../../../component/components.module';
+import { ProdutosService } from '../../../services/produtos/produtos.service';
 registerLocaleData(localePt);
 
 @NgModule({

@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { DetalhesProdutoComponent } from "../showcase/detalhes-produto/detalhes-produto.component";
 import { CadastroProdutoComponent } from "./cadastro-produto/cadastro-produto.component";
 import { ListaComponent } from "./lista/lista.component";
 

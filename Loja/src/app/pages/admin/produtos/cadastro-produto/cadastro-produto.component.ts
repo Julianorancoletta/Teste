@@ -1,49 +1,68 @@
 import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
-
 import { FormControlName, FormBuilder, Validators } from '@angular/forms';
-import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
-import { CateforyBaseComponent } from '../produto-form.base.component';
-import { categoryService } from 'app/services/catefory/category.service';
+import { tiposDeAlert } from '../../../../enumerable/tipos_de_alert.enum';
+import { Photo, ProductModel } from '../../../../models/product.model';
+import { categoryService } from '../../../../services/catefory/category.service';
+import { ProdutosService } from '../../../../services/produtos/produtos.service';
+import { SubCategoriaService } from '../../../../services/subCategoria/sub-categoria.service';
+import { CurrencyUtils } from '../../../../utils/currency-utils';
+import { Validacao } from '../../../../utils/validacao';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { ProdutoBaseComponent } from '../produto-form.base.component';
 
 @Component({
-  templateUrl: './catefory.component.html',
-  styleUrls: ['./catefory.component.css'],
+  selector: 'app-cadastro-produto',
+  templateUrl: './cadastro-produto.component.html',
+  styleUrls: ['./cadastro-produto.component.css'],
 })
-export class CateforyComponent extends CateforyBaseComponent implements OnInit {
+
+export class CadastroProdutoComponent extends ProdutoBaseComponent implements OnInit {
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
-
   imageChangedEvent: any = '';
   id: number
   showCropper = false;
   fileToUpload: File = null;
   errors: any;
+  subCategoriaId;
+  text1:string
+
   constructor(private fb: FormBuilder,
+    private produtoService: ProdutosService,
     private categoryService: categoryService,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
+    public subCategoriaService: SubCategoriaService
   ) { super(); }
 
   ngOnInit(): void {
 
+    this.categoryService.getcategory()
+      .subscribe(
+        category => this.category = category
+      );
 
     this.produtoForm = this.fb.group({
       categoryId: [Number, [Validators.required]],
-      title: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
+      subCategoriaId: [Number, [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
       shortDescription: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(1000)]],
       sale: [false, [Validacao.Sale]],
       salePrice: ['', [Validacao.SalePrice]],
       img: [''],
       brand: ['', [Validators.required]],
       price: ['', [Validators.required]],
-      //ativo: [true]
     });
     if (this.config.data.id) {
       this.produtoService.getProduct(this.config.data.id).subscribe(
-        (product:ProductModel) => {
-          delete product.category
-          this.editar(product)
+        (product: ProductModel) => {
+          delete product.category;
+          delete product.subCategoria;
           this.produto = product;
+          this.imageChangedEvent = product.img
+          this.changeCategory(product.categoryId).then(resposta => {
+            if (resposta) this.editar(product);
+          });
         })
     } else {
       this.produtoForm.controls['salePrice'].setValue("0.00")
@@ -53,33 +72,31 @@ export class CateforyComponent extends CateforyBaseComponent implements OnInit {
   editar(produto: ProductModel) {
     this.produtoForm.patchValue({
       categoryId: produto.categoryId,
-      title: produto.title,
+      name: produto.name,
       shortDescription: produto.shortDescription,
       sale: produto.sale,
       salePrice: CurrencyUtils.DecimalParaString(produto.salePrice),
       brand: produto.brand,
       price: CurrencyUtils.DecimalParaString(produto.price),
+      subCategoriaId: produto.subCategoriaId
     });
   }
 
 
   ngAfterViewInit(): void {
     super.configurarValidacaoFormulario(this.formInputElements);
-
-
   }
 
   adicionarProduto() {
     if (this.produtoForm.dirty && this.produtoForm.valid) {
-
       this.produto = Object.assign({}, this.produto, this.produtoForm.value);
-
       this.produto.categoryId = Number(this.produto.categoryId)
+      this.produto.subCategoriaId = Number(this.produto.subCategoriaId)
       this.produto.price = CurrencyUtils.StringParaDecimal(this.produto.price)
       this.produto.salePrice = CurrencyUtils.StringParaDecimal(this.produto.salePrice);
 
       if (this.config.data.id) {
-        debugger
+        this.produto.img = this.imageChangedEvent;
         this.produtoService.atualizarProduto(this.produto)
           .subscribe(
             (produto: ProductModel) => {
@@ -99,7 +116,7 @@ export class CateforyComponent extends CateforyBaseComponent implements OnInit {
           )
       } else {
         this.produto.img = null;
-        this.produtoService.post(this.produto)
+        this.produtoService.postProduto(this.produto)
           .subscribe(
             (produto: ProductModel) => {
               this.photo.ProductId = produto.id
@@ -113,7 +130,6 @@ export class CateforyComponent extends CateforyBaseComponent implements OnInit {
             falha => { this.processarFalha(falha) }
           );
       }
-      this.mudancasNaoSalvas = false;
     } else {
       this.messagemToastr('Ocorreu um erro', tiposDeAlert.error)
     }
@@ -130,21 +146,37 @@ export class CateforyComponent extends CateforyBaseComponent implements OnInit {
   }
 
   fileChangeEvent(files: FileList): void {
+    if (files.item(0).type && files.item(0).type.indexOf('image') === -1) {
+      console.log('File is not an image.', files.item(0).type, files.item(0));
+      return;
+    }
 
     this.photo = new Photo
     this.photo.file = files.item(0)
-    // this.imageChangedEvent = event;
-    // this.imagemNome = event.currentTarget.files[0].name;
+    const reader = new FileReader();
   }
+
   sale() {
     return this.produtoForm.controls.sale.value
   }
+
   imageLoaded() {
     this.showCropper = true;
   }
 
   loadImageFailed() {
     this.errors.push('O formato do arquivo  não é aceito.');
+  }
+
+  changeCategory(item): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.subCategoriaService.get(item).
+      subscribe(
+        resp => { this.subCategoria = resp }, 
+        error => reject(false),
+        () => { resolve(true) }
+      )
+    });
   }
 }
 

@@ -9,12 +9,12 @@ import { ListaComponent } from './lista/lista.component';
 import { TableModule } from 'primeng/table';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { BrMaskerModule } from 'br-mask';
-import { ProdutoResolve } from '../../services/produtos/produtos.resolve';
-import { ComponentsModule } from '../../component/components.module';
-import { SubCategoriaService } from '../../services/subCategoria/sub-categoria.service';
 import {FieldsetModule} from 'primeng/fieldset';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ComponentsModule } from '../../../component/components.module';
+import { ProdutoResolve } from '../../../services/produtos/produtos.resolve';
+import { SubCategoriaService } from '../../../services/subCategoria/sub-categoria.service';
 
 @NgModule({
   declarations: [

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductModel } from 'src/app/core/models/product.model';
-import { ProdutosService } from '../produtos.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { CadastroProdutoComponent } from '../cadastro-produto/cadastro-produto.component';
 import { MessageService } from 'primeng/api';
+import { ProductModel } from '../../../models/product.model';
+import { CadastroProdutoComponent } from '../../../pages/admin/produtos/cadastro-produto/cadastro-produto.component';
+import { ProdutosService } from '../../../services/produtos/produtos.service';
+
 
 @Component({
   selector: 'app-lista-produto',
@@ -39,7 +40,7 @@ export class ListaComponent implements OnInit {
   listaProdutos() {
     this.loading = true;
     this.produtoService.getProducts().subscribe(listProdutos => {
-      this.products = listProdutos
+      // this.products = listProdutos
     }, error => console.log(error)
       , () => {
         this.loading = false;
@@ -60,7 +61,7 @@ export class ListaComponent implements OnInit {
   }
 
   delete(product: ProductModel) {
-    this.msg = `teste ${product.title}`
+    this.msg = `teste ${product.name}`
     this.product = product
   }
 
@@ -77,15 +78,16 @@ export class ListaComponent implements OnInit {
     });
   }
   deleteConfirm(resp: boolean) {
-    if (resp) {
-      this.produtoService.delete(this.product.id).subscribe(resp => {
-        console.log(resp)
-      }, erro => console.log(erro)
-        , () => {
-          this.listaProdutos();
-        }
-      )
-      this.msg = null
-    }
+
+    // if (resp) {
+    //   this.produtoService.delete(id).subscribe(resp => {
+    //     console.log(resp)
+    //   }, erro => console.log(erro)
+    //     , () => {
+    //       this.listaProdutos();
+    //     }
+    //   )
+    //   this.msg = null
+    // }
   }
 }

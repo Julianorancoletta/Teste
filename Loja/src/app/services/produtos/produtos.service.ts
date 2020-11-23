@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-
-import { environment } from '../../../environments/environment'
+import { HttpParams } from '@angular/common/http';
 import { ProductModel, Photo, listProduct } from '../../models/product.model';
 import { Observable } from 'rxjs';
 import { busca } from '../../models/busca.model';
@@ -14,10 +12,7 @@ import { ApiService } from '../api.service';
 })
 export class ProdutosService extends ApiService{
 
-
- 
-  product
-  getProducts(Busca:busca): Observable<listProduct> {
+  getProducts(Busca:busca= null): Observable<listProduct> {
 
     const params = new HttpParams()
     .set('ItemBuscado', Busca.ItemBuscado)
@@ -34,27 +29,25 @@ export class ProdutosService extends ApiService{
     return super.getId('product',id);
   }
 
-  // post(product: ProductModel) {
-  //   return this.http
-  //     .post(this.url, product, this.ObterHeaderJson());
-  // }
+  postProduto (product: ProductModel) {
+   return super.post('product',product);
+  }
 
-  // delete(id: number) {
-  //   return this.http
-  //     .delete(`${this.url}/${id}`,this.ObterHeaderJson());
-  // }
-  // postImg(photo: Photo) {
-  //   const formData = new FormData();
-  //   formData.append('ProductId', photo.ProductId.toString());
-  //   formData.append('file', photo.file);
+  deleteProduto(id: number) {
+    return super.delete('product',id)
+  }
 
-  //   return this.http.post(`${this.url}/upload`, formData)
-  // }
+  postImg(photo: Photo) {
+    const formData = new FormData();
+    formData.append('ProductId', photo.ProductId.toString());
+    formData.append('file', photo.file);
 
-  // atualizarProduto(roduct: ProductModel): Observable<ProductModel> {
-  //   return this.http
-  //     .put<ProductModel>(`${this.url}/${roduct.id}`, roduct, this.ObterHeaderJson());
-  // }
+    return super.post('product/upload',formData)
+  }
+
+  atualizarProduto(product: ProductModel): Observable<ProductModel> {
+   return super.put('product',product.id,product)
+  }
 
   getbusca(Busca:busca): Observable<string[]> {
     const params = new HttpParams()

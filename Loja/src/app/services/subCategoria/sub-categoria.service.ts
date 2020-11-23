@@ -8,7 +8,7 @@ import { ApiService } from '../api.service';
 })
 export class SubCategoriaService extends ApiService {
 
-    getProduct(id: string):Observable<SubCategoria[]> {
+    get(id: string):Observable<SubCategoria[]> {
        return super.getId('SubCategoria',id)
     }
 

@@ -11,7 +11,7 @@ namespace Loja.Business.Intefaces
     ProductList GetProduct(Busca busca = null);
     Task<Product> addProduct(Product product);
     Task<productView> BuscaProduct(int id);
-    void UpdateProduct(Product product);
+    Task UpdateProduct(Product product);
     void Delete(Product product);
     Task<Product> BuscaProductId(int id);
     Task<List<string>> busca(Busca busca);

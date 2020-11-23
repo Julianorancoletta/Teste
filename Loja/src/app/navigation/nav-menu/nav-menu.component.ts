@@ -5,6 +5,7 @@ import { Category } from '../../models/category.model';
 import { categoryService } from '../../services/catefory/category.service';
 import { ProdutosService } from '../../services/produtos/produtos.service';
 import { searchComponent } from '../../component/search/search.component';
+import { SubCategoriaService } from '../../services/subCategoria/sub-categoria.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -17,6 +18,7 @@ export class NavMenuComponent extends searchComponent implements OnInit {
   
   constructor(private router: Router,
     private category_Service: categoryService,
+    private subCategoty :SubCategoriaService,
     private Produtos: ProdutosService) {
     super();
   }
@@ -50,7 +52,7 @@ export class NavMenuComponent extends searchComponent implements OnInit {
   }
 
   buscarMarcas(categoria) {
-    this.category_Service.getsubcategory(categoria).subscribe(
+    this.subCategoty.get(categoria).subscribe(
       (subcategoria: any[]) => {
         this.subCategoria = subcategoria;
       },

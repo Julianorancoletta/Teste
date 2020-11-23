@@ -1,24 +1,25 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
+
 import { LoaderComponent } from './component/loader/loader.component';
+import { HomeComponent } from './pages/user/home/home.component';
 
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     {
         path: 'produto',
-        loadChildren: () => import('./pages/produtos/produtos.routes')
-            .then(m => m.ProdutoRoutesModule)
+        loadChildren: () => import('./pages/admin/produtos/produtos.module')
+            .then(m => m.ProdutosModule)
     },
     {
         path: 'checkout',
-        loadChildren: () => import('./pages/checkout/checkout.module')
+        loadChildren: () => import('./pages/user/checkout/checkout.module')
             .then(m => m.checkoutModule)
     },
     {
         path: 'showcase',
-        loadChildren: () => import('./pages/showcase/show_case.module')
+        loadChildren: () => import('./pages/user/showcase/show_case.module')
             .then(m => m.ShowcaseModule)
     },    
     {
