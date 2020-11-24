@@ -11,6 +11,5 @@ namespace Loja.Business.Models
         public IFormFile file { get; set; }
         [Required]
         public string Pasta { get; set; }
-
     }
 }

@@ -29,11 +29,13 @@ namespace Loja.api.Controllers
     [HttpPost("upload")]
     public async Task<string> EnviaArquivo([FromForm] PhotoView photo)
     {
+
       if (photo.file == null || photo.file.Length == 0)
       {
         return "Forneça uma imagem para este produto!";
       }
       var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", photo.file.FileName);
+      string imgbase64;
 
       if (System.IO.File.Exists(path))
       {
@@ -45,7 +47,14 @@ namespace Loja.api.Controllers
         await photo.file.CopyToAsync(stream);
       }
 
-      return path;
+      using (var ms = new MemoryStream())
+      {
+        photo.file.CopyTo(ms);
+        var fileBytes = ms.ToArray();
+        imgbase64 = "data:image/png;base64, " + Convert.ToBase64String(fileBytes);
+      }
+
+      return imgbase64;
     }
   }
 }

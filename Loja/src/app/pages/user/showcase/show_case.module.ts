@@ -11,6 +11,7 @@ import { ShowcaseRoutesModule } from './show_case.routes';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ComponentsModule } from '../../../component/components.module';
 import { ProdutosService } from '../../../services/produtos/produtos.service';
+import { PipeModule } from '../../../pipe/pipe.module';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -19,6 +20,7 @@ registerLocaleData(localePt);
     ShowCaseComponent,
   ],
   imports: [
+    PipeModule,
     ComponentsModule,
     RouterModule,
     CardModule,

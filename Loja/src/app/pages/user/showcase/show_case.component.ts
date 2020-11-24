@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { car } from '../../../component/car/car';
 import { searchComponent } from '../../../component/search/search.component';
@@ -16,7 +17,8 @@ export class ShowCaseComponent extends searchComponent {
   cars: any = new car();
 
   constructor(
-    private produtoService: ProdutosService,private route: ActivatedRoute) {
+    private produtoService: ProdutosService,private route: ActivatedRoute,
+    private sanitizer: DomSanitizer) {
     super();
    
     this.route.params.subscribe(params => {
@@ -56,5 +58,9 @@ export class ShowCaseComponent extends searchComponent {
         )
       }
     )
+  }
+
+  photoURL(imageUrl) {
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
 }

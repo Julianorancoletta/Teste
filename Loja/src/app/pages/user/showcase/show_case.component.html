@@ -44,7 +44,7 @@
 						</div>
 						<div class="product-grid-item-content">
 							<a [routerLink]="[ '/showcase/produto-detalhe', product.id ]">
-								<img [src]="product.img" [alt]="product.name" />
+								<img [src]="product.img |safeHtml" [alt]="product.name" />
 							</a>
 							<div class="product-name" id="title">{{ product.name.toUpperCase() }}</div>
 							<div class="product-description">{{ product.description }}</div>
