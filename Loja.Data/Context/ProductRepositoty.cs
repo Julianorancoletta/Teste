@@ -5,10 +5,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Loja.Business.Intefaces;
-using Loja.Business.Models;
-using Loja.Business.Models.product;
-using Loja.Business.viewModel;
+using Loja.Application.Intefaces;
+using Loja.Application.Models;
+using Loja.Application.Models.product;
+using Loja.Application.viewModel;
 using Loja.Data.Context;
 using X.PagedList;
 using Microsoft.eShopWeb.Infrastructure.Data;
@@ -46,8 +46,9 @@ namespace Loja.Data.Services
              subCategoriaId = SubCategoria.Id,
              subCategoria = SubCategoria.nome,
              brandId = brand.Id,
-             img = product.img
+             img = product.img,
            });
+
 
       if (!string.IsNullOrEmpty(busca.ItemBuscado)) list = list.Where(x => x.name.StartsWith(busca.ItemBuscado));
       if (!string.IsNullOrEmpty(busca.categoria)) list = list.Where(x => x.category == busca.categoria);

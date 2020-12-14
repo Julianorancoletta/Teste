@@ -1,0 +1,27 @@
+<div class="card" style="width: 20rem;">
+  <div>
+    <i class="pi pi-tag product-category-icon"></i>
+    <span class="product-category">{{ produto.category }}</span>
+  </div>
+  <div class="card-header">
+    <img class="card-img-top" [src]="produto.img |safeHtml" alt="{{ produto.name }}">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title text-center">{{ produto.name }}</h5>
+  </div>
+</div>
+<div class="card" style="width: 20rem;">
+  <div class="product-grid-item-bottom" [ngSwitch]="produto.sale">
+    <ng-container *ngSwitchCase="true">
+      <span class="product-price">
+        De: <strike>{{ produto.price | currency:'BRL':'symbol':'1.2-2':'pt' }}</strike>
+        Por: {{ product.salePrice | currency:'BRL':'symbol':'1.2-2':'pt' }}
+      </span>
+    </ng-container>
+    <ng-container *ngSwitchCase="false">
+      <span class="product-price">
+        {{ produto.price | currency:'BRL':'symbol':'1.2-2':'pt' }}
+      </span>
+    </ng-container>
+  </div>
+</div>

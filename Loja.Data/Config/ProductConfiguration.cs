@@ -1,18 +1,15 @@
-using Loja.Business.Models;
+using Loja.Application.Model.Usuarios;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Loja.Data.Config
 {
-  public class ProductConfiguration :IEntityTypeConfiguration<Product>
+  public class ProductConfiguration :IEntityTypeConfiguration<Usuario>
   {
-    public void Configure(EntityTypeBuilder<Product> builder)
+    public void Configure(EntityTypeBuilder<Usuario> builder)
     {
-      //builder.ToTable("Product");
-      //builder.HasKey(x => x.Id);
-      //builder.Property(x => x.name)
-      //  .HasMaxLength(50)
-      //  .IsRequired();
+      builder.HasIndex(u => u.Email)
+        .IsUnique();
     }
   }
 }

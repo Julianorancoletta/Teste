@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Loja.Business.Intefaces
+namespace Loja.Application.Intefaces
 {
   public interface IAggregateRoot
   { }

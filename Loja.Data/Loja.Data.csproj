@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Context\UsuarioRepositoty.cs~RFaf2a1b1.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Ardalis.EFCore.Extensions" Version="1.1.0" />
     <PackageReference Include="Ardalis.Specification" Version="4.1.0" />
     <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="4.1.0" />
@@ -23,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Loja.Business\Loja.Business.csproj" />
+    <ProjectReference Include="..\Loja.Business\Loja.Application.csproj" />
   </ItemGroup>
 
 </Project>

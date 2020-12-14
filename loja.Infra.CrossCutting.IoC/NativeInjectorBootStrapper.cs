@@ -1,4 +1,6 @@
-using Loja.Business.Intefaces;
+using Loja.Application.Intefaces;
+using Loja.Application.Intefaces.Usuarios;
+using Loja.Data.Context;
 using Loja.Data.Services;
 using Microsoft.eShopWeb.Infrastructure.Data;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +16,7 @@ namespace loja.Infra.CrossCutting.IoC
     {
       services.AddScoped(typeof(IAsync<>), typeof(EfRepository<>));
       services.AddScoped<IProduct, ProductRepositoty>();
+      services.AddScoped<IUsuario, UsuarioRepositoty>();
     }
   }
 }

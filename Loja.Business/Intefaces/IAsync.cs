@@ -1,11 +1,12 @@
 using Ardalis.Specification;
-using Loja.Business.Models;
+using Loja.Application.Model.Usuarios;
+using Loja.Application.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Loja.Business.Intefaces
+namespace Loja.Application.Intefaces
 {
   public interface IAsync<T> where T : BaseEntity, IAggregateRoot
   {

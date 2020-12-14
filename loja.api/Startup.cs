@@ -1,11 +1,6 @@
 using loja.api.Configurations;
-using Loja.Business.Intefaces;
-using Loja.Data.Context;
-using Loja.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.eShopWeb.Infrastructure.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,21 +19,13 @@ namespace loja.api
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      // WebAPI Config
+      services.AddControllers();
+      // Setting DBContexts
+      services.AddDatabaseConfiguration(Configuration);
+
       services.AddDependencyInjectionConfiguration();
 
-      services.AddDbContext<BancoContext>(c =>
-                c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-      services.AddControllers();
-
-      services.AddCors(opt =>
-      {
-        opt.AddPolicy("CorsPolicy", policy =>
-        {
-          policy.AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowAnyOrigin();
-        });
-      });
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +36,12 @@ namespace loja.api
         app.UseDeveloperExceptionPage();
       }
 
-      app.UseCors("CorsPolicy");
+      app.UseCors(c =>
+      {
+        c.AllowAnyHeader();
+        c.AllowAnyMethod();
+        c.AllowAnyOrigin();
+      });
 
       app.UseHttpsRedirection();
 
