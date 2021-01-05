@@ -1,7 +1,7 @@
-using Loja.Application.Intefaces;
+using Loja.Domain.Intefaces;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Loja.Application.Models.product
+namespace Loja.Domain.Models.product
 {
   public class Brand : BaseEntity, IAggregateRoot
   {

@@ -5,11 +5,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { FormularioComponent } from './formulario/formulario.component';
+import { DynamicFormComponent } from './dynamic/dynamic-form.component';
+import { DynamicFormQuestionComponent } from './dynamic/dynamic-form-question/dynamic-form-question.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 @NgModule({
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
     CommonModule,
     RouterModule,
     NgbModule
@@ -18,12 +20,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    FormularioComponent
+    DynamicFormComponent,
+    DynamicFormQuestionComponent,
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent
   ]
 })
 export class ComponentsModule { }

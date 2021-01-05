@@ -1,6 +1,6 @@
 
-using Loja.Application.Intefaces;
-using Loja.Application.Models.product;
+using Loja.Domain.Intefaces;
+using Loja.Domain.Models.product;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Loja.api.Controllers

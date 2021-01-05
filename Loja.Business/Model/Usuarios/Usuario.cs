@@ -1,11 +1,11 @@
-using Loja.Application.Intefaces;
-using Loja.Application.Models;
+using Loja.Domain.Intefaces;
+using Loja.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Loja.Application.Model.Usuarios
+namespace Loja.Domain.Model.Usuarios
 {
   public class Usuario : BaseEntity, IAggregateRoot
   {

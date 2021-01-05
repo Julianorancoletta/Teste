@@ -1,4 +1,4 @@
-using Loja.Application.Model.Usuarios;
+using Loja.Domain.Model.Usuarios;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

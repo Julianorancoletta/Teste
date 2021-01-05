@@ -1,10 +1,10 @@
-using Loja.Application.Models;
-using Loja.Application.viewModel;
+using Loja.Domain.Models;
+using Loja.Domain.viewModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
-namespace Loja.Application.Intefaces
+namespace Loja.Domain.Intefaces
 {
   public interface IProduct 
     {

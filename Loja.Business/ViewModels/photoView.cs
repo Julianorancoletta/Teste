@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Loja.Application.Models
+namespace Loja.Domain.Models
 {
     public class PhotoView
     {

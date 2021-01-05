@@ -9,12 +9,20 @@ namespace loja.api
 {
   public class Startup
   {
-    public Startup(IConfiguration configuration)
+    public IConfiguration Configuration { get; }
+    public Startup(IHostEnvironment env)
     {
-      Configuration = configuration;
+      var builder = new ConfigurationBuilder()
+          .SetBasePath(env.ContentRootPath)
+          .AddJsonFile("appsettings.json", true, true)
+          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true);
+
+
+      builder.AddEnvironmentVariables();
+      Configuration = builder.Build();
     }
 
-    public IConfiguration Configuration { get; }
+
 
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
@@ -24,7 +32,12 @@ namespace loja.api
       // Setting DBContexts
       services.AddDatabaseConfiguration(Configuration);
 
+      // Swagger Config
+      services.AddSwaggerConfiguration();
+
+      // .NET Native DI Abstraction
       services.AddDependencyInjectionConfiguration();
+
 
     }
 
@@ -36,6 +49,10 @@ namespace loja.api
         app.UseDeveloperExceptionPage();
       }
 
+      app.UseHttpsRedirection();
+
+      app.UseRouting();
+
       app.UseCors(c =>
       {
         c.AllowAnyHeader();
@@ -43,16 +60,14 @@ namespace loja.api
         c.AllowAnyOrigin();
       });
 
-      app.UseHttpsRedirection();
-
-      app.UseRouting();
-
       app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllers();
       });
+
+      app.UseSwaggerSetup();
     }
   }
 }

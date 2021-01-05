@@ -1,5 +1,5 @@
-using Loja.Application.Intefaces.Usuarios;
-using Loja.Application.Model.Usuarios;
+using Loja.Domain.Intefaces.Usuarios;
+using Loja.Domain.Model.Usuarios;
 using Microsoft.eShopWeb.Infrastructure.Data;
 using System.Linq;
 using System.Security.Cryptography;

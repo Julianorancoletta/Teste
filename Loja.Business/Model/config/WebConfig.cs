@@ -1,9 +1,9 @@
-using Loja.Application.Models;
+using Loja.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Loja.Application.Model.config
+namespace Loja.Domain.Model.config
 {
   public class WebConfig : BaseEntity
   {

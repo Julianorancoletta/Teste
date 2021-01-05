@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using Loja.Application.Models.product;
-using Loja.Application.Intefaces;
+using Loja.Domain.Models.product;
+using Loja.Domain.Intefaces;
 
-namespace Loja.Application.Models
+namespace Loja.Domain.Models
 {
   public class Product : BaseEntity, IAggregateRoot
   {

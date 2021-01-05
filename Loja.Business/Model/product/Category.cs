@@ -1,7 +1,7 @@
-using Loja.Application.Intefaces;
+using Loja.Domain.Intefaces;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Loja.Application.Models
+namespace Loja.Domain.Models
 {
   public class Category : BaseEntity, IAggregateRoot
   {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Loja.Application.viewModel
+namespace Loja.Domain.viewModel
 {
   public class Busca
   {
@@ -14,9 +14,8 @@ namespace Loja.Application.viewModel
     public string categoria { get; set; }
     public string subCategoria { get; set; }
     public DateTime date { get; set; }
-    [NotMapped]
+
     public int _numeroPagina;
-    
     public int numeroPagina
     {
       get
@@ -30,7 +29,6 @@ namespace Loja.Application.viewModel
       }
     }
     public int _itensPorPagina;
-    [NotMapped]
     public int itensPorPagina
     {
       get

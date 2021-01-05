@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Loja.Application.Intefaces;
-using Loja.Application.Models.product;
+using Loja.Domain.Intefaces;
+using Loja.Domain.Models.product;
 
 namespace Loja.api.Controllers
 {

@@ -1,4 +1,4 @@
-using Loja.Application.Model.Usuarios;
+using Loja.Domain.Model.Usuarios;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;

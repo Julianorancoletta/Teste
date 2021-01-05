@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Loja.Application.Intefaces;
-using Loja.Application.Models;
-using Loja.Application.viewModel;
+using Loja.Domain.Intefaces;
+using Loja.Domain.Models;
+using Loja.Domain.viewModel;
 
 namespace Loja.api.Controllers
 {

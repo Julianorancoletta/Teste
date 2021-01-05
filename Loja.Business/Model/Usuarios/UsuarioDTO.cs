@@ -1,9 +1,9 @@
-using Loja.Application.Models;
+using Loja.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Loja.Application.Model.Usuarios
+namespace Loja.Domain.Model.Usuarios
 {
   public class UsuarioDTO :BaseEntity
   {

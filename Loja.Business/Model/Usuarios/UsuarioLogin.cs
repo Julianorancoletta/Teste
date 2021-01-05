@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Loja.Application.Model.Usuarios
+namespace Loja.Domain.Model.Usuarios
 {
   public class UsuarioLogin
   {

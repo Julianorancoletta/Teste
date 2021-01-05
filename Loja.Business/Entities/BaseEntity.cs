@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Loja.Application.Models
+namespace Loja.Domain.Models
 {
     public abstract class BaseEntity
     {

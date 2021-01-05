@@ -1,8 +1,8 @@
-using Loja.Application.Model.Usuarios;
+using Loja.Domain.Model.Usuarios;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Loja.Application.Intefaces.Usuarios
+namespace Loja.Domain.Intefaces.Usuarios
 {
   public interface IUsuario
   {

@@ -1,7 +1,7 @@
 using Ardalis.Specification;
 using Ardalis.Specification.EntityFrameworkCore;
-using Loja.Application.Intefaces;
-using Loja.Application.Models;
+using Loja.Domain.Intefaces;
+using Loja.Domain.Models;
 using Loja.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

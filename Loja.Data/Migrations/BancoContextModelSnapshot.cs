@@ -18,7 +18,7 @@ namespace Loja.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Loja.Application.Model.Usuarios.Usuario", b =>
+            modelBuilder.Entity("Loja.Domain.Model.Usuarios.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,7 +45,7 @@ namespace Loja.Data.Migrations
                     b.ToTable("Usuarios");
                 });
 
-            modelBuilder.Entity("Loja.Application.Models.Category", b =>
+            modelBuilder.Entity("Loja.Domain.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -66,7 +66,7 @@ namespace Loja.Data.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("Loja.Application.Models.Product", b =>
+            modelBuilder.Entity("Loja.Domain.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -120,7 +120,7 @@ namespace Loja.Data.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Loja.Application.Models.gallery", b =>
+            modelBuilder.Entity("Loja.Domain.Models.gallery", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -138,7 +138,7 @@ namespace Loja.Data.Migrations
                     b.ToTable("galleries");
                 });
 
-            modelBuilder.Entity("Loja.Application.Models.product.Brand", b =>
+            modelBuilder.Entity("Loja.Domain.Models.product.Brand", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -156,7 +156,7 @@ namespace Loja.Data.Migrations
                     b.ToTable("brand");
                 });
 
-            modelBuilder.Entity("Loja.Application.Models.product.Details", b =>
+            modelBuilder.Entity("Loja.Domain.Models.product.Details", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -195,7 +195,7 @@ namespace Loja.Data.Migrations
                     b.ToTable("detail");
                 });
 
-            modelBuilder.Entity("Loja.Application.Models.product.Specs", b =>
+            modelBuilder.Entity("Loja.Domain.Models.product.Specs", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -234,7 +234,7 @@ namespace Loja.Data.Migrations
                     b.ToTable("specs");
                 });
 
-            modelBuilder.Entity("Loja.Application.Models.product.SubCategoria", b =>
+            modelBuilder.Entity("Loja.Domain.Models.product.SubCategoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -260,7 +260,7 @@ namespace Loja.Data.Migrations
                     b.ToTable("SubCategoria");
                 });
 
-            modelBuilder.Entity("Loja.Application.Models.product.Type", b =>
+            modelBuilder.Entity("Loja.Domain.Models.product.Type", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -278,57 +278,57 @@ namespace Loja.Data.Migrations
                     b.ToTable("type");
                 });
 
-            modelBuilder.Entity("Loja.Application.Models.Product", b =>
+            modelBuilder.Entity("Loja.Domain.Models.Product", b =>
                 {
-                    b.HasOne("Loja.Application.Models.product.Brand", "brand")
+                    b.HasOne("Loja.Domain.Models.product.Brand", "brand")
                         .WithMany()
                         .HasForeignKey("brandid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Loja.Application.Models.Category", "category")
+                    b.HasOne("Loja.Domain.Models.Category", "category")
                         .WithMany()
                         .HasForeignKey("categoryid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Loja.Application.Models.product.Details", "details")
+                    b.HasOne("Loja.Domain.Models.product.Details", "details")
                         .WithMany()
                         .HasForeignKey("detailsid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Loja.Application.Models.product.SubCategoria", "subCategoria")
+                    b.HasOne("Loja.Domain.Models.product.SubCategoria", "subCategoria")
                         .WithMany()
                         .HasForeignKey("subCategoriaid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Loja.Application.Models.product.Specs", b =>
+            modelBuilder.Entity("Loja.Domain.Models.product.Specs", b =>
                 {
-                    b.HasOne("Loja.Application.Models.gallery", "gallery")
+                    b.HasOne("Loja.Domain.Models.gallery", "gallery")
                         .WithMany()
                         .HasForeignKey("galleryid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Loja.Application.Models.Product", "product")
+                    b.HasOne("Loja.Domain.Models.Product", "product")
                         .WithMany()
                         .HasForeignKey("productid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Loja.Application.Models.product.Type", "type")
+                    b.HasOne("Loja.Domain.Models.product.Type", "type")
                         .WithMany()
                         .HasForeignKey("typeid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Loja.Application.Models.product.SubCategoria", b =>
+            modelBuilder.Entity("Loja.Domain.Models.product.SubCategoria", b =>
                 {
-                    b.HasOne("Loja.Application.Models.Category", "category")
+                    b.HasOne("Loja.Domain.Models.Category", "category")
                         .WithMany()
                         .HasForeignKey("categoryid")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -1,7 +1,7 @@
-using Loja.Application.Model;
-using Loja.Application.Model.Usuarios;
-using Loja.Application.Models;
-using Loja.Application.Models.product;
+using Loja.Domain.Model;
+using Loja.Domain.Model.Usuarios;
+using Loja.Domain.Models;
+using Loja.Domain.Models.product;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace Loja.Data.Context
     public DbSet<Product> Product { get; set; }
     public DbSet<Specs> specs { get; set; }
     public DbSet<SubCategoria> SubCategoria { get; set; }
-    public DbSet<Application.Models.product.Type> type { get; set; }
+    public DbSet<Domain.Models.product.Type> type { get; set; }
     public DbSet<gallery> galleries { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
