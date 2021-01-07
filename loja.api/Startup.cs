@@ -1,4 +1,7 @@
 using loja.api.Configurations;
+using Loja.Data.Context;
+using Loja.Domain.Intefaces;
+using Loja.Domain.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +30,10 @@ namespace loja.api
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+
+      
+
+
       // WebAPI Config
       services.AddControllers();
       // Setting DBContexts
@@ -38,6 +45,8 @@ namespace loja.api
       // .NET Native DI Abstraction
       services.AddDependencyInjectionConfiguration();
 
+      services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
+      services.AddTransient<IEmailSender, AuthMessageSender>();
 
     }
 
